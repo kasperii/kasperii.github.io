@@ -25,21 +25,25 @@ div {
   25%  {
     border-radius:50% 0 0 0;
     background:darksalmon;
+    height: 250px;
     transform:rotate(45deg);
   }
   50%  {
     border-radius:50% 50% 0 0;
     background:indianred;
+    height: 300px;
     transform:rotate(90deg);
   }
   75%  { 
     border-radius:50% 50% 50% 0;
     background:lightcoral;
+    height: 350px;
     transform:rotate(135deg);
   }
   100% {  
     border-radius:50%;
     background:darksalmon;
+    height: 400px;
     transform:rotate(180deg);
   }
 }
