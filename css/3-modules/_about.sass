@@ -5,7 +5,7 @@ h3
 
 .face-lockup
   max-width: 780px
-  //+display(flex)
+  +display(flex)
 
 
   .face-img
@@ -13,6 +13,16 @@ h3
 
     border-radius: 50%
     background: url(../img/me200.jpg)
+    order: 2
 
   [class^="icon"]
     +size(100px)
+
+    &.icon1
+      order: 1
+    &.icon2
+      order: 1
+    &.icon3
+      order: 3
+    &.icon4
+      order: 3

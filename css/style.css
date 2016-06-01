@@ -394,14 +394,30 @@ h3 {
   text-align: center; }
 
 .face-lockup {
-  max-width: 780px; }
+  max-width: 780px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex; }
   .face-lockup .face-img {
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    background: url(../img/me200.jpg); }
+    background: url(../img/me200.jpg);
+    order: 2; }
   .face-lockup [class^="icon"] {
     height: 100px;
     width: 100px; }
+    .face-lockup [class^="icon"].icon1 {
+      order: 1; }
+    .face-lockup [class^="icon"].icon2 {
+      order: 1; }
+    .face-lockup [class^="icon"].icon3 {
+      order: 3; }
+    .face-lockup [class^="icon"].icon4 {
+      order: 3; }
 
 /*# sourceMappingURL=Style.css.map */
