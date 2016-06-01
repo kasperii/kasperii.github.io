@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="941ff2c1-502f-4b36-a935-18b8349ec8d9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/3-modules/_about.sass" afterPath="$PROJECT_DIR$/css/3-modules/_about.sass" />
-    </list>
+    <list default="true" id="941ff2c1-502f-4b36-a935-18b8349ec8d9" name="Default" comment="" />
     <ignored path="kasperii.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,7 +37,7 @@
             <state relative-caret-position="255">
               <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
               <folding>
-                <marker date="1464789573000" expanded="true" signature="2:24" ph="..." />
+                <marker date="1464789590000" expanded="true" signature="2:24" ph="..." />
               </folding>
             </state>
           </provider>
@@ -373,12 +371,12 @@
       <workItem from="1464682870605" duration="10000" />
       <workItem from="1464749743199" duration="9000" />
       <workItem from="1464749782316" duration="8641000" />
-      <workItem from="1464766028059" duration="8028000" />
+      <workItem from="1464766028059" duration="8073000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23344000" />
+    <option name="totallyTimeSpent" value="23389000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -637,7 +635,7 @@
         <state relative-caret-position="255">
           <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
           <folding>
-            <marker date="1464789573000" expanded="true" signature="2:24" ph="..." />
+            <marker date="1464789590000" expanded="true" signature="2:24" ph="..." />
           </folding>
         </state>
       </provider>
