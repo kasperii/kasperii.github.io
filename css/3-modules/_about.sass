@@ -1,14 +1,18 @@
 h3
   @extend %small-bold
   color: $accent
-
   text-align: center
 
 .face-lockup
   max-width: 780px
+  +display(flex)
 
 
   .face-img
-    width: 100px
-    //border-radius: 50%
-    background: url(../img/egopic.png)
+    +size(200px)
+
+    border-radius: 50%
+    background: url(../img/me200.jpg)
+
+  [class^="icon"]
+    +size(100)

@@ -393,4 +393,19 @@ h3 {
   color: #ff525b;
   text-align: center; }
 
+.face-lockup {
+  max-width: 780px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .face-lockup .face-img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background: url(../img/me200.jpg); }
+
 /*# sourceMappingURL=Style.css.map */
