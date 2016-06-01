@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="941ff2c1-502f-4b36-a935-18b8349ec8d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/1-tools/_vars.sass" afterPath="$PROJECT_DIR$/css/1-tools/_vars.sass" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/3-modules/_about.sass" afterPath="$PROJECT_DIR$/css/3-modules/_about.sass" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/Style.css.map" afterPath="$PROJECT_DIR$/css/Style.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="kasperii.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,10 +37,10 @@
       <file leaf-file-name="_about.sass" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/3-modules/_about.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+            <state relative-caret-position="573">
+              <caret line="59" column="12" selection-start-line="55" selection-start-column="2" selection-end-line="59" selection-end-column="12" />
               <folding>
-                <marker date="1464794976000" expanded="true" signature="2:24" ph="..." />
+                <marker date="1464795105000" expanded="true" signature="2:24" ph="..." />
               </folding>
             </state>
           </provider>
@@ -402,12 +398,12 @@
       <workItem from="1464682870605" duration="10000" />
       <workItem from="1464749743199" duration="9000" />
       <workItem from="1464749782316" duration="8641000" />
-      <workItem from="1464766028059" duration="12224000" />
+      <workItem from="1464766028059" duration="12337000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27540000" />
+    <option name="totallyTimeSpent" value="27653000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -673,10 +669,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/3-modules/_about.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+        <state relative-caret-position="573">
+          <caret line="59" column="12" selection-start-line="55" selection-start-column="2" selection-end-line="59" selection-end-column="12" />
           <folding>
-            <marker date="1464794976000" expanded="true" signature="2:24" ph="..." />
+            <marker date="1464795105000" expanded="true" signature="2:24" ph="..." />
           </folding>
         </state>
       </provider>
