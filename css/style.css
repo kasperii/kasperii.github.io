@@ -394,14 +394,7 @@ h3 {
   text-align: center; }
 
 .face-lockup {
-  max-width: 780px;
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex; }
+  max-width: 780px; }
   .face-lockup .face-img {
     height: 200px;
     width: 200px;
