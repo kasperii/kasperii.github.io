@@ -391,7 +391,8 @@ footer {
 
 h3 {
   color: #ff525b;
-  text-align: center; }
+  text-align: center;
+  padding: 100px 0 30px; }
 
 .face-lockup {
   max-width: 780px;
@@ -440,5 +441,25 @@ h3 {
       order: 3; }
     .face-lockup [class^="icon"].icon4 {
       order: 3; }
+
+@media screen and (max-width: 650px) {
+  .face-lockup {
+    display: block;
+    text-align: center; }
+    .face-lockup div {
+      display: inline-block; }
+    .face-lockup .face-img {
+      display: block;
+      background-position: center center;
+      text-align: center;
+      margin: 0 auto 30px; }
+    .face-lockup [class^="icon"] {
+      margin: 10px; }
+
+  max-width: 620px;
+  padding: 0 15px;
+  margin: 50px auto 50px;
+  font-size: 18px;
+  font-weight: 300; }
 
 /*# sourceMappingURL=Style.css.map */
