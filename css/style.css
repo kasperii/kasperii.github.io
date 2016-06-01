@@ -400,5 +400,8 @@ h3 {
     width: 200px;
     border-radius: 50%;
     background: url(../img/me200.jpg); }
+  .face-lockup [class^="icon"] {
+    height: 100px;
+    width: 100px; }
 
 /*# sourceMappingURL=Style.css.map */
