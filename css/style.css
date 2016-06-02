@@ -317,7 +317,7 @@ input[type="button"] {
     border-color: #888;
     outline: 0; }
 
-header nav a, footer .lockup .contentWrap a, h3 {
+header nav a, footer .lockup .contentWrap a, about h3 {
   font-size: 14px;
   font-weight: 700px;
   text-transform: uppercase; }
@@ -389,12 +389,11 @@ footer {
         footer .lockup .contentWrap a:hover {
           color: rgba(255, 255, 255, 0.7); }
 
-h3 {
+about h3 {
   color: #ff525b;
   text-align: center;
   padding: 100px 0 30px; }
-
-.face-lockup {
+about .face-lockup {
   max-width: 780px;
   display: -webkit-box;
   display: -moz-box;
@@ -422,44 +421,57 @@ h3 {
   -o-justify-content: space-around;
   justify-content: space-around;
   -ms-flex-pack: distribute; }
-  .face-lockup .face-img {
+  about .face-lockup .face-img {
     height: 200px;
     width: 200px;
     border-radius: 50%;
     background: url(../img/me200.jpg);
     order: 2; }
-  .face-lockup [class^="icon"] {
+  about .face-lockup [class^="icon"] {
     height: 100px;
     width: 100px;
     background: #ddd;
     border-radius: 50%; }
-    .face-lockup [class^="icon"].icon1 {
+    about .face-lockup [class^="icon"].icon1 {
       order: 1; }
-    .face-lockup [class^="icon"].icon2 {
+    about .face-lockup [class^="icon"].icon2 {
       order: 1; }
-    .face-lockup [class^="icon"].icon3 {
+    about .face-lockup [class^="icon"].icon3 {
       order: 3; }
-    .face-lockup [class^="icon"].icon4 {
+    about .face-lockup [class^="icon"].icon4 {
       order: 3; }
-
 @media screen and (max-width: 650px) {
-  .face-lockup {
+  about .face-lockup {
     display: block;
     text-align: center; }
-    .face-lockup div {
+    about .face-lockup div {
       display: inline-block; }
-    .face-lockup .face-img {
+    about .face-lockup .face-img {
       display: block;
       background-position: center center;
       text-align: center;
       margin: 0 auto 30px; }
-    .face-lockup [class^="icon"] {
+    about .face-lockup [class^="icon"] {
       margin: 10px; } }
-.blurb {
+about .blurb {
   max-width: 620px;
   padding: 0 15px;
   margin: 50px auto 50px;
   font-size: 18px;
   font-weight: 300; }
+
+siluett-area .siluetts {
+  height: 309px; }
+  siluett-area .siluetts .stockholm {
+    background: url("../img/mg/sthlm.svg");
+    height: 309px;
+    min-width: 1000px;
+    position: fixed;
+    bottom: 0;
+    right: 0; }
+  siluett-area .siluetts .tokyo {
+    margin: 0 0 0 auto;
+    height: 309px;
+    min-width: 1000px; }
 
 /*# sourceMappingURL=Style.css.map */

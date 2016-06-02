@@ -1,60 +1,62 @@
-h3
-  @extend %small-bold
-  color: $accent
-  text-align: center
-  padding: 100px 0 30px
+about
 
-.face-lockup
-  max-width: 780px
-  +display(flex)
-
-  margin: 0 auto
-  +align-items(center)
-  +justify-content(space-around)
-
-
-  .face-img
-    +size(200px)
-
-    border-radius: 50%
-    background: url(../img/me200.jpg)
-    order: 2
-
-  [class^="icon"]
-    +size(100px)
-    background: $BGdark
-    border-radius: 50%
-
-    &.icon1
-      order: 1
-    &.icon2
-      order: 1
-    &.icon3
-      order: 3
-    &.icon4
-      order: 3
-
-@media screen and (max-width: 650px)
-  .face-lockup
-    display: block
+  h3
+    @extend %small-bold
+    color: $accent
     text-align: center
-    div
-      display: inline-block
+    padding: 100px 0 30px
+
+  .face-lockup
+    max-width: 780px
+    +display(flex)
+
+    margin: 0 auto
+    +align-items(center)
+    +justify-content(space-around)
+
 
     .face-img
-      display: block
-      background-position: center center
-      text-align: center
+      +size(200px)
 
-      margin: 0 auto 30px
+      border-radius: 50%
+      background: url(../img/me200.jpg)
+      order: 2
 
     [class^="icon"]
-      margin: 10px
+      +size(100px)
+      background: $BGdark
+      border-radius: 50%
+
+      &.icon1
+        order: 1
+      &.icon2
+        order: 1
+      &.icon3
+        order: 3
+      &.icon4
+        order: 3
+
+  @media screen and (max-width: 650px)
+    .face-lockup
+      display: block
+      text-align: center
+      div
+        display: inline-block
+
+      .face-img
+        display: block
+        background-position: center center
+        text-align: center
+
+        margin: 0 auto 30px
+
+      [class^="icon"]
+        margin: 10px
 
 
-.blurb
-  max-width: 620px
-  padding: 0 15px
-  margin: 50px auto 50px
-  font-size: 18px
-  font-weight: 300
+  .blurb
+    max-width: 620px
+    padding: 0 15px
+    margin: 50px auto 50px
+    font-size: 18px
+    font-weight: 300
