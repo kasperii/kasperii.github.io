@@ -459,6 +459,38 @@ about .blurb {
   margin: 50px auto 50px;
   font-size: 18px;
   font-weight: 300; }
+about .skills {
+  max-width: 700px;
+  margin: 100px auto;
+  color: #999999; }
+  about .skills::after {
+    clear: both;
+    content: "";
+    display: table; }
+  about .skills .skill {
+    width: 350px;
+    float: left; }
+  about .skills .skill-icon {
+    font-size: 0;
+    margin: 0 0 30px; }
+    about .skills .skill-icon span {
+      display: inline-block;
+      height: 14px;
+      width: 14px;
+      background-color: #ff525b;
+      margin-right: 5px;
+      border-radius: 50%; }
+      about .skills .skill-icon span:after {
+        content: "";
+        display: block;
+        height: 10px;
+        width: 10px;
+        background: #fff;
+        border-radius: 50%;
+        margin: 2px; }
+
+about .skills .skill-icon.skill-1 span:nth-child(n+1), about .skills .skill-icon.skill-2 span:nth-child(n+2), about .skills .skill-icon.skill-3 span:nth-child(n+3), about .skills .skill-icon.skill-4 span:nth-child(n+4), about .skills .skill-icon.skill-5 span:nth-child(n+5), about .skills .skill-icon.skill-6 span:nth-child(n+6), about .skills .skill-icon.skill-7 span:nth-child(n+7), about .skills .skill-icon.skill-8 span:nth-child(n+8), about .skills .skill-icon.skill-9 span:nth-child(n+9), about .skills .skill-icon.skill-10 span:nth-child(n+10) {
+  background: #ddd; }
 
 siluett-area .siluetts {
   height: 309px; }
@@ -466,7 +498,7 @@ siluett-area .siluetts {
     background: url("../img/mg/sthlm.svg");
     height: 309px;
     min-width: 1000px;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 0; }
   siluett-area .siluetts .tokyo {
