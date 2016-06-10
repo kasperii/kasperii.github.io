@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="941ff2c1-502f-4b36-a935-18b8349ec8d9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/3-modules/_about.sass" afterPath="$PROJECT_DIR$/css/3-modules/_about.sass" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/Style.css.map" afterPath="$PROJECT_DIR$/css/Style.css.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="kasperii.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +38,8 @@
       <file leaf-file-name="_about.sass" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/3-modules/_about.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="98" column="16" selection-start-line="98" selection-start-column="16" selection-end-line="98" selection-end-column="16" />
+            <state relative-caret-position="285">
+              <caret line="67" column="22" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -382,12 +380,12 @@
       <workItem from="1464749743199" duration="9000" />
       <workItem from="1464749782316" duration="8641000" />
       <workItem from="1464766028059" duration="23986000" />
-      <workItem from="1465544407530" duration="190000" />
+      <workItem from="1465544407530" duration="313000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39492000" />
+    <option name="totallyTimeSpent" value="39615000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -729,8 +727,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/3-modules/_about.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="98" column="16" selection-start-line="98" selection-start-column="16" selection-end-line="98" selection-end-column="16" />
+        <state relative-caret-position="285">
+          <caret line="67" column="22" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
           <folding />
         </state>
       </provider>
