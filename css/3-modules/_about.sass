@@ -93,7 +93,15 @@ about
       @for $i from 1 through 10
         &.skill-#{$i} span:nth-child(n+#{$i})
           @extend %skill-color
+
+@media  screen and (max-width: 541px)
+  .skills
+    width: 270px
+
 %skill-color
   background: $BGdark
+
+
+
 
 
