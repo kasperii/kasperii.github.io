@@ -65,7 +65,6 @@ about
     max-width: 700px
     margin: 100px auto
     color: #999999
-    text-align: center
     +clearfix
 
     .skill
@@ -92,12 +91,12 @@ about
           margin: 2px
 
       @for $i from 1 through 10
-        &.skill-#{$i} span:nth-child(n+#{$i})
+        &.skill-#{$i} span:nth-child(n+#{$i + 1})
           @extend %skill-color
 
-@media  screen and (max-width: 541px)
+@media  screen and (max-width: 703px)
   .skills
-    width: 270px
+    width: 350px
 
 %skill-color
   background: $BGdark

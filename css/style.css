@@ -462,8 +462,7 @@ about .blurb {
 about .skills {
   max-width: 700px;
   margin: 100px auto;
-  color: #999999;
-  text-align: center; }
+  color: #999999; }
   about .skills::after {
     clear: both;
     content: "";
@@ -490,10 +489,10 @@ about .skills {
         border-radius: 50%;
         margin: 2px; }
 
-@media screen and (max-width: 541px) {
+@media screen and (max-width: 703px) {
   .skills {
-    width: 270px; } }
-about .skills .skill-icon.skill-1 span:nth-child(n+1), about .skills .skill-icon.skill-2 span:nth-child(n+2), about .skills .skill-icon.skill-3 span:nth-child(n+3), about .skills .skill-icon.skill-4 span:nth-child(n+4), about .skills .skill-icon.skill-5 span:nth-child(n+5), about .skills .skill-icon.skill-6 span:nth-child(n+6), about .skills .skill-icon.skill-7 span:nth-child(n+7), about .skills .skill-icon.skill-8 span:nth-child(n+8), about .skills .skill-icon.skill-9 span:nth-child(n+9), about .skills .skill-icon.skill-10 span:nth-child(n+10) {
+    width: 350px; } }
+about .skills .skill-icon.skill-1 span:nth-child(n+2), about .skills .skill-icon.skill-2 span:nth-child(n+3), about .skills .skill-icon.skill-3 span:nth-child(n+4), about .skills .skill-icon.skill-4 span:nth-child(n+5), about .skills .skill-icon.skill-5 span:nth-child(n+6), about .skills .skill-icon.skill-6 span:nth-child(n+7), about .skills .skill-icon.skill-7 span:nth-child(n+8), about .skills .skill-icon.skill-8 span:nth-child(n+9), about .skills .skill-icon.skill-9 span:nth-child(n+10), about .skills .skill-icon.skill-10 span:nth-child(n+11) {
   background: #ddd; }
 
 siluett-area .siluetts {
@@ -509,5 +508,56 @@ siluett-area .siluetts {
     margin: 0 0 0 auto;
     height: 309px;
     min-width: 1000px; }
+
+.altContainer {
+  background: #ddd; }
+
+.thumbContainer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-bottom: 100px; }
+  .thumbContainer::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .thumbContainer .thumbUnit {
+    display: block;
+    width: 25%;
+    float: left;
+    position: relative;
+    padding-top: 14%;
+    overflow: hidden;
+    background-image: url("../img/seal/seal.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover; }
+    .thumbContainer .thumbUnit .thumbOverlay {
+      position: absolute;
+      top: 100%;
+      right: 0px;
+      left: 0px;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      text-align: center;
+      -webkit-transition: all 0.15s ease-out 0s;
+      -moz-transition: all 0.15s ease-out 0s;
+      transition: all 0.15s ease-out 0s; }
+      .thumbContainer .thumbUnit .thumbOverlay .zoomIcon {
+        height: 40px;
+        width: 40px;
+        margin: 0px auto; }
+      .thumbContainer .thumbUnit .thumbOverlay strong {
+        display: block;
+        padding: 20px;
+        color: white;
+        font-weight: 300%;
+        text-transform: uppercase;
+        font-size: 24px;
+        line-height: 1.2; }
+    .thumbContainer .thumbUnit:hover .thumbOverlay {
+      position: absolute;
+      top: 0%;
+      right: 0px;
+      left: 0px; }
 
 /*# sourceMappingURL=Style.css.map */
