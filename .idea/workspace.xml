@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="941ff2c1-502f-4b36-a935-18b8349ec8d9" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img/seal/seal8.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="kasperii.github.io.iws" />
@@ -366,12 +367,12 @@
       <workItem from="1467611687801" duration="1213000" />
       <workItem from="1467613616168" duration="11746000" />
       <workItem from="1468227957151" duration="6064000" />
-      <workItem from="1468750723759" duration="1749000" />
+      <workItem from="1468750723759" duration="1794000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62347000" />
+    <option name="totallyTimeSpent" value="62392000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
