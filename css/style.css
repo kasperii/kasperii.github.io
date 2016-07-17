@@ -513,9 +513,9 @@ siluett-area .siluetts {
   background: #ddd; }
 
 .thumbContainer {
+  display: block;
   max-width: 960px;
-  margin: 0 auto;
-  padding-bottom: 100px; }
+  margin: 0 auto; }
   .thumbContainer::after {
     clear: both;
     content: "";
@@ -527,7 +527,6 @@ siluett-area .siluetts {
     position: relative;
     padding-top: 14%;
     overflow: hidden;
-    background-image: url("../img/seal/seal.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover; }
@@ -537,7 +536,7 @@ siluett-area .siluetts {
       right: 0px;
       left: 0px;
       height: 100%;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.8);
       text-align: center;
       -webkit-transition: all 0.15s ease-out 0s;
       -moz-transition: all 0.15s ease-out 0s;
