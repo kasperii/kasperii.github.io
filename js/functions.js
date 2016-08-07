@@ -24,7 +24,7 @@ function smoothScroll (duration) {
 function workBelt() {
     $('.thumb-unit').click(function(){
         $('.work-belt').css('left','-100%');
-        $('.work-container').show(800);
+        $('.work-container').show();
     });
 
 
@@ -41,9 +41,10 @@ function workLoad() {
 
         var $this = $(this),
             newTitle = $this.find('strong').text(),
+            newFolder = $this.attr('id')
             spinner = '<div class="loader">Loading...</div>',
-            newHTML = 'work/proj-1.html';
-        $('.project-load').html(spinner).load('work/proj-1.html');
+            newHTML = 'work/' + newFolder + '.html';
+        $('.project-load').html(spinner).load(newHTML);
         $('.project-title').text(newTitle);
     });
 

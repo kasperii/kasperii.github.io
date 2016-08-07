@@ -604,7 +604,6 @@ siluett-area .siluetts {
     display: table; }
   .thumb-container .thumb-unit {
     display: block;
-    background-color: #39CCCC;
     width: 25%;
     float: left;
     position: relative;
