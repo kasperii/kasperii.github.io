@@ -35,18 +35,19 @@ function workBelt() {
 
 }
 
-//function workLoad() {
-  //  $.ajaxSetup({cache: true});
-    //$('.thumb-unit').click(function () {
-//
-        //var $this = $(this),
-      //      newTitle = $this.find('strong').text(),
-    //        newFolder = $this.attr('id')
-  //          spinner = '<div class="loader">Loading...</div>',
+function workLoad() {
+    $.ajaxSetup({cache: true});
+    $('.thumb-unit').click(function () {
+
+        var $this = $(this),
+            newTitle = $this.find('strong').text(),
+            newFolder = $this.attr('id')
+            spinner = '<div class="loader">Loading...</div>',
             newHTML = 'work/' + newFolder + '.html';
-       // $('.project-load').html(spinner).load(newHTML);
-        //$('.project-title').text(newTitle);
-   // });
+            console.log(newHTML)
+        $('.project-load').html(spinner).load(newHTML);
+        $('.project-title').text(newTitle);
+    });
 
 
-//}
+}
