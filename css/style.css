@@ -381,7 +381,7 @@ header nav a, footer .lockup .contentWrap a, about h3, h3 {
 
 header {
   height: 450px;
-  background: url(../img/burned.jpg) center center;
+  background: url(../img/backG.jpg) center center;
   background-size: cover; }
   header .logo {
     height: 50px;
@@ -400,7 +400,7 @@ header {
   header h1 {
     text-align: center;
     padding-color: black;
-    font-font-family: "Comfortaa-Light";
+    font-font-family: "Comforta-Light";
     font-size: 72px;
     font-weight: 700px;
     color: white;
@@ -412,6 +412,14 @@ header {
       display: inline-block;
       padding: 0.1em 0.2em;
       border: white solid 10px; }
+  @media screen and (max-width: 740px) {
+    header h1 {
+      font-size: 50px;
+      font-weight: 500px;
+      font-letter-spacing: 0; }
+      header h1 span {
+        padding: 0 0;
+        border: 0; } }
   header .kicker {
     text-align: center;
     font: lighter;
@@ -421,7 +429,7 @@ header {
     color: white; }
 
 footer {
-  background: url(../img/burned.jpg) center center;
+  background: url(../img/backG.jpg) center center;
   background-size: cover; }
   footer .lockup {
     padding: 50px 30px; }
@@ -490,6 +498,9 @@ about .face-lockup {
     width: 100px;
     background: #ddd;
     border-radius: 50%; }
+    about .face-lockup [class^="icon"] img {
+      display: block;
+      float: inherit; }
     about .face-lockup [class^="icon"].icon1 {
       order: 1; }
     about .face-lockup [class^="icon"].icon2 {
@@ -535,7 +546,7 @@ about .skills {
       display: inline-block;
       height: 14px;
       width: 14px;
-      background-color: #ff525b;
+      background-color: #29ABE2;
       margin-right: 5px;
       border-radius: 50%; }
       about .skills .skill-icon span:after {

@@ -1,2 +1,0 @@
-# kasperii.github.io
-netti
