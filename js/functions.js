@@ -44,7 +44,7 @@ function workLoad() {
             newFolder = $this.attr('id')
             spinner = '<div class="loader">Loading...</div>',
             newHTML = 'work/' + newFolder + '.html';
-            console.log(newHTML)
+
         $('.project-load').html(spinner).load(newHTML);
         $('.project-title').text(newTitle);
     });
