@@ -22,13 +22,17 @@ about
       background: url(../img/me200.jpg)
       order: 2
 
+
+
     [class^="icon"]
       +size(100px)
-      background: $BGdark
+      &:hover
+        background: $accent
       border-radius: 50%
       img
         display: block
         float: inherit
+
 
       &.icon1
         order: 1
@@ -43,6 +47,8 @@ about
     .face-lockup
       display: block
       text-align: center
+
+
       div
         display: inline-block
 

@@ -207,12 +207,12 @@ th {
   width: 11em;
   height: 11em;
   border-radius: 50%;
-  background: #ffffff;
-  background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-  background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-  background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-  background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-  background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: #29abe2;
+  background: -moz-linear-gradient(left, #29abe2 10%, rgba(41, 171, 226, 0) 42%);
+  background: -webkit-linear-gradient(left, #29abe2 10%, rgba(41, 171, 226, 0) 42%);
+  background: -o-linear-gradient(left, #29abe2 10%, rgba(41, 171, 226, 0) 42%);
+  background: -ms-linear-gradient(left, #29abe2 10%, rgba(41, 171, 226, 0) 42%);
+  background: linear-gradient(to right, #29abe2 10%, rgba(41, 171, 226, 0) 42%);
   position: relative;
   -webkit-animation: load3 1.4s infinite linear;
   animation: load3 1.4s infinite linear;
@@ -223,7 +223,7 @@ th {
 .loader:before {
   width: 50%;
   height: 50%;
-  background: #ffffff;
+  background: #29abe2;
   border-radius: 100% 0 0 0;
   position: absolute;
   top: 0;
@@ -231,7 +231,7 @@ th {
   content: ''; }
 
 .loader:after {
-  background: #e4e4e4;
+  background: #dddddd;
   width: 75%;
   height: 75%;
   border-radius: 50%;
@@ -496,8 +496,9 @@ about .face-lockup {
   about .face-lockup [class^="icon"] {
     height: 100px;
     width: 100px;
-    background: #ddd;
     border-radius: 50%; }
+    about .face-lockup [class^="icon"]:hover {
+      background: #29ABE2; }
     about .face-lockup [class^="icon"] img {
       display: block;
       float: inherit; }
@@ -685,8 +686,11 @@ h3 {
     width: 40px;
     cursor: pointer;
     opacity: 0.5;
+    border-radius: 50%;
     position: absolute;
     left: -60px; }
+    .work-container .work-return:hover {
+      background: #29ABE2; }
     .work-container .work-return:hover {
       opacity: 1; }
 

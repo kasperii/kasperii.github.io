@@ -3,6 +3,7 @@ $(function(){
     smoothScroll(300);
     workBelt();
     workLoad();
+
 });
 function smoothScroll (duration) {
     $('a[href^="#"]').on('click', function(event) {
