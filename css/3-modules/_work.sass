@@ -82,7 +82,7 @@ h3
       +position(absolute, 0% 0px null 0px)
 .work-container
 
-  max-width: 600px
+  max-width: 800px
   margin: 0 auto
   position: relative
   display: none
@@ -98,6 +98,9 @@ h3
     max-width: 100%
     margin-bottom: 20px
   .work-return
+    position: -webkit-sticky; /* Safari */
+    position: sticky
+    top: 10px
     +size(40px)
     cursor: pointer
     opacity: 0.5
