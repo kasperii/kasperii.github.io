@@ -1,21 +1,328 @@
-<p>
-These are photo's I have taken of Actor <a href="http://actorsinscandinavia.com/actors/vincent-grahl/" target="_blank">Vincent Grahl</a>.
-</p>
+
+<style>
+
+body {
+  border: 0px;
+  margin: 0px;
+  background: #261645;
+}
+body header {
+  height: 100px;
+  width: 600px;
+  border: 0px;
+  display: block;
+  margin: 0 auto;
+}
+body header .icons {
+  margin-left: 100px;
+  width: 600px;
+  height: 100px;
+  float: left;
+}
+body header .icons play, body header .icons reset {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  position: relative;
+  float: left;
+  margin: 25px 100px 0 75px;
+  display: block;
+  border-radius: 50%;
+}
+body header .icons play text, body header .icons reset text {
+  margin: 10px 0 0 0;
+}
+body header .icons play {
+  background: #474BB9;
+}
+body header .icons play.playing {
+  background: url("img/pause.svg.svg");
+  background-color: #FEC248;
+}
+body header .icons reset {
+  background-color: #FB318D;
+}
+body header .number {
+  height: 100px;
+  width: 100px;
+  float: left;
+}
+body header .number .cleared {
+  float: left;
+}
+body .gameBoard {
+  margin: auto;
+  width: 500px;
+  height: 500px;
+}
+body div div {
+  background: blue;
+  width: 8px;
+  height: 8px;
+  float: left;
+  margin: 1px;
+}
+body .dead {
+  background-color: 650861;
+}
+body .touched {
+  background-color: #261645;
+  transition: background-color 10s ease;
+}
+body .alive {
+  transform: scale(1.1);
+  background-color: #ff1bca;
+  transition: all 0.1s ease;
+}
+body footer .footerbox {
+  width: 500px;
+  height: 100px;
+  margin: 20px auto;
+  display: block;
+}
+body footer .footerbox .info {
+  margin: 1px;
+  float: left;
+  font-size: 8px;
+  font-family: "Courier New", Courier, monospace;
+  color: lightgrey;
+}
 
 
-<img src="/img/work/PortFoto/VG.jpg" alt="Vincent">
-<img src="/img/work/PortFoto/VG2.jpg" alt="Vincent">
-<img src="/img/work/PortFoto/beard.jpg" alt="Vincent">
+</style>
 
-<p>
-These photo's are for the cover band <a href="https://open.spotify.com/album/29HYKWvxVmmQLV1q0qi1rF" target="_blank">Medborgarna</a> (2017).
-</p>
-<img src="/img/work/PortFoto/Album.png" alt="medB">
-<img src="/img/work/PortFoto/logga.png" alt="logga">
-<img src="/img/work/PortFoto/poster_medborgarna_2.jpg" alt="medB">
-<img src="/img/work/PortFoto/FB_coverfoto.png" alt="logga">
+<script>
 
-<p>
-And this is the poster for Janne Åström's christmas theater (2017).
-</p>
-<img src="/img/work/PortFoto/doing_ljus.png" alt="medB">
+$(document).ready(function(){
+    var cellList = [];
+    var gameBoardDimentions = [50,50];
+    var changedList = [];
+    var playing = false;
+    var touchedCells = 0;
+    for (var i = 0; i < gameBoardDimentions[0]; i++) {
+        var row = [];
+        for (var j = 0; j < gameBoardDimentions[1]; j++) {
+            var $div = $('div[id^="bit"]:last');
+            var num = parseInt($div.prop("id").match(/\d+/g), 10) + 1;
+            var $bit = $div.clone().prop('id', 'bit' + num);
+            row.push($bit)
+            $div.after($bit);
+        }
+        cellList.push(row);
+
+    }
+
+    $('div[id^="bit"]:first').detach()
+    //delet bit
+
+    $('div[id^="bit"]').mousedown(function() {
+        $(this).toggleClass("dead");
+        $(this).toggleClass("alive");
+        if (!$(this).hasClass('touched'))
+            touchedCells++;
+        else
+            touchedCells = touchedCells - 1;
+        $(this).toggleClass("touched");
+        if (playing){
+            changedList.push($(this));
+        }
+
+
+        //if mouseup(return)
+        //$('div[id^="bit"]').mouseover(function(){
+          //  $(this).toggleClass("alive");
+    });
+
+
+    $('play').on('click',function() {
+        playing = !playing
+        $(this).toggleClass("playing");
+        $('reset').toggleClass("playing")
+
+        $('.alive').each(function() {
+            changedList.push($(this));
+        });
+        play()
+
+        //$(this).toggleClass("alive");
+        //play()
+
+
+    });
+
+    $('reset').on('click',function() {
+        $(this).toggleClass("playing");
+        $('play').toggleClass("playing");
+
+        playing = false
+        $('div[id^="bit"]').removeClass("alive").removeClass("touched").addClass("dead");
+
+        changedList = []
+        //$('div[id^="bit"]').toggleClass("alive");
+    });
+
+
+    function play() {
+        var game = setInterval(function() {
+            if (!playing) {
+                clearInterval(game)
+            } else {
+                tick()
+            }
+
+        }, 200)
+    }
+
+
+    function cellToTwo(cell){
+        var numMinusOne = parseInt(cell.prop("id").match(/\d+/g), 10) - 1
+        var x = numMinusOne%gameBoardDimentions[0]
+        var y = Math.floor(numMinusOne/gameBoardDimentions[0])
+        return [x, y];
+    }
+
+
+
+
+    function tick() {
+        var changedCellist = [];
+        var allneighbours = [];
+        for (var i = 0; i < changedList.length; i++) {
+            var cellIndex = cellToTwo(changedList[i])
+            var neighboursList = neighbours(cellIndex[0],cellIndex[1])
+            allneighbours = allneighbours.concat(neighboursList)
+            allneighbours.push(cellIndex)
+        }
+        changedList = []
+
+
+        var changesDict = {}
+        var changes = []
+
+        for (var i = 0; i < allneighbours.length; i++) {
+            var x = allneighbours[i][0]
+            var y = allneighbours[i][1]
+            var cell = cellList[y][x]
+            var status = isAliveOrNot(x,y)
+
+            if (!$(cell).hasClass(status)) {
+                if (changesDict[cell.attr('id')] != 1) {
+                    changesDict[cell.attr('id')] = 1
+                    changes.push(cell)
+                }
+            }
+        }
+
+
+        var howManyChanges = 0;
+
+        $(changes).each(function(index, cell) {
+            howManyChanges++
+            $(cell).toggleClass("dead");
+            $(cell).toggleClass("alive");
+            if (!$(cell).hasClass('touched'))
+                touchedCells++
+                $(cell).addClass("touched")
+            changedList.push($(cell));
+
+        })
+        //changes = []
+
+    }
+
+
+    function isAliveOrNot(x,y) {
+
+        var $div = cellList[y][x];
+
+        neighboursList = neighbours(x, y);
+        var i = 0;
+        $.each(neighboursList, function (l) {
+            var lx = neighboursList[l][0]
+            var ly = neighboursList[l][1]
+            var neighbourCell = cellList[ly][lx]
+            if (neighbourCell.hasClass('alive')) {
+                i++;
+            }
+        })
+
+        if ($div.hasClass('alive')){
+            //check if alive and has two/three neighbours that are alive
+            if (i<=1 || i > 3){
+                return "dead"
+            } else{
+                return "alive"
+            }
+        } else { //if not alive check if has three neighbour that are
+            if (i==3){
+                return "alive"
+            } else {
+                return "dead"
+            }
+        }
+    }
+
+    function neighbours(x, y) {
+        var dimX = gameBoardDimentions[0] - 1;
+        var dimY = gameBoardDimentions[1] - 1;
+        var neighbours = []
+        var northwest = [x-1,y-1]
+        var north = [x,y-1]
+        var northeast = [x+1,y-1]
+        var west = [x-1,y]
+        var east = [x+1,y]
+        var southwest = [x-1,y+1]
+        var south = [x,y+1]
+        var southeast = [x+1,y+1]
+        if (x == 0){
+            northwest[0] = dimX
+            west[0] = dimX
+            southwest[0] = dimX
+        }
+        if (y == 0){
+            northwest[1] = dimY
+            north[1] = dimY
+            northeast[1] = dimY
+
+        }
+        if (x == dimX){
+            northeast[0] = 0
+            east[0] = 0
+            southeast[0] = 0
+
+        }
+        if (y == dimY){
+            southwest[1] = 0
+            south[1] = 0
+            southeast[1] = 0
+
+        }
+        var neighbours = [
+            northwest,
+            north,
+            northeast,
+            west,
+            east,
+            southwest,
+            south,
+            southeast,
+        ];
+    return neighbours;
+    }
+
+});
+
+</script>
+
+<game>
+
+    <div class="gameBoard">
+        <div class="dead",x="0",y="0" id="bit0"></div>
+
+    </div>
+
+</game>
+
+
+<p data-height="825" data-theme-id="0" data-slug-hash="OWvqKd" data-default-tab="result" data-user="kasperii" data-embed-version="2" data-pen-title="OWvqKd" class="codepen">See the Pen <a href="http://codepen.io/kasperii/pen/OWvqKd/">OWvqKd</a> by Kaser Karlgren (<a href="http://codepen.io/kasperii">@kasperii</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
