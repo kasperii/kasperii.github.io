@@ -580,7 +580,9 @@ siluett-area .siluetts {
     min-width: 1000px; }
 
 .alt-section {
-  background: #ddd; }
+  background: #ddd;
+  font-size: 18px;
+  font-weight: 300; }
 
 h3 {
   color: black;
