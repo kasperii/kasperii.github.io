@@ -610,14 +610,14 @@ h3 {
 .text-beltbox {
   width: 50%; }
 
-.work-belt {
+.work-belt, .work-belt-2 {
   width: 200%;
   position: relative;
   left: 0%;
   -webkit-transition: all 800ms;
   -moz-transition: all 800ms;
   transition: all 800ms; }
-  .work-belt::after {
+  .work-belt::after, .work-belt-2::after {
     clear: both;
     content: "";
     display: table; }
@@ -639,7 +639,7 @@ h3 {
     clear: both;
     content: "";
     display: table; }
-  .thumb-container .thumb-unit {
+  .thumb-container .thumb-unit, .thumb-container .thumb-unit-2 {
     cursor: pointer;
     display: block;
     width: 25%;
@@ -651,10 +651,10 @@ h3 {
     background-repeat: no-repeat;
     background-size: cover; }
     @media screen and (max-width: 760px) {
-      .thumb-container .thumb-unit {
+      .thumb-container .thumb-unit, .thumb-container .thumb-unit-2 {
         width: 50%;
         padding-top: 26%; } }
-    .thumb-container .thumb-unit .thumb-overlay {
+    .thumb-container .thumb-unit .thumb-overlay, .thumb-container .thumb-unit-2 .thumb-overlay {
       position: absolute;
       top: 100%;
       right: 0px;
@@ -665,7 +665,7 @@ h3 {
       -webkit-transition: all 0.15s ease-out 0s;
       -moz-transition: all 0.15s ease-out 0s;
       transition: all 0.15s ease-out 0s; }
-      .thumb-container .thumb-unit .thumb-overlay strong {
+      .thumb-container .thumb-unit .thumb-overlay strong, .thumb-container .thumb-unit-2 .thumb-overlay strong {
         display: block;
         padding: 0px 20px;
         color: white;
@@ -673,32 +673,32 @@ h3 {
         text-transform: uppercase;
         font-size: 24px;
         line-height: 1.2; }
-    .thumb-container .thumb-unit:hover .thumb-overlay {
+    .thumb-container .thumb-unit:hover .thumb-overlay, .thumb-container .thumb-unit-2:hover .thumb-overlay {
       position: absolute;
       top: 0%;
       right: 0px;
       left: 0px; }
 
-.work-container {
+.work-container, .work-container-2 {
   max-width: 800px;
   margin: 0 auto;
   position: relative;
   display: none; }
-  .work-container::after {
+  .work-container::after, .work-container-2::after {
     clear: both;
     content: "";
     display: table; }
-  .work-container h4 {
+  .work-container h4, .work-container-2 h4 {
     color: black;
     font-weight: 300;
     text-transform: uppercase;
     font-size: 18px;
     line-height: 1.2;
     margin: 0 0 20px; }
-  .work-container img {
+  .work-container img, .work-container-2 img {
     max-width: 100%;
     margin-bottom: 20px; }
-  .work-container .work-return {
+  .work-container .work-return, .work-container .work-return-2, .work-container-2 .work-return, .work-container-2 .work-return-2 {
     position: sticky;
     top: 10px;
     height: 40px;
@@ -708,15 +708,15 @@ h3 {
     border-radius: 50%;
     position: absolute;
     left: -60px; }
-    .work-container .work-return:hover {
+    .work-container .work-return:hover, .work-container .work-return-2:hover, .work-container-2 .work-return:hover, .work-container-2 .work-return-2:hover {
       background: #29ABE2; }
-    .work-container .work-return:hover {
+    .work-container .work-return:hover, .work-container .work-return-2:hover, .work-container-2 .work-return:hover, .work-container-2 .work-return-2:hover {
       opacity: 1; }
 
 @media (max-width: 740px) {
-  .work-container .work-return {
+  .work-container .work-return, .work-container .work-return-2, .work-container-2 .work-return, .work-container-2 .work-return-2 {
     left: 0px; }
-  .work-container h4 {
+  .work-container h4, .work-container-2 h4 {
     margin-left: 60px; } }
 
 /*# sourceMappingURL=Style.css.map */
