@@ -1,10 +1,29 @@
 .alt-section
   background: $BGdark
+  font-size: 18px
+  font-weight: 300
+
 h3
   @extend %small-bold
   color: black
   text-align: center
   padding: 100px 0 30px
+.time
+  max-width: 620px
+  padding: 0 15px
+  margin: 50px auto 50px
+  font-size: 18px
+  font-weight: 300
+  text-align: center
+.infoWork
+  max-width: 620px
+  padding: 0 15px
+  margin: 50px auto 50px
+  font-size: 18px
+  font-weight: 300
+
+  
+
 .section-work
   overflow-x: hidden
 .work-belt
@@ -66,9 +85,6 @@ h3
       //burboun mixin
       //position: absolute
       //top: 0
-      .zoomIcon
-        +size(40px)
-        margin: 0px auto
 
 
       strong
@@ -99,7 +115,6 @@ h3
     max-width: 100%
     margin-bottom: 20px
   .work-return
-    position: -webkit-sticky; /* Safari */
     position: sticky
     top: 10px
     +size(40px)

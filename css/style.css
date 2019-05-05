@@ -607,6 +607,9 @@ h3 {
 .section-work {
   overflow-x: hidden; }
 
+.text-beltbox {
+  width: 50%; }
+
 .work-belt {
   width: 200%;
   position: relative;
@@ -662,10 +665,6 @@ h3 {
       -webkit-transition: all 0.15s ease-out 0s;
       -moz-transition: all 0.15s ease-out 0s;
       transition: all 0.15s ease-out 0s; }
-      .thumb-container .thumb-unit .thumb-overlay .zoomIcon {
-        height: 40px;
-        width: 40px;
-        margin: 0px auto; }
       .thumb-container .thumb-unit .thumb-overlay strong {
         display: block;
         padding: 0px 20px;
@@ -720,4 +719,4 @@ h3 {
   .work-container h4 {
     margin-left: 60px; } }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=Style.css.map */
