@@ -55,7 +55,7 @@ function workBelt2() {
 
 }
 
-function workLoad2() {
+function workLoad() {
     $.ajaxSetup({cache: true});
     $('.thumb-unit').click(function () {
 
@@ -84,6 +84,5 @@ function workLoad2() {
         $('.project-load').html(spinner).load(newHTML);
         $('.project-title').text(newTitle);
     });
-
 
 }
