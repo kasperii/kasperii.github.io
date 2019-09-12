@@ -2,6 +2,11 @@
 @font-face {
   font-family: "made";
   src: url(/fonts/madeweb/made_canvas_black_personal_use-webfont.ttff); }
+@font-face {
+  font-family: 'Druk Wide';
+  src: url("http://swim.club/webfonts/Druk-WideMedium.woff2") format("woff2"), url("http://swim.club/webfonts/Druk-WideMedium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal; }
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -190,7 +195,7 @@ th {
   width: 11em;
   height: 11em;
   border-radius: 50%;
-  background: #29abe2;
+  background: #ececec;
   background: -moz-linear-gradient(left, #29abe2 10%, rgba(41, 171, 226, 0) 42%);
   background: -webkit-linear-gradient(left, #29abe2 10%, rgba(41, 171, 226, 0) 42%);
   background: -o-linear-gradient(left, #29abe2 10%, rgba(41, 171, 226, 0) 42%);
@@ -650,6 +655,7 @@ h3 {
       -moz-transition: all 0.15s ease-out 0s;
       transition: all 0.15s ease-out 0s; }
       .thumb-container .thumb-unit .thumb-overlay strong, .thumb-container .thumb-unit-2 .thumb-overlay strong {
+        font-family: "Druk Wide", san-serif;
         display: block;
         padding: 0px 20px;
         color: white;
@@ -696,6 +702,9 @@ h3 {
       background: #29ABE2; }
     .work-container .work-return:hover, .work-container .work-return-2:hover, .work-container-2 .work-return:hover, .work-container-2 .work-return-2:hover {
       opacity: 1; }
+
+.work-container-2 .project-load .loader::after {
+  background: #ececec; }
 
 @media (max-width: 740px) {
   .work-container .work-return, .work-container .work-return-2, .work-container-2 .work-return, .work-container-2 .work-return-2 {

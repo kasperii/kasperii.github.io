@@ -3,6 +3,8 @@
   font-size: 18px
   font-weight: 300
 
+.dif-col
+  background: #ececec
 h3
   @extend %small-bold
   color: black
