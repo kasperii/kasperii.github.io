@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "made";
-  src: url(/fonts/madeweb/made_canvas_black_personal_use-webfont.ttff);
+  src: local(/fonts/madeweb/made_canvas_black_personal_use-webfont.ttff);
 }
 
 @import url('https://fonts.googleapis.com/css?family=Radley&display=swap');
