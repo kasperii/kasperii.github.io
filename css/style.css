@@ -273,7 +273,6 @@ a {
 
 .gigantic, .huge, .large, .bigger, .big,
 h1, h2, h3, h4, h5, h6 {
-  font-family: made, Radley, serif;
   color: #222;
   font-weight: bold; }
 
@@ -283,9 +282,10 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -2px; }
 
 .huge, h1 {
+  font-family: made, Radley, serif;
   font-size: 68px;
   line-height: 1.05;
-  letter-spacing: -1px; }
+  letter-spacing: -8px; }
 
 .large, h2 {
   font-size: 42px;
