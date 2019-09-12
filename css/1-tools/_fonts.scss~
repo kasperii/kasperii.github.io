@@ -1,10 +1,27 @@
-// http://fonts.googleapis.com/css?family=Fira+Sans
-
 @font-face {
   font-family: "made";
-  src: url(/fonts/madeweb/made_canvas_black_personal_use-webfont.ttff);
+  src: url(@{plChildRoot}/fonts/madeweb/made_canvas_black_personal_use-webfont.ttff);
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Radley&display=swap');
 
+
+@font-face {
+  font-family: "Radley2";
+  src: local("Radley Regular"), local("Radley-Regular"), url("https://fonts.gstatic.com/s/radley/v14/LYjDdGzinEIjCN1NpwNFh1gnVA.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Druk Wide';
+  src: url('http://swim.club/webfonts/Druk-WideMedium.woff2') format('woff2'),
+    url('http://swim.club/webfonts/Druk-WideMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
 
