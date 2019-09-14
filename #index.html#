@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="css/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<head>
+    <title>
+        Kasper Karlgren
+    </title>
+    <link rel="icon" href="/img/favicon.ico" type="image/vnd.microsoft.icon" />
+</head>
+<!-- DevTips based website :-) //-->
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/functions.js"></script>
+
+
+<header>
+
+
+
+ <div class="logo"><img src="img/loggaVit.svg" onerror="this.onerror=null; this.src='img/logga.png'">
+ </div>
+
+    <nav>
+        <a  href="mailto:kasper@bedford.st">contact me!</a>
+    </nav>
+    <!--
+
+
+ <nav>
+  <a href="#aboutMe">about me </a>
+  <a href="#work">work </a>
+  <a href="">blogg </a>
+  <a href="#contact">contact </a>
+ </nav>
+ <a class="icon1" href="http://kasperii.tumblr.com/"><div class="icon1" ><img src="img/logga_1v.svg"></div></a>
+
+    //-->
+
+ <h1><span>Kasper Karlgren</span></h1>
+ <p class="kicker">Soon a real site</p>
+</header>
+
+
+<about>
+
+ <h3 id="aboutMe">about myself</h3>
+
+ <div class="face-lockup">
+
+  <div class="face-img"></div>
+
+  <div class="icon1"><a href="https://www.linkedin.com/in/kasper-karlgren-55b04693"><img src="img/logga_1v.svg"></a></div>
+  <div class="icon2"><a href="https://github.com/kasperii"><img src="img/logga_2v.svg"></a></div>
+  <div class="icon3"><a href="https://twitter.com/kasperigregori"><img src="img/logga_3v.svg"></a></div>
+  <div class="icon4"><a href="https://www.instagram.com/kasperigregori/"><img src="img/logga_4v.svg"></a></div>
+
+
+ </div>
+ <div class="blurb">
+  <p><strong>This is my</strong> humble webpage, please feel free to check out my work
+    below. I am currently studing
+    for my Master's in Computer Science. I have finished a Bachelor's in Media Technology, one semester at Aalto University (puhun Suomea!) and
+    one year as a guest student at Keio University (í∆¸íÀ‹í∏Ïí§Úí§¶í§ﬁí§ØíΩÒí§Øí§≥í§»í§¨í§«í§≠í§ﬁí§ªí§Ûí§¨í°¢íæØí§∑í∆…í§‡í§≥í§»í§¨í§«í§≠í§ﬁí§π!)
+
+    You can find my mail in the footer - please use it for good only!
+    My CV can be found <a href="http://kasperii.github.io/img/kasper_karlgren_CV18.pdf">
+     here! </a>
+   </p>
+ </div>
+ <div class="skills">
+
+    <div class="skill">
+        <div class="skill-label">Googling</div>
+        <div class="skill-icon skill-7">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-label">Ordering food in languages I don't speak</div>
+        <div class="skill-icon skill-6">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-label">Celebrating</div>
+        <div class="skill-icon skill-7">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-label">Karaoke knowledge</div>
+        <div class="skill-icon skill-5">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-label">Making tea</div>
+        <div class="skill-icon skill-10">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-label">Solving problems while bathing</div>
+        <div class="skill-icon skill-9">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-label">Snapchat doodling</div>
+        <div class="skill-icon skill-8">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-label">Making mayonnaise</div>
+        <div class="skill-icon skill-7">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+ </div>
+
+</about>
+
+<section class="alt-section section-work">
+    <h3 id="work">Netlight</h3>
+    <div class="time">
+      <p>/*Mars 2017-June 2019*/</p>
+    </div>
+    <div class="infoWork">
+      <p><strong>Netlight consulting is </strong> an IT and management consult company with over 1200 consults all over Europe. I have been working at Netlight f om the Spring of 2017 as one of the designers at the inhouse design studio. Tasks have included concept art and animations for annual conferences, large format printing, and UX testing of digital services.</p>
+    </div>
+    <div class="work-belt">
+        <div class="thumb-wrap">
+            <div class="thumb-container">
+
+                <div id="proj-1" href="" class="thumb-unit" style="background-image: url('../img/work/edgex4/thumbnailEdgex4.png')">
+                    <div class="thumb-overlay">
+                        <strong>edge X Å∑Å∑Å∑Å∑</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-2" href="" class="thumb-unit" style="background-image: url('../img/work/EdgeX/thumb.png')">
+                    <div class="thumb-overlay">
+                        <strong>edge X</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-3" href="" class="thumb-unit" style="background-image: url('../img/work/summitHamburg/thumb.png')">
+                    <div class="thumb-overlay">
+                        <strong>Edge Hamburg</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-4" href="" class="thumb-unit" style="background-image: url('../img/work/pride/thumb2.png')">
+                    <div class="thumb-overlay">
+                        <strong>Pride</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-5" href="" class="thumb-unit" style="background-image: url('../img/work/OL/OL.png')">
+                    <div class="thumb-overlay">
+                        <strong>OL</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-6" href="" class="thumb-unit" style="background-image: url('../img/work/CHOOSE/chooselogo.png')">
+                    <div class="thumb-overlay">
+                        <strong>Choose!</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-7" href="" class="thumb-unit" style="background-image: url('../img/work/numbers/thumb.png')">
+                    <div class="thumb-overlay">
+                        <strong>Numbers</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-8" href="" class="thumb-unit" style="background-image: url('../img/work/summitmallorca/thumb.png')">
+                    <div class="thumb-overlay">
+                        <strong>Summit 18</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-9" href="" class="thumb-unit" style="background-image: url('../img/work/Foto/fotoThumb.jpg')">
+                    <div class="thumb-overlay">
+                        <strong>Photo- graphy</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-10" href="" class="thumb-unit" style="background-image: url('../img/work/planningPoker/landsCards.png')">
+                    <div class="thumb-overlay">
+                        <strong>Planning poker</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-11" href="" class="thumb-unit" style="background-image: url('../img/work/designDelivery/boids.png')">
+                    <div class="thumb-overlay">
+                        <strong>Design Delivery</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-12" href="" class="thumb-unit" style="background-image: url('../img/work/Mandelbrot/MB.png')">
+                    <div class="thumb-overlay">
+                        <strong>Mandelbrot</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-13" href="" class="thumb-unit" style="background-image: url('../img/work/GoL/GOL.png')">
+                    <div class="thumb-overlay">
+                        <strong>Game of Life</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-14" href="" class="thumb-unit" style="background-image: url('../img/work/model/Modl.png')">
+                    <div class="thumb-overlay">
+                        <strong>Tokyo modelling</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-15" href="" class="thumb-unit" style="background-image: url('../img/work/PortFoto/main.png')">
+                    <div class="thumb-overlay">
+                        <strong>Portrait photography</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-16" href="" class="thumb-unit" style="background-image: url('../img/work/platformAfrica/logga.png')">
+                    <div class="thumb-overlay">
+                        <strong>Platform Afrika</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="work-wrap">
+
+            <div class="work-container">
+                <div class="work-return"><img src="img/logga_back.svg" onerror="this.onerror=null; this.src='img/logga.png'"></div>
+                <h4 class="project-title">one work</h4>
+                <div class="project-load"></div>
+
+            </div>
+        </div>
+
+
+        </div>
+</section>
+<section class="alt-section section-work dif-col">
+    <h3 id="work">Master's projects</h3>
+    <div class="time">
+      <p>/*August 2017-June 2019*/</p>
+    </div>
+    <div class="infoWork">
+      <p><strong>During my Master's </strong> in Computer Science at KTH, Royal Institute of Technology I have been worked with project exploring cutting edge interaction design - foremost in my Master's thesis.</p>
+    </div>
+    <div class="work-belt-2">
+        <div class="thumb-wrap">
+            <div class="thumb-container">
+
+                <div id="proj-m1" href="" class="thumb-unit-2" style="background-image: url('../img/work/Masters/m1.png')">
+                    <div class="thumb-overlay">
+                        <strong>Clay Pepper [Master's thesis]</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-m2" href="" class="thumb-unit-2" style="background-image: url('../img/work/Masters/m2.png')">
+                    <div class="thumb-overlay">
+                        <strong>Mute Mike II</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-m3" href="" class="thumb-unit-2" style="background-image: url('../img/work/Masters/m3.png')">
+                    <div class="thumb-overlay">
+                        <strong>Soar & Fall</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+                <div id="proj-m4" href="" class="thumb-unit-2" style="background-image: url('../img/work/Masters/m4.png')">
+                    <div class="thumb-overlay">
+                        <strong>BeBeam</strong>
+                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="work-wrap">
+
+            <div class="work-container-2">
+                <div class="work-return-2"><img src="img/logga_back.svg" onerror="this.onerror=null; this.src='img/logga.png'"></div>
+                <h4 class="project-title">one work</h4>
+                <div class="project-load"></div>
+            </div>
+        </div>
+
+
+        </div>
+</section>
+
+
+
+<!--
+<siluett-area>
+
+ <div class="siluetts">
+
+  <div class="stockholm">
+
+  </div>
+  <div class="tokyo">
+   <img src="img/tokyo.svg">
+  </div>
+
+ </div>
+
+</siluett-area>
+//-->
+
+
+
+<footer>
+ <div class="lockup">
+  <div class="logo"><img src="img/loggaVit.svg" onerror="this.onerror=null; this.src='img/logga.png'">
+  </div>
+  <div class="contentWrap" >
+   <nav>
+       <a  href="mailto:kasper@bedford.st">contact me!</a>
+   </nav>
+      <p class="copyright"> <a href="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1960729-om-upphovsratt-till-litterara-och_sfs-1960-729">
+          All content copyright 2016 </a> </p>
+  </div>
+ </div>
+</footer>
+
+
+</body>
+</html>
