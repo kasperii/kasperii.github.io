@@ -403,7 +403,6 @@ background-position: center center;
 }
 
 
-
 header {
   height: 450px;
   background-color: #F2F1F0;
@@ -541,7 +540,23 @@ about .face-lockup {
       margin: 0 auto 30px; }
     about .face-lockup [class^="icon"] {
       margin: 10px; } }
+
+.mypicture {
+  max-width: 150px;
+  float: left;
+  margin: 0px 30px 400px;
+}
+
+.mypicture img{
+  max-width: 150px;
+}
 about .blurb {
+  max-width: 700px;
+  padding: 0 15px;
+  margin: 50px auto 50px;
+  font-size: 18px;
+  font-weight: 300; }
+about .blurb .blurbtext{
   max-width: 620px;
   padding: 0 15px;
   margin: 50px auto 50px;
