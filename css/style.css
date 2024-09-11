@@ -5,6 +5,18 @@
   font-weight: 400;
   font-display: swap; }
 @font-face {
+  font-family: "Iosevka";
+  src: url(../css/1-tools/fonts/IosevkaAile/IosevkaAile-SemiBold.ttc);
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap; }
+@font-face {
+  font-family: "Urbesc";
+  src: url(../css/1-tools/fonts/Urbscape.otf);
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap; }
+@font-face {
   font-family: "Radley2";
   src: local("Radley Regular"), local("Radley-Regular"), url("https://fonts.gstatic.com/s/radley/v14/LYjDdGzinEIjCN1NpwNFh1gnVA.woff2") format("woff2");
   font-style: normal;
@@ -74,7 +86,9 @@ dfn {
 
 h1 {
   font-size: 2em;
-  margin: 0.67em 0; }
+  margin: 0.67em 0;
+  font-family: Iosevka;
+}
 
 mark {
   background: #ff0;
@@ -381,11 +395,6 @@ header {
   height: 450px;
   background: url(../img/backG.jpg) center center;
   background-size: cover; }
-  header .logo {
-    height: 50px;
-    width: 50px;
-    float: left;
-    margin: 10px 0 0 30px; }
   header nav {
     float: right;
     margin: 30px 30px 0 0; }
@@ -553,6 +562,99 @@ about .skills {
         background: #fff;
         border-radius: 50%;
         margin: 2px; }
+
+
+.hamburger {
+  float: left;
+  margin: 10px;
+}
+.hamburgerbutton {
+  background: transparent;
+  border: 0px;
+  cursor: pointer;
+  padding: 0px;
+}
+#hamburgerlogo{
+  height: 48px;
+  width: 48px;
+  cursor: pointer;
+}
+#cut-off-bottom{
+  transition: 1s;
+}
+#cut-off-top{
+  transition: 1s;
+}
+.cls-1 {
+  fill: #151515;
+  stroke-width: 0px;
+  transition: 1s;
+  tranform-origin: center;
+  cursor: pointer;
+}
+.cls-2 {
+  fill: #151515;
+  stroke-width: 0px;
+  transition: 1s;
+  tranform-origin: center;
+  cursor: pointer;
+}
+#hamburgerlogo:hover .cls-1 {
+}
+#hamburgerlogo:hover #cut-off-top{
+  transform: translate(0px, -800px);
+}
+#hamburgerlogo:hover #cut-off-bottom{
+  transform: translate(0px, -800px);
+}
+
+
+.bottomlogo{
+  transform: translate(0px, 700px);
+  transition: 1s;
+}
+.toplogo{
+  transition: 1s;
+}
+.logobackground1{
+  transform: translate(0px, -700px);
+}
+.logobackground2{
+  transform: translate(0px, 700px);
+}
+.logo {
+  position: absolute;
+    margin-inline: auto;
+    padding: 2% 47%;
+    width: fit-content;
+}
+#logo{
+  height: 48px;
+  width: 48px;
+
+}
+#logo:hover .bottomlogo{
+    animation-duration: 1s;
+  animation-name: slideuptwo;
+  animation-iteration-count: infinite;
+}
+#logo:hover .toplogo{
+  animation-duration: 1s;
+  animation-name: slideup;
+  animation-iteration-count: infinite;
+}
+#logo:hover .logobackground1{
+  animation-duration: .5s;
+  animation-name: slideback;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+#logo:hover .logobackground2{
+  animation-duration: .5s;
+  animation-name: slidebacktwo;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
 
 @media screen and (max-width: 703px) {
   .skills {
