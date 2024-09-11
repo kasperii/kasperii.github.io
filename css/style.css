@@ -269,7 +269,8 @@ th {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
 body {
-  background-color: white;
+
+  background-color: #F2F1F0;
   font-size: 14px;
   line-height: 1.6;
   font-family: sans-serif;
@@ -310,10 +311,13 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -2px; }
 
 .huge, h1 {
-  font-family: made, Radley, serif;
-  font-size: 68px;
-  line-height: 1.05;
-  letter-spacing: -8px; }
+  font-family: sans-serif;
+  font-size: 48px;
+  line-height: 1.05;}
+.h1 .urbtext {
+  font-family: Urbesc, sans-serif;
+  padding: 0;
+}
 
 .large, h2 {
   font-size: 42px;
@@ -391,9 +395,18 @@ header nav a, footer .lockup .contentWrap a, about h3, h3 {
   font-weight: 700px;
   text-transform: uppercase; }
 
+.urbtext{
+  background: url(../img/kasper.svg);
+  background-repeat:no-repeat;
+background-position: center center;
+
+}
+
+
+
 header {
   height: 450px;
-  background: url(../img/backG.jpg) center center;
+  background-color: #F2F1F0;
   background-size: cover; }
   header nav {
     float: right;
@@ -409,13 +422,14 @@ header {
     padding-color: black;
     font-size: 72px;
     font-weight: 700px;
-    color: white;
+    color: #231F20;
     margin-bottom: 10px;
     clear: both;
     padding-top: 100px; }
     header h1 span {
+      font-family: Urbesc, sans-serif;
       display: inline-block;
-      padding: 0.1em 0.2em; }
+    color: rgba(0, 0, 0, 0);}
   @media screen and (max-width: 740px) {
     header h1 {
       font-size: 50px;
@@ -433,7 +447,7 @@ header {
     color: white; }
 
 footer {
-  background: url(../img/backG.jpg) center center;
+  background-color: #F2F1F0;
   background-size: cover; }
   footer .lockup {
     padding: 50px 30px; }
@@ -623,9 +637,8 @@ about .skills {
   transform: translate(0px, 700px);
 }
 .logo {
-  position: absolute;
     margin-inline: auto;
-    padding: 2% 47%;
+    padding: 10px;
     width: fit-content;
 }
 #logo{
@@ -660,7 +673,8 @@ about .skills {
   .skills {
     width: 350px; } }
 about .skills .skill-icon.skill-1 span:nth-child(n+2), about .skills .skill-icon.skill-2 span:nth-child(n+3), about .skills .skill-icon.skill-3 span:nth-child(n+4), about .skills .skill-icon.skill-4 span:nth-child(n+5), about .skills .skill-icon.skill-5 span:nth-child(n+6), about .skills .skill-icon.skill-6 span:nth-child(n+7), about .skills .skill-icon.skill-7 span:nth-child(n+8), about .skills .skill-icon.skill-8 span:nth-child(n+9), about .skills .skill-icon.skill-9 span:nth-child(n+10), about .skills .skill-icon.skill-10 span:nth-child(n+11) {
-  background: #ddd; }
+
+  background-color: #F2F1F0;}
 
 siluett-area .siluetts {
   height: 309px; }
