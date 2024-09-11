@@ -86,3 +86,32 @@ function workLoad2() {
     });
 
 }
+
+window.addEventListener('scroll', function() {
+  svgScroll(window.scrollY);
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+const topsvg = document.querySelector('.toplogo');
+const bottomsvg = document.querySelector('.bottomlogo');
+const logobackground = document.querySelector('.logobackground1');
+const logobackground2 = document.querySelector('.logobackground2');
+});
+
+function svgScroll(scrollamount) {
+    const topsvg = document.querySelector('.toplogo');
+const bottomsvg = document.querySelector('.bottomlogo');
+const logobackground = document.querySelector('.logobackground1');
+const logobackground2 = document.querySelector('.logobackground2');
+
+
+  let slowscrollamount = Math.floor(scrollamount*15 % 700);
+
+  topsvg.style.transform = "translate(0px,-" + String(slowscrollamount) + "px)"
+  bottomsvg.style.transform = "translate(0px," + String(700-slowscrollamount) + "px)"
+  halfpace = 1-Math.abs(2*(slowscrollamount/700-.5))
+  logobackground.style.transform = "translate(0px," + String(-700 - (200*halfpace)) + "px)"
+  logobackground2.style.transform = "translate(0px," + String(700 + (200*halfpace)) + "px)"
+
+
+}
