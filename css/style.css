@@ -219,11 +219,11 @@ th {
   height: 11em;
   border-radius: 50%;
   background: #ececec;
-  background: -moz-linear-gradient(left, #29abe2 10%, rgba(41, 171, 226, 0) 42%);
-  background: -webkit-linear-gradient(left, #29abe2 10%, rgba(41, 171, 226, 0) 42%);
-  background: -o-linear-gradient(left, #29abe2 10%, rgba(41, 171, 226, 0) 42%);
-  background: -ms-linear-gradient(left, #29abe2 10%, rgba(41, 171, 226, 0) 42%);
-  background: linear-gradient(to right, #29abe2 10%, rgba(41, 171, 226, 0) 42%);
+  background: -moz-linear-gradient(left, ##2d2d2d 10%, rgba(21, 21, 21, 0) 42%);
+  background: -webkit-linear-gradient(left, #2d2d2d 10%, rgba(21, 21, 21, 0) 42%);
+  background: -o-linear-gradient(left, #2d2d2d 10%, rgba(21, 21, 21, 0) 42%);
+  background: -ms-linear-gradient(left, #2d2d2d 10%, rgba(21, 21, 21, 0) 42%);
+  background: linear-gradient(to right, #2d2d2d 10%, rgba(21, 21, 21, 0) 42%);
   position: relative;
   -webkit-animation: load3 1.4s infinite linear;
   animation: load3 1.4s infinite linear;
@@ -234,7 +234,7 @@ th {
 .loader:before {
   width: 50%;
   height: 50%;
-  background: #29abe2;
+  background: #2d2d2d;
   border-radius: 100% 0 0 0;
   position: absolute;
   top: 0;
@@ -273,7 +273,7 @@ body {
   background-color: #F2F1F0;
   font-size: 14px;
   line-height: 1.6;
-  font-family: sans-serif;
+  font-family: Iosevka, sans-serif;
   color: #666;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%; }
@@ -311,7 +311,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -2px; }
 
 .huge, h1 {
-  font-family: sans-serif;
+  font-family: Iosevka, sans-serif;
   font-size: 48px;
   line-height: 1.05;}
 .h1 .urbtext {
@@ -544,7 +544,7 @@ about .face-lockup {
 .mypicture {
   max-width: 150px;
   float: left;
-  margin: 0px 30px 400px;
+  margin: 0px 30px 0px;
 }
 
 .mypicture img{
@@ -561,7 +561,8 @@ about .blurb .blurbtext{
   padding: 0 15px;
   margin: 50px auto 50px;
   font-size: 18px;
-  font-weight: 300; }
+  font-weight: 300;
+  margin-left: 210px;}
 about .skills {
   max-width: 700px;
   margin: 100px auto;
@@ -580,7 +581,7 @@ about .skills {
       display: inline-block;
       height: 14px;
       width: 14px;
-      background-color: #29ABE2;
+      background-color: #4e4e4e;
       margin-right: 5px;
       border-radius: 50%; }
       about .skills .skill-icon span:after {
@@ -604,8 +605,8 @@ about .skills {
   padding: 0px;
 }
 #hamburgerlogo{
-  height: 48px;
-  width: 48px;
+  height: 24px;
+  width: 24px;
   cursor: pointer;
 }
 #cut-off-bottom{
@@ -657,8 +658,8 @@ about .skills {
     width: fit-content;
 }
 #logo{
-  height: 48px;
-  width: 48px;
+  height: 24px;
+  width: 24px;
 
 }
 #logo:hover .bottomlogo{
@@ -761,8 +762,6 @@ h3 {
 
 .thumb-container {
   display: block;
-  max-width: 960px;
-  margin: 0 auto;
   padding-bottom: 100px; }
   .thumb-container::after {
     clear: both;
@@ -771,18 +770,19 @@ h3 {
   .thumb-container .thumb-unit, .thumb-container .thumb-unit-2 {
     cursor: pointer;
     display: block;
-    width: 25%;
+    width: 20%;
     float: left;
     position: relative;
-    padding-top: 14%;
+    margin: 2.5%;
+    padding-top: 20%;
     overflow: hidden;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover; }
     @media screen and (max-width: 760px) {
       .thumb-container .thumb-unit, .thumb-container .thumb-unit-2 {
-        width: 50%;
-        padding-top: 26%; } }
+        width: 40%;
+        padding-top: 40%; } }
     .thumb-container .thumb-unit .thumb-overlay, .thumb-container .thumb-unit-2 .thumb-overlay {
       position: absolute;
       top: 100%;
@@ -799,7 +799,7 @@ h3 {
         font-family: "Druk Wide", san-serif;
         display: block;
         color: white;
-        padding: 10% 0 0;
+        padding: 30% 0 0;
         font-weight: 300;
         text-transform: uppercase;
         font-size: 24px;
@@ -841,7 +841,7 @@ h3 {
     position: absolute;
     left: -60px; }
     .work-container .work-return:hover, .work-container .work-return-2:hover, .work-container-2 .work-return:hover, .work-container-2 .work-return-2:hover {
-      background: #29ABE2; }
+      background: #D3D3D3; }
     .work-container .work-return:hover, .work-container .work-return-2:hover, .work-container-2 .work-return:hover, .work-container-2 .work-return-2:hover {
       opacity: 1; }
 
