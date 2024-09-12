@@ -127,7 +127,7 @@ const logobackground = document.querySelector('.logobackground1');
 const logobackground2 = document.querySelector('.logobackground2');
 
 
-  let slowscrollamount = Math.floor(scrollamount*15 % 700);
+  let slowscrollamount = Math.floor(scrollamount*15/2 % 700);
 
   topsvg.style.transform = "translate(0px,-" + String(slowscrollamount) + "px)"
   bottomsvg.style.transform = "translate(0px," + String(700-slowscrollamount) + "px)"

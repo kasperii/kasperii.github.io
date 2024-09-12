@@ -550,7 +550,7 @@ about .face-lockup {
 }
 
 .mypicture img{
-  max-width: 150px;
+  max-width: 100%;
 }
 about .blurb {
   max-width: 700px;
@@ -565,6 +565,15 @@ about .blurb .blurbtext{
   font-size: 18px;
   font-weight: 300;
   margin-left: 210px;}
+@media screen and (max-width: 740px){
+  about .blurb .blurbtext{
+    margin-left: 20%;
+  }
+  .mypicture {
+    max-width: 150px;
+    margin: 0px;
+  }
+}
 about .skills {
   max-width: 700px;
   margin: 100px auto;
@@ -672,7 +681,7 @@ about .skills {
   width: 24px;
 
 }
-@media screen and (max-width: 703px) {
+@media screen and (max-width: 740px) {
  #logo{
   height: 48px;
   width: 48px;
@@ -683,7 +692,7 @@ about .skills {
  }
 
 }
-@media screen and (max-width: 703px) {
+@media screen and (max-width: 740px) {
   .skills {
     width: 350px; } }
 about .skills .skill-icon.skill-1 span:nth-child(n+2), about .skills .skill-icon.skill-2 span:nth-child(n+3), about .skills .skill-icon.skill-3 span:nth-child(n+4), about .skills .skill-icon.skill-4 span:nth-child(n+5), about .skills .skill-icon.skill-5 span:nth-child(n+6), about .skills .skill-icon.skill-6 span:nth-child(n+7), about .skills .skill-icon.skill-7 span:nth-child(n+8), about .skills .skill-icon.skill-8 span:nth-child(n+9), about .skills .skill-icon.skill-9 span:nth-child(n+10), about .skills .skill-icon.skill-10 span:nth-child(n+11) {
@@ -762,7 +771,7 @@ h3 {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover; }
-    @media screen and (max-width: 760px) {
+    @media screen and (max-width: 740px) {
       .thumb-container .thumb-unit, .thumb-container .thumb-unit-2 {
         width: 40%;
         padding-top: 40%; } }
@@ -821,11 +830,10 @@ h3 {
     height: 40px;
     width: 40px;
     cursor: pointer;
-    opacity: 1;
+    opacity: 0.5;
     border-radius: 50%;
     margin-left: 40px;
-    float: left;
-  z-index: 2;}
+    float: left;}
     .work-container .work-return:hover {
       background: #D3D3D3; }
     .work-container .work-return:hover {
