@@ -25,8 +25,13 @@ function smoothScroll (duration) {
     });
 }
 
+function closeall(){
+    $('.work-return').click();
+}
+
 function workBelt1() {
     $('.thumb-unit-1').click(function(){
+    closeall()
 	$('.work-belt-1').css('left','0%');
         $('.work-container-1').hide(800)
         $('.work-belt-1').css('left','-100%');
@@ -43,6 +48,7 @@ function workBelt1() {
 }
 function workBelt2() {
     $('.thumb-unit-2').click(function(){
+        closeall()
 	$('.work-belt-2').css('left','0%');
         $('.work-container-2').hide(800)
         $('.work-belt-2').css('left','-100%');
@@ -57,6 +63,7 @@ function workBelt2() {
 }
 function workBelt3() {
     $('.thumb-unit-3').click(function(){
+        closeall()
 	$('.work-belt-3').css('left','0%');
         $('.work-container-3').hide(800)
         $('.work-belt-3').css('left','-100%');
@@ -71,6 +78,7 @@ function workBelt3() {
 }
 function workBelt4() {
     $('.thumb-unit-4').click(function(){
+        closeall()
 	$('.work-belt-4').css('left','0%');
         $('.work-container-4').hide(800)
         $('.work-belt-4').css('left','-100%');
