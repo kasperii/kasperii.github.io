@@ -597,6 +597,7 @@ about .skills {
 
 
 .topbar{
+  z-index: 1;
   position: fixed;
   top: 0;
   width: 100%;
@@ -680,6 +681,7 @@ about .skills {
    height: 48px;
    width: 48px;
  }
+
 }
 @media screen and (max-width: 703px) {
   .skills {
@@ -828,12 +830,17 @@ h3 {
     .work-container .work-return:hover {
       opacity: 1; }
 
+
 .work-container-2 .project-load .loader::after {
   background: #ececec; }
 
 @media (max-width: 740px) {
   .work-container .work-return {
-    left: 0px; }
+    width: 60px;
+        margin-left: 8px;
+        top: 52px;
+        height: 60px;
+  }
   .work-container h4 {
     margin-left: 60px; } }
 
