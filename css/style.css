@@ -242,7 +242,7 @@ th {
   content: ''; }
 
 .loader:after {
-  background: #dddddd;
+  background: #f2f1f0;
   width: 75%;
   height: 75%;
   border-radius: 50%;
@@ -345,11 +345,12 @@ strong {
   font-weight: bold; }
 
 hr {
-  border: solid #ddd;
+  border: solid #bbbbbb;
   border-width: 1px 0 0;
   clear: both;
-  margin: 10px 0 30px;
-  height: 0; }
+  margin: 10px auto 30px;
+  height: 0;
+max-width: 80%}
 
 .button,
 button,
@@ -398,13 +399,13 @@ header nav a, footer .lockup .contentWrap a, about h3, h3 {
 .urbtext{
   background: url(../img/kasper.svg);
   background-repeat:no-repeat;
-background-position: center center;
+background-position: 70% 50%;
 
 }
 
 
 header {
-  height: 450px;
+  height: 300px;
   background-color: #F2F1F0;
   background-size: cover; }
   header nav {
@@ -688,12 +689,10 @@ about .skills .skill-icon.skill-1 span:nth-child(n+2), about .skills .skill-icon
   background-color: #F2F1F0;}
 
 .alt-section {
-  background: #ddd;
   font-size: 18px;
   font-weight: 300; }
 
-.dif-col {
-  background: #ececec; }
+.dif-col {}
 
 h3 {
   color: black;
@@ -716,7 +715,8 @@ h3 {
   font-weight: 300; }
 
 .section-work {
-  overflow-x: hidden; }
+  overflow-x: clip;
+  display: flow-root}
 
 .text-beltbox {
   width: 50%; }
@@ -792,47 +792,49 @@ h3 {
       right: 0px;
       left: 0px; }
 
-.work-container, .work-container-2 {
-  max-width: 800px;
-  margin: 0 auto;
+.project-container{
+  width: 80%;
+  margin-left: 10%;
+}
+.work-container {
   position: relative;
   display: none; }
-  .work-container::after, .work-container-2::after {
+  .work-container::after {
     clear: both;
     content: "";
     display: table; }
-  .work-container h4, .work-container-2 h4 {
+  .work-container h4 {
     color: black;
     font-weight: 300;
     text-transform: uppercase;
     font-size: 18px;
     line-height: 1.2;
     margin: 0 0 20px; }
-  .work-container img, .work-container-2 img {
+  .work-container img {
     max-width: 100%;
     margin-bottom: 20px; }
-  .work-container .work-return, .work-container .work-return-2, .work-container-2 .work-return, .work-container-2 .work-return-2 {
+  .work-container .work-return {
     position: sticky;
-    top: 10px;
+    top: 3px;
     height: 40px;
     width: 40px;
     cursor: pointer;
     opacity: 0.5;
     border-radius: 50%;
-    position: absolute;
-    left: -60px; }
-    .work-container .work-return:hover, .work-container .work-return-2:hover, .work-container-2 .work-return:hover, .work-container-2 .work-return-2:hover {
+    margin-left: 40px;
+    float: left;}
+    .work-container .work-return:hover {
       background: #D3D3D3; }
-    .work-container .work-return:hover, .work-container .work-return-2:hover, .work-container-2 .work-return:hover, .work-container-2 .work-return-2:hover {
+    .work-container .work-return:hover {
       opacity: 1; }
 
 .work-container-2 .project-load .loader::after {
   background: #ececec; }
 
 @media (max-width: 740px) {
-  .work-container .work-return, .work-container .work-return-2, .work-container-2 .work-return, .work-container-2 .work-return-2 {
+  .work-container .work-return {
     left: 0px; }
-  .work-container h4, .work-container-2 h4 {
+  .work-container h4 {
     margin-left: 60px; } }
 
 /*# sourceMappingURL=Style.css.map */

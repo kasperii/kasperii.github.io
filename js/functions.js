@@ -1,10 +1,11 @@
 //$( document ).ready(function()
 $(function(){
     smoothScroll(300);
-    workBelt();
+    workBelt1();
     workBelt2();
+    workBelt3();
+    workBelt4();
     workLoad();
-    workLoad2();
 
 });
 function smoothScroll (duration) {
@@ -24,26 +25,26 @@ function smoothScroll (duration) {
     });
 }
 
-function workBelt() {
-    $('.thumb-unit').click(function(){
-	$('.work-belt-2').css('left','0%');
-        $('.work-container-2').hide(800)
-        $('.work-belt').css('left','-100%');
-        $('.work-container').show();
+function workBelt1() {
+    $('.thumb-unit-1').click(function(){
+	$('.work-belt-1').css('left','0%');
+        $('.work-container-1').hide(800)
+        $('.work-belt-1').css('left','-100%');
+        $('.work-container-1').show();
     });
 
 
-    $('.work-return').click(function(){
-        $('.work-belt').css('left','0%');
-        $('.work-container').hide(800);
+    $('.work-return-1').click(function(){
+        $('.work-belt-1').css('left','0%');
+        $('.work-container-1').hide(800);
     });
 
 
 }
 function workBelt2() {
     $('.thumb-unit-2').click(function(){
-	$('.work-belt').css('left','0%');
-        $('.work-container').hide(800)
+	$('.work-belt-2').css('left','0%');
+        $('.work-container-2').hide(800)
         $('.work-belt-2').css('left','-100%');
         $('.work-container-2').show();
     });
@@ -51,6 +52,34 @@ function workBelt2() {
     $('.work-return-2').click(function(){
         $('.work-belt-2').css('left','0%');
         $('.work-container-2').hide(800);
+    });
+
+}
+function workBelt3() {
+    $('.thumb-unit-3').click(function(){
+	$('.work-belt-3').css('left','0%');
+        $('.work-container-3').hide(800)
+        $('.work-belt-3').css('left','-100%');
+        $('.work-container-3').show();
+    });
+
+    $('.work-return-3').click(function(){
+        $('.work-belt-3').css('left','0%');
+        $('.work-container-3').hide(800);
+    });
+
+}
+function workBelt4() {
+    $('.thumb-unit-4').click(function(){
+	$('.work-belt-4').css('left','0%');
+        $('.work-container-4').hide(800)
+        $('.work-belt-4').css('left','-100%');
+        $('.work-container-4').show();
+    });
+
+    $('.work-return-4').click(function(){
+        $('.work-belt-4').css('left','0%');
+        $('.work-container-4').hide(800);
     });
 
 }
@@ -69,21 +98,6 @@ function workLoad() {
         $('.project-title').text(newTitle);
     });
 
-
-}
-function workLoad2() {
-    $.ajaxSetup({cache: true});
-    $('.thumb-unit-2').click(function () {
-
-        var $this = $(this),
-            newTitle = $this.find('strong').text(),
-            newFolder = $this.attr('id')
-            spinner = '<div class="loader">Loading...</div>',
-            newHTML = 'work/' + newFolder + '.html';
-
-        $('.project-load').html(spinner).load(newHTML);
-        $('.project-title').text(newTitle);
-    });
 
 }
 
