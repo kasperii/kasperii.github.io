@@ -570,8 +570,8 @@ about .blurb .blurbtext{
     margin-left: 20%;
   }
   .mypicture {
-    max-width: 150px;
-    margin: 0px;
+    max-width: 23%;
+    margin-right: 15px;
   }
 }
 about .skills {
