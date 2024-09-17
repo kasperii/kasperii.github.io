@@ -606,13 +606,43 @@ about .skills {
 
 
 .topbar{
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   top: 0;
   width: 100%;
   background: rgb(242,241,240);
   background: linear-gradient(0deg, rgba(242,241,240,0) 0%, rgba(242,241,240,1) 18%, rgba(242,241,240,1) 100%);
 }
+
+#myMenu {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  max-width: unset !important;
+  background-color: #141414;
+  z-index: 1;
+  position: fixed;
+}
+#myMenu #menulinks{
+    width: 80%;
+    margin: 13% 10% auto 10%;
+    position: fixed;
+}
+.menuitem {
+  width: 100%;
+}
+.menuitem p{
+  text-align: center;
+    vertical-align: middle;
+    line-height: 10vh;
+    font-family: 'Urbesc';
+    font-size: xx-large;
+
+}
+div.menuitem a:link { color: #F2F1F0; }
+div.menuitem a:visited { color: #F2F1F0; }
+div.menuitem a:hover { color: #a6a6a6; }
+div.menuitem a:active { color: #F2F1F0; }
 
 .hamburger {
   float: left;
@@ -628,6 +658,7 @@ about .skills {
   height: 24px;
   width: 24px;
   cursor: pointer;
+  pointer-events: none;
 }
 #cut-off-bottom{
   transition: 1s;
@@ -635,15 +666,35 @@ about .skills {
 #cut-off-top{
   transition: 1s;
 }
+#cut-off-bottom-rect{
+  transition: 1s;
+}
+#cut-off-top-rect{
+  transition: 1s;
+}
 .cls-1 {
-  fill: #151515;
+  fill: #141414;
   stroke-width: 0px;
   transition: 1s;
   tranform-origin: center;
   cursor: pointer;
 }
 .cls-2 {
-  fill: #151515;
+  fill: #141414;
+  stroke-width: 0px;
+  transition: 1s;
+  tranform-origin: center;
+  cursor: pointer;
+}
+.cls-3 {
+  fill: #F2F1F0;
+  stroke-width: 0px;
+  transition: 1s;
+  tranform-origin: center;
+  cursor: pointer;
+}
+.cls-4 {
+  fill: #F2F1F0;
   stroke-width: 0px;
   transition: 1s;
   tranform-origin: center;
@@ -658,6 +709,13 @@ about .skills {
   transform: translate(0px, -800px);
 }
 
+
+.logoblack{
+ fill: #141414;
+}
+.logowhite{
+ fill: #F2F1F0;
+}
 
 .bottomlogo{
   transform: translate(0px, 700px);

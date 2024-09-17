@@ -25,6 +25,74 @@ function smoothScroll (duration) {
     });
 }
 
+function menuOpen() {
+  var x = document.getElementById("myMenu");
+  var y = document.getElementsByClassName("topbar")[0];
+  var z1 = document.getElementsByClassName("cls-1")[0];
+  var z2 = document.getElementsByClassName("cls-1")[1];
+  var z3 = document.getElementsByClassName("cls-1")[2];
+  var z4 = document.getElementsByClassName("cls-2")[0];
+    var z5 = document.getElementById("cut-off-top-rect");
+    var z6 = document.getElementById("cut-off-bottom-rect");
+
+
+
+    var l1 = document.getElementsByClassName("toplogo")[0];
+
+    var l2 = document.getElementsByClassName("bottomlogo")[0];
+
+    var l3 = document.getElementsByClassName("logobackground1")[0];;
+
+    var l4 = document.getElementsByClassName("logobackground2")[0];;
+
+  if (x.style.display === "block") {
+
+      $("#cut-off-top-rect").css({
+        transform: 'translate(0px,0px)'
+    });
+      $("#cut-off-bottom-rect").css({
+        transform: 'translate(0px,0px)'
+    });
+    x.style.display = "none";
+      y.style.background = "linear-gradient(0deg, rgba(242,241,240,0) 0%, rgba(242,241,240,1) 18%, rgba(242,241,240,1) 100%)";
+      z1.className.baseVal = "cls-1";
+      z2.className.baseVal = "cls-1";
+      z3.className.baseVal = "cls-1";
+      z4.className.baseVal = "cls-2";
+
+      l1.className.baseVal = "logoblack";
+      l2.className.baseVal = "logoblack";
+      l3.className.baseVal = "logoblack";
+      l4.className.baseVal = "logoblack";
+
+
+  } else {
+
+      $("#cut-off-top-rect").css({
+        transform: 'translate(0px,-800px)'
+    });
+      $("#cut-off-bottom-rect").css({
+        transform: 'translate(0px,-800px)'
+    });
+    x.style.display = "block";
+
+    y.style.background = "#141414";
+      z1.className.baseVal = "cls-3";
+      z2.className.baseVal = "cls-3";
+      z3.className.baseVal = "cls-3";
+      z4.className.baseVal = "cls-4";
+
+      l1.className.baseVal = "logowhite";
+
+      l2.className.baseVal = "logowhite";
+
+      l3.className.baseVal = "logowhite";
+
+      l4.className.baseVal = "logowhite";
+  }
+
+}
+
 function closeall(){
     $('.work-return').click();
 }
