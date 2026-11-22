@@ -43,13 +43,57 @@
       } catch {}
       d.addEventListener("toggle", () => { try { localStorage.setItem(FOLD + d.dataset.fold, d.open ? "1" : "0"); } catch {} });
     });
-    // Portrait: colour wipes in from the point where the pointer enters.
     const p = view.querySelector(".portrait");
-    if (p) p.addEventListener("pointerenter", (e) => {
-      const r = p.getBoundingClientRect();
-      p.style.setProperty("--x", `${e.clientX - r.left}px`);
-      p.style.setProperty("--y", `${e.clientY - r.top}px`);
-    });
+    if (p) grainBlob(p);
+  }
+
+  // Portrait: a grainy blob of the colour photo follows the pointer over the
+  // black-and-white one. Each frame keeps a colour pixel with a probability
+  // that falls off from the pointer, so the edge dithers like film grain.
+  function grainBlob(fig) {
+    const img = fig.querySelector("img");
+    if (!img || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const canvas = document.createElement("canvas");
+    canvas.setAttribute("aria-hidden", "true");
+    fig.append(canvas);
+    const ctx = canvas.getContext("2d");
+    let src = null, out = null, x = 0, y = 0, r = 0, target = 0, raf = 0;
+    const R = () => canvas.width * 0.55; // full blob radius, in canvas pixels
+    function prepare() {
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      canvas.width = Math.round(fig.clientWidth * dpr);
+      canvas.height = Math.round(img.clientHeight * dpr);
+      const off = document.createElement("canvas");
+      off.width = canvas.width; off.height = canvas.height;
+      const o = off.getContext("2d");
+      o.drawImage(img, 0, 0, off.width, off.height);
+      src = o.getImageData(0, 0, off.width, off.height);
+      out = ctx.createImageData(off.width, off.height);
+    }
+    function frame() {
+      r += (target - r) * 0.18;
+      const s = src.data, d = out.data, w = canvas.width, h = canvas.height;
+      for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {
+        const k = (j * w + i) * 4, dist = Math.hypot(i - x, j - y) / (r || 1);
+        const keep = dist < 1 && Math.random() < (1 - dist) * 1.9 - 0.15;
+        d[k] = s[k]; d[k + 1] = s[k + 1]; d[k + 2] = s[k + 2]; d[k + 3] = keep ? 255 : 0;
+      }
+      ctx.putImageData(out, 0, 0);
+      if (target > 0 || r > 0.5) raf = requestAnimationFrame(frame);
+      else { ctx.clearRect(0, 0, w, h); raf = 0; }
+    }
+    function move(e) {
+      if (!src) { try { prepare(); } catch { return; } }
+      const b = canvas.getBoundingClientRect();
+      x = (e.clientX - b.left) * canvas.width / b.width;
+      y = (e.clientY - b.top) * canvas.height / b.height;
+      target = R();
+      if (!raf) raf = requestAnimationFrame(frame);
+    }
+    fig.addEventListener("pointerenter", move);
+    fig.addEventListener("pointermove", move);
+    fig.addEventListener("pointerleave", () => { target = 0; });
+    addEventListener("resize", () => { src = null; }, { passive: true });
   }
 
   // innerHTML/importNode don't execute <script> (CodePen embeds need it).

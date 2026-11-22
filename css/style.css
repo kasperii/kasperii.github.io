@@ -48,12 +48,10 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 /* ---- home --------------------------------------------------------------- */
 .hero { width: min(34rem, 100% - 2 * var(--gutter)); margin: 0 auto; padding: 20vh 0 12vh; }
-.portrait { position: relative; width: 84px; margin: 0 0 1.6rem; overflow: hidden; }
-.portrait img { width: 84px; aspect-ratio: 300 / 441; object-fit: cover; }
-.portrait .bw { filter: grayscale(1) contrast(1.05); }
-/* colour wipes in from where the pointer enters (--x/--y set by main.js) */
-.portrait .col { position: absolute; inset: 0; clip-path: circle(0% at var(--x, 50%) var(--y, 100%)); transition: clip-path .6s cubic-bezier(.3, .7, .2, 1); }
-.portrait:hover .col { clip-path: circle(150% at var(--x, 50%) var(--y, 100%)); }
+.portrait { position: relative; width: 96px; margin: 0 0 1.6rem; overflow: hidden; touch-action: pan-y; }
+.portrait img { width: 96px; aspect-ratio: 300 / 441; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+/* main.js draws a grainy colour blob that follows the pointer onto this canvas */
+.portrait canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .name { font-family: var(--display); font-weight: 400; font-size: 1.6rem; line-height: 1.1; letter-spacing: .02em; margin: 0 0 .7rem; }
 .roles { margin: 0 0 1.8rem; }
 .intro { margin: 0 0 1.8rem; font-size: 1.05rem; line-height: 1.6; text-wrap: pretty; }
@@ -99,6 +97,19 @@ ul { list-style: none; margin: 0; padding: 0; }
 .project-body img { margin: 0 0 1.4rem; }
 .project-body iframe { width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; margin: 0 0 1.4rem; }
 .project-body .codepen { margin: 0 0 1.4rem; }
+
+/* type specimen (Urbscape project) */
+.specimen { margin: 1.6rem 0; }
+.specimen-downloads a { display: inline-block; margin: 0 .5rem .4rem 0; padding: .35rem .6rem; border: 1px solid var(--ink); text-decoration: none; }
+.specimen-downloads a:hover { outline: 2px solid var(--ink); }
+.specimen-try { display: block; width: 100%; margin: .4rem 0 .6rem; padding: .4rem 0; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--ink); font: 72px/1.05 var(--display); resize: vertical; }
+.specimen-try:focus { outline: none; border-bottom: 2px solid var(--ink); }
+.specimen-size { width: min(16rem, 100%); accent-color: var(--ink); margin-bottom: 2rem; }
+.specimen-waterfall { margin-bottom: 2rem; border-top: 1px solid var(--line); }
+.specimen-waterfall p { font-family: var(--display); line-height: 1.1; margin: 0; padding: .6rem 0; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+.specimen-glyphs { display: grid; grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); margin-top: .4rem; }
+.specimen-glyphs span { font: 1.6rem/3rem var(--display); text-align: center; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.specimen-glyphs span:hover { background: var(--ink); color: var(--bg); }
 
 /* ---- lists (speaking, publications) ------------------------------------- */
 .list-view { width: calc(100% - 2 * var(--gutter)); max-width: 1320px; margin: 9vh auto 0; }

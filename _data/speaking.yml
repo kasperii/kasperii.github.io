@@ -37,3 +37,22 @@
       outlet: Stockholm University
       title: Lectures in Design Methodology
       link: ""
+
+- group: Grants, engagement & awards
+  items:
+    - date: "2022"
+      outlet: ACM IMX 2024
+      title: Organiser and Local Chair
+      link: ""
+    - date: "2022"
+      outlet: ACM IMX
+      title: "Honorable Mention Award for “Kintsugi VR: Designing with Fractured Objects”"
+      link: https://doi.org/10.1145/3505284.3529966
+    - date: "2022"
+      outlet: ACM SIGMM
+      title: Student Travel Grant (USD 1,000)
+      link: ""
+    - date: "2016"
+      outlet: JASSO
+      title: Scholarship for Short-term Study in Japan (JPY 880,000)
+      link: ""
