@@ -1,0 +1,40 @@
+# Jekyll config - GitHub Pages builds this automatically on push to master.
+# Local preview: bundle exec jekyll serve   (see README / CLAUDE.md)
+
+title: Kasper Karlgren
+description: PhD in Human-Computer Interaction. Portfolio of research, design and creative work.
+url: https://kasperii.github.io
+baseurl: ""
+lang: en
+
+# Default social preview image (jekyll-seo-tag)
+defaults:
+  - scope: { path: "" }
+    values: { image: /img/og-image.png }
+  - scope: { path: "", type: projects }
+    values: { layout: project, body_class: project-page }
+  # keep image/PDF files (old CVs etc.) out of sitemap.xml
+  - scope: { path: "img" }
+    values: { sitemap: false }
+
+# One file per project in _projects/  ->  /work/<file-name>/
+collections:
+  projects:
+    output: true
+    permalink: /work/:name/
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+exclude:
+  - README.md
+  - CLAUDE.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

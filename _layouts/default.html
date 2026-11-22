@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+{% include head.html %}
+</head>
+<body class="{{ page.body_class }}">
+<header>
+{% include topbar.html %}
+{%- if page.hero %}
+<div class="kaspertext" id="section-kaspertext">
+    <h1><span class="urbtext">KASPER KARLGREN</span></h1>
+</div>
+{%- endif %}
+</header>
+
+{{ content }}
+
+<hr />
+{% include footer.html %}
+</body>
+</html>

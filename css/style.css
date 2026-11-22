@@ -826,3 +826,34 @@ h3 {
   .work-container h4 {
     margin-left: 60px; } }
 
+
+/* Standalone project pages (/work/<name>/) and 404 */
+.project-page header {
+  height: auto; }
+.project-page .not-found p {
+  font-size: 18px; }
+.project-page main.work-container {
+  padding: 100px 0 60px;
+  min-height: 60vh; }
+.project-page .project-section {
+  margin: 0 0 4px;
+  font-size: 14px;
+  text-transform: uppercase; }
+  .project-page .project-section a {
+    color: #999; }
+    .project-page .project-section a:hover {
+      color: #222; }
+.project-page .project-title {
+  color: black;
+  font-size: 26px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  margin: 0 0 30px; }
+.project-page .project-body {
+  font-size: 18px; }
+@media (max-width: 740px) {
+  .project-page main.work-container {
+    padding-top: 70px; }
+  .project-page .project-section,
+  .project-page .project-title {
+    margin-left: 60px; } }

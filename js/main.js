@@ -43,14 +43,22 @@
   // ---- Work belts --------------------------------------------------------
   // Each section's `.work-belt` holds a thumbnail grid and a project panel
   // side by side; opening a project slides the belt left (CSS transition on
-  // `.is-open`). Thumbnails are real links, so they work without JS too.
+  // `.is-open`). Thumbnails link to the standalone project pages
+  // (/work/<name>/); on the home page we fetch that page, show its
+  // `.project-body` in the panel and push its URL, so links are shareable and
+  // the browser's back button closes the panel.
   const SLIDE_MS = 800;
+  const homeTitle = document.title;
+  if (!document.querySelector(".work-belt")) return; // project pages: nothing more to wire up
 
-  function closeBelt(belt) {
+  // `instant` skips the slide so the page height settles immediately (needed
+  // before scrolling elsewhere, or the collapsing panel shifts the target).
+  function closeBelt(belt, instant = false) {
     if (!belt.classList.contains("is-open")) return;
     belt.classList.remove("is-open");
     const panel = belt.querySelector(".work-container");
-    setTimeout(() => { if (!belt.classList.contains("is-open")) panel.hidden = true; }, SLIDE_MS);
+    if (instant) panel.hidden = true;
+    else setTimeout(() => { if (!belt.classList.contains("is-open")) panel.hidden = true; }, SLIDE_MS);
   }
 
   // innerHTML does not execute <script> tags (CodePen embeds need them), so
@@ -64,36 +72,76 @@
     });
   }
 
-  async function openProject(thumb) {
+  const closeAll = (instant = false) =>
+    document.querySelectorAll(".work-belt.is-open").forEach((b) => closeBelt(b, instant));
+  const thumbFor = (path) =>
+    [...document.querySelectorAll(".thumb-unit")].find((a) => new URL(a.href).pathname === path);
+
+  async function openProject(thumb, { push = true } = {}) {
     const belt = thumb.closest(".work-belt");
     document.querySelectorAll(".work-belt.is-open").forEach((b) => b !== belt && closeBelt(b));
 
+    const url = new URL(thumb.href);
+    const title = thumb.querySelector("strong").textContent;
+    if (push) history.pushState({ project: url.pathname }, "", url.pathname);
+    document.title = `${title} | ${homeTitle.split(" | ")[0]}`;
+
     const panel = belt.querySelector(".work-container");
     const body = panel.querySelector(".project-load");
-    panel.querySelector(".project-title").textContent = thumb.querySelector("strong").textContent;
+    panel.querySelector(".project-title").textContent = title;
     body.innerHTML = '<div class="loader">Loading...</div>';
     panel.hidden = false;
     requestAnimationFrame(() => belt.classList.add("is-open"));
 
     try {
-      const res = await fetch(thumb.getAttribute("href"));
+      const res = await fetch(url);
       if (!res.ok) throw new Error(res.status);
-      body.innerHTML = await res.text();
+      const page = new DOMParser().parseFromString(await res.text(), "text/html");
+      body.innerHTML = page.querySelector(".project-body").innerHTML;
       runScripts(body);
     } catch {
-      body.innerHTML = `<p>Couldn't load this project. <a href="${thumb.getAttribute("href")}">Open it directly</a>.</p>`;
+      body.innerHTML = `<p>Couldn't load this project. <a href="${url.pathname}">Open it directly</a>.</p>`;
     }
     panel.querySelector(".work-return").focus({ preventScroll: true });
   }
 
   document.addEventListener("click", (e) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // let "open in new tab" work
+
     const thumb = e.target.closest(".thumb-unit");
-    if (thumb && !e.metaKey && !e.ctrlKey && !e.shiftKey && e.button === 0) {
+    if (thumb) {
       e.preventDefault();
       openProject(thumb);
       return;
     }
-    const back = e.target.closest(".work-return");
-    if (back) closeBelt(back.closest(".work-belt"));
+
+    if (e.target.closest(".work-return")) {
+      // Opened via pushState -> go back (popstate closes it); otherwise just close.
+      if (history.state && history.state.project) history.back();
+      else closeAll();
+      return;
+    }
+
+    // Menu links point at "/#section-…"; while a project URL is showing, keep
+    // it a same-page jump instead of a full reload.
+    const link = e.target.closest('a[href*="#section-"]');
+    const target = link && document.getElementById(link.hash.slice(1));
+    if (target && location.pathname !== "/") {
+      e.preventDefault();
+      closeAll(true);
+      history.pushState(null, "", "/" + link.hash);
+      document.title = homeTitle;
+      target.scrollIntoView();
+    }
+  });
+
+  window.addEventListener("popstate", (e) => {
+    const thumb = e.state && e.state.project && thumbFor(e.state.project);
+    if (thumb) {
+      openProject(thumb, { push: false });
+    } else {
+      closeAll();
+      document.title = homeTitle;
+    }
   });
 })();

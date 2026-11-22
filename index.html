@@ -1,487 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kasper Karlgren</title>
-    <meta name="description" content="Kasper Karlgren – PhD in Human-Computer Interaction. Portfolio of research, design and creative work.">
-    <link rel="canonical" href="https://kasperii.github.io/">
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Kasper Karlgren">
-    <meta property="og:description" content="PhD in Human-Computer Interaction. Portfolio of research, design and creative work.">
-    <meta property="og:url" content="https://kasperii.github.io/">
-    <meta property="og:image" content="https://kasperii.github.io/img/og-image.png">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <link rel="icon" href="/img/favicon.ico" sizes="any">
-    <link rel="icon" href="/img/favicon_package_v0.16/favicon-32x32.png" type="image/png" sizes="32x32">
-    <link rel="apple-touch-icon" href="/img/favicon_package_v0.16/apple-touch-icon.png">
-
-    <link rel="preload" href="fonts/iosevka-aile-semibold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/style.css">
-
-    <script src="js/main.js" defer></script>
-</head>
-<body>
-
-
-
-<header>
-    <nav id="myMenu" aria-label="Main">
-        <div id="menulinks">
-            <div class="menuitem">
-                <p><a href="#section-kaspertext">Me</a></p>
-            </div><div class="menuitem">
-                <p><a href="#section-phd">PhD</a></p>
-            </div><div class="menuitem">
-                <p><a href="#section-netlight">Netlight</a></p>
-            </div>
-
-            <div class="menuitem">
-                <p><a href="#section-master">Master</a></p>
-            </div>
-            <div class="menuitem">
-                <p><a href="#section-other">Other</a></p>
-            </div>
-
-            </div>
-    </nav>
-
-    <div class="topbar">
-    <div class="hamburger">
-        <button type="button" class="hamburgerbutton" aria-controls="myMenu" aria-expanded="false" aria-label="Open menu">
-
-    <svg height="24px" width="24px" id="hamburgerlogo" aria-hidden="true" version="1.1" viewBox="0 0 800 800">
-      <defs>
-          <clipPath id="cut-off-top">
-              <rect id="cut-off-top-rect" x="0" y="0" width="800" height="800" />
-    </clipPath>
-    <clipPath id="cut-off-bottom">
-        <rect id="cut-off-bottom-rect" x="0" y="800" width="800" height="800" />
-    </clipPath>
-      </defs>
-      <rect class="cls-1" id="ham1" x="73.2" y="152.37" width="653.6" height="93.37" clip-path="url(#cut-off-top)"/>
-      <rect class="cls-1" id="ham2" x="73.2" y="353.32" width="653.6" height="93.37" clip-path="url(#cut-off-top)"/>
-      <rect class="cls-1" id="ham3" x="73.2" y="554.26" width="653.6" height="93.37" clip-path="url(#cut-off-top)"/>
-      <path class="cls-2" id="ham4" d="M457.47,647.63c-63.14,0-122.33-28.61-162.78-77.45-39.46,48.83-99.15,77.45-162.29,77.45h-59.19s0-93.72,0-93.72h58.21c60.67,0,110.99-46.86,115.92-107.04H73.2s0-93.23,0-93.23l269.33-.49h-.98c60.68,0,110.99-46.86,115.92-107.04H73.2s0-93.73,0-93.73h653.6s0,93.73,0,93.73h-174.62c5.43,60.18,55.74,107.04,115.92,107.04h58.7s0,93.72,0,93.72h-59.19c-63.14,0-122.34-28.61-162.79-77.94-39.46,49.33-99.15,77.94-162.29,77.94h0c2.96,30.09,16.77,56.73,37,75.96,20.72,19.24,48.34,31.08,78.43,31.08h268.84s0,93.72,0,93.72h-269.33Z" clip-path="url(#cut-off-bottom)"/>
-  </svg>
-</button>
-
-</div>
-
-
-
- <div class="logo">
-
-     <svg class="logo-svg" height="24px" width="24px" aria-hidden="true" version="1.1" viewBox="0 0 800 800">
-         <path class="toplogo logoblack" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
-         <path class="bottomlogo logoblack" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
-         <path class="logobackground1 logoblack" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
-         <path class="logobackground2 logoblack" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
-     </svg>
-
-
-
- </div>
-
-    </div>
-
- <div class="kaspertext" id="section-kaspertext">
- <h1>
-     <span class="urbtext">KASPER KARLGREN</span>
-      </h1>
-
-</div>
-</header>
-
+---
+layout: default
+hero: true
+---
 <section class="about" id="about">
-
     <div class="blurb">
-    <div class="mypicture">
-        <img src="img/me.webp" width="300" height="441" alt="Portrait of Kasper Karlgren">
-    </div>
- <div class="blurbtext">
-     <p><strong>This is my</strong> humble webpage. Please feel free to check out my work
-         below. I hold a PhD in Human-Computer Interaction (HCI) at Stockholm University. I have published several articles at competitive conferences on topics such as concept design, self-tracking technologies, sleep technologies, gaze interaction, virtual reality, and kitchen technologies. My PhD has also included a visit at Copenhagen University and Tokyo University.
-         I did my Master's in Computer Science and a Bachelor's in Media Technology, one semester at Aalto University (puhun Suomea!) and
-         one year as a guest student at Keio University (日本語をうまく書くことができませんが、少し読むことができます!)
+        <div class="mypicture">
+            <img src="{{ '/img/me.webp' | relative_url }}" width="300" height="441" alt="Portrait of Kasper Karlgren">
+        </div>
+        <div class="blurbtext">
+            <p><strong>This is my</strong> humble webpage. Please feel free to check out my work
+                below. I hold a PhD in Human-Computer Interaction (HCI) at Stockholm University. I have published several articles at competitive conferences on topics such as concept design, self-tracking technologies, sleep technologies, gaze interaction, virtual reality, and kitchen technologies. My PhD has also included a visit at Copenhagen University and Tokyo University.
+                I did my Master's in Computer Science and a Bachelor's in Media Technology, one semester at Aalto University (puhun Suomea!) and
+                one year as a guest student at Keio University (日本語をうまく書くことができませんが、少し読むことができます!)
 
-         You can find my mail in the footer - please use it for good only!
-         My CV can be found <a href="http://kasperii.github.io/img/CV_Kasper_Karlgren.pdf">
-     here! </a>
-   </p>
- </div>
-        </div>
-
-<div class="skills">
-    <div class="skill">
-        <div class="skill-label">Googling</div>
-        <div class="skill-icon skill-7">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-        </div>
-    </div>
-    <div class="skill">
-        <div class="skill-label">Ordering food in languages I don't speak</div>
-        <div class="skill-icon skill-6">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-        </div>
-    </div>
-    <div class="skill">
-        <div class="skill-label">Celebrating</div>
-        <div class="skill-icon skill-7">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-        </div>
-    </div>
-    <div class="skill">
-        <div class="skill-label">Karaoke knowledge</div>
-        <div class="skill-icon skill-5">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-        </div>
-    </div>
-    <div class="skill">
-        <div class="skill-label">Making tea</div>
-        <div class="skill-icon skill-10">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-        </div>
-    </div>
-    <div class="skill">
-        <div class="skill-label">Solving problems while bathing</div>
-        <div class="skill-icon skill-9">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-        </div>
-    </div>
-    <div class="skill">
-        <div class="skill-label">Snapchat doodling</div>
-        <div class="skill-icon skill-8">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
+                You can find my mail in the footer - please use it for good only!
+                My CV can be found <a href="{{ '/img/CV_Kasper_Karlgren.pdf' | relative_url }}">here!</a>
+            </p>
         </div>
     </div>
 
-    <div class="skill">
-        <div class="skill-label">Making mayonnaise</div>
-        <div class="skill-icon skill-7">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
+    <div class="skills">
+        {%- for skill in site.data.skills %}
+        <div class="skill">
+            <div class="skill-label">{{ skill.label }}</div>
+            <div class="skill-icon skill-{{ skill.level }}" role="img" aria-label="{{ skill.level }} out of 10">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
         </div>
+        {%- endfor %}
     </div>
- </div>
 </section>
 
+{% for section in site.data.sections %}
 <hr />
 
-<section class="alt-section section-work dif-col" id="section-phd">
-    <h3>PhD research</h3>
+<section class="alt-section section-work" id="section-{{ section.id }}">
+    <h3>{{ section.title }}</h3>
     <div class="time">
-      <p>/*October 2019-October 2024*/</p>
+        <p>{{ section.time }}</p>
     </div>
     <div class="infoWork">
-      <p><strong>These projects are </strong> a selection of my work conducted during my PhD at the Department of Computer and Systems Sciences at Stockholm University.
-          This research has included work on agency over self-tracking and sleep technologies, as well as other work on social robots in collaboration with Tokyo University and work on virtual reality and smart fridges</p>
-      <p>Click on the images to for more information on each project!</p>
+        {{ section.intro }}
     </div>
     <div class="work-belt">
         <div class="thumb-wrap">
             <div class="thumb-container">
-
-                <a id="proj-d1" class="thumb-unit" href="work/proj-d1.html">
-                    <img src="img/work/Doctors/d1-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Designing new sleep technology</strong></span>
+                {%- assign projects = site.projects | where: "section", section.id | sort: "order" %}
+                {%- for project in projects %}
+                <a class="thumb-unit" href="{{ project.url | relative_url }}">
+                    <img src="{{ project.thumbnail | relative_url }}" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>{{ project.title | escape }}</strong></span>
                 </a>
-
-                <a id="proj-d2" class="thumb-unit" href="work/proj-d2.html">
-                    <img src="img/work/Doctors/d2-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Awari</strong></span>
-                </a>
-
-                <a id="proj-d3" class="thumb-unit" href="work/proj-d3.html">
-                    <img src="img/work/Doctors/d3-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Tamatoo</strong></span>
-                </a>
-
-                <a id="proj-d4" class="thumb-unit" href="work/proj-d4.html">
-                    <img src="img/work/Doctors/d4-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Future of alarms</strong></span>
-                </a>
-
-               
-
-                <a id="proj-d5" class="thumb-unit" href="work/proj-d5.html">
-                    <img src="img/work/Doctors/d5-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Make Your Fridge Smart</strong></span>
-                </a>
-
-                <a id="proj-d6" class="thumb-unit" href="work/proj-d6.html">
-                    <img src="img/work/Doctors/d6-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Kintsugi VR</strong></span>
-                </a>
-                <a id="proj-d7" class="thumb-unit" href="work/proj-d7.html">
-                    <img src="img/work/Doctors/d7-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Space Recorder</strong></span>
-                </a>
-
+                {%- endfor %}
             </div>
         </div>
         <div class="work-wrap">
-
             <div class="work-container" hidden>
-                <button type="button" class="work-return" aria-label="Back to projects"><img src="img/logga_back.svg" alt=""></button>
+                <button type="button" class="work-return" aria-label="Back to projects"><img src="{{ '/img/logga_back.svg' | relative_url }}" alt=""></button>
                 <div class="project-container">
                     <h4 class="project-title"></h4>
                     <div class="project-load"></div>
                 </div>
             </div>
         </div>
-
-
     </div>
 </section>
-
-<hr />
-
-<section class="alt-section section-work" id="section-netlight">
-    <h3>Netlight</h3>
-    <div class="time">
-      <p>/*Mars 2017-June 2019*/</p>
-    </div>
-    <div class="infoWork">
-      <p><strong>Netlight consulting is </strong> an IT and management consult company with over 1200 consults all over Europe. I have been working at Netlight f om the Spring of 2017 as one of the designers at the inhouse design studio. Tasks have included concept art and animations for annual conferences, large format printing, and UX testing of digital services.</p>
-    </div>
-    <div class="work-belt">
-        <div class="thumb-wrap">
-            <div class="thumb-container">
-
-                <a id="proj-18" class="thumb-unit" href="work/proj-18.html">
-                    <img src="img/work/brand/colors-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Brandbook</strong></span>
-                </a>
-
-                <a id="proj-1" class="thumb-unit" href="work/proj-1.html">
-                    <img src="img/work/edgex4/thumbnailEdgex4-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>edge X ····</strong></span>
-                </a>
-
-                <a id="proj-2" class="thumb-unit" href="work/proj-2.html">
-                    <img src="img/work/EdgeX/thumb-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>edge X</strong></span>
-                </a>
-
-                <a id="proj-3" class="thumb-unit" href="work/proj-3.html">
-                    <img src="img/work/summitHamburg/edgehamb-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Edge Hamburg</strong></span>
-                </a>
-
-                <a id="proj-4" class="thumb-unit" href="work/proj-4.html">
-                    <img src="img/work/pride/thumb2-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Pride</strong></span>
-                </a>
-
-   
-
-
-                <a id="proj-7" class="thumb-unit" href="work/proj-7.html">
-                    <img src="img/work/numbers/thumb-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Numbers</strong></span>
-                </a>
-
-                <a id="proj-8" class="thumb-unit" href="work/proj-8.html">
-                    <img src="img/work/summitmallorca/thumb-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Summit 18</strong></span>
-                </a>
-
-
-                <a id="proj-10" class="thumb-unit" href="work/proj-10.html">
-                    <img src="img/work/planningPoker/LandscapeCards-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Planning poker</strong></span>
-                </a>
-
-                <a id="proj-11" class="thumb-unit" href="work/proj-11.html">
-                    <img src="img/work/designDelivery/boids-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Design Delivery</strong></span>
-                </a>
-
-
-
-            </div>
-        </div>
-        <div class="work-wrap">
-
-            <div class="work-container" hidden>
-                <button type="button" class="work-return" aria-label="Back to projects"><img src="img/logga_back.svg" alt=""></button>
-                <div class="project-container">
-                    <h4 class="project-title"></h4>
-                    <div class="project-load"></div>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-</section>
-
-<hr />
-
-<section class="alt-section section-work dif-col" id="section-master">
-    <h3>Master's projects</h3>
-    <div class="time">
-      <p>/*August 2017-June 2019*/</p>
-    </div>
-    <div class="infoWork">
-      <p><strong>During my Master's </strong> in Computer Science at KTH, Royal Institute of Technology I have been worked with project exploring cutting edge interaction design - foremost in my Master's thesis.</p>
-    </div>
-    <div class="work-belt">
-        <div class="thumb-wrap">
-            <div class="thumb-container">
-
-                <a id="proj-m1" class="thumb-unit" href="work/proj-m1.html">
-                    <img src="img/work/Masters/m1-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Clay Pepper [Master's thesis]</strong></span>
-                </a>
-
-                <a id="proj-m2" class="thumb-unit" href="work/proj-m2.html">
-                    <img src="img/work/Masters/m2-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Mute Mike II</strong></span>
-                </a>
-
-                <a id="proj-m3" class="thumb-unit" href="work/proj-m3.html">
-                    <img src="img/work/Masters/m3-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Soar & Fall</strong></span>
-                </a>
-
-                <a id="proj-m4" class="thumb-unit" href="work/proj-m4.html">
-                    <img src="img/work/Masters/m4-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>BeBeam</strong></span>
-                </a>
-
-            </div>
-        </div>
-        <div class="work-wrap">
-
-            <div class="work-container" hidden>
-                <button type="button" class="work-return" aria-label="Back to projects"><img src="img/logga_back.svg" alt=""></button>
-                <div class="project-container">
-                    <h4 class="project-title"></h4>
-                    <div class="project-load"></div>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-</section>
-<hr />
-<section class="alt-section section-work" id="section-other">
-    <h3>Personal projects and freelancing</h3>
-    <div class="time">
-      <p>/*Before-Now*/</p>
-    </div>
-    <div class="infoWork">
-      <p><strong>In parallel, I </strong> have been involved in multiple projects. This includes both bigger and smaller projects that capture my different interests and experiences.</p>
-    </div>
-    <div class="work-belt">
-        <div class="thumb-wrap">
-            <div class="thumb-container">
-
-               
-
-                <a id="proj-5" class="thumb-unit" href="work/proj-5.html">
-                    <img src="img/work/OL/OL-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>OL</strong></span>
-                </a>
-
-                <a id="proj-6" class="thumb-unit" href="work/proj-6.html">
-                    <img src="img/work/CHOOSE/chooselogo-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Choose!</strong></span>
-                </a>
-
-             
-
-                <a id="proj-9" class="thumb-unit" href="work/proj-9.html">
-                    <img src="img/work/Foto/fotoThumb-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Photography</strong></span>
-                </a>
-
-              
-
-                <a id="proj-12" class="thumb-unit" href="work/proj-12.html">
-                    <img src="img/work/Mandelbrot/MB-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Mandelbrot</strong></span>
-                </a>
-
-                <a id="proj-13" class="thumb-unit" href="work/proj-13.html">
-                    <img src="img/work/GoL/GOL-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Game of Life</strong></span>
-                </a>
-
-                <!-- <div id="proj-14" href="" class="thumb-unit thumb-unit-4" style="background-image: url('../img/work/model/Modl-thumb.webp')"-->
-                <!--<div class="thumb-overlay"> -->
-                <!-- <strong>Tokyo modelling</strong> -->
-                <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                <!--</div>-->
-                <!--</div>-->
-
-                <a id="proj-15" class="thumb-unit" href="work/proj-15.html">
-                    <img src="img/work/PortFoto/main-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Portrait photography</strong></span>
-                </a>
-
-                <a id="proj-16" class="thumb-unit" href="work/proj-16.html">
-                    <img src="img/work/platformAfrica/logga-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Platform Afrika</strong></span>
-                </a>
-
-                <a id="proj-17" class="thumb-unit" href="work/proj-17.html">
-                    <img src="img/work/Svartsokarta/karta-thumb.webp" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>Svartsö Map</strong></span>
-                </a>
-
-            </div>
-        </div>
-        <div class="work-wrap">
-
-            <div class="work-container" hidden>
-                <button type="button" class="work-return" aria-label="Back to projects"><img src="img/logga_back.svg" alt=""></button>
-                <div class="project-container">
-                    <h4 class="project-title"></h4>
-                    <div class="project-load"></div>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-</section>
-<hr />
-
-
-
-<footer>
- <div class="lockup">
-
-     <svg class="logo-svg" height="24px" width="24px" style="float: left; margin-top: 8px;" aria-hidden="true" version="1.1" viewBox="0 0 800 800">
-          <path class="toplogo" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
-          <path class="bottomlogo" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
-          <path class="logobackground1" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
-          <path class="logobackground2" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
-      </svg>
-
-  <div class="contentWrap" >
-   <nav>
-       <a  href="mailto:kasper@bedford.st">contact me!</a>
-   </nav>
-      <p class="copyright"> <a href="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1960729-om-upphovsratt-till-litterara-och_sfs-1960-729">
-          All content copyright 2016 </a> </p>
-  </div>
- </div>
-</footer>
-
-
-</body>
-</html>
+{% endfor %}
