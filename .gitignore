@@ -1,1 +1,21 @@
-.#
+# Local masters / design sources - kept on disk, never committed or deployed
+_originals/
+*.ai
+*.psd
+*.zip
+*.heic
+*.HEIC
+
+# OS / editor noise
+.DS_Store
+Icon?
+*~
+\#*\#
+.#*
+.idea/
+.vscode/
+
+# Tooling
+node_modules/
+npm-debug.log*
+.sass-cache/
