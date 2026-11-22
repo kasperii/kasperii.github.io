@@ -9,5 +9,11 @@
 <link rel="apple-touch-icon" href="{{ '/img/favicon_package_v0.16/apple-touch-icon.png' | relative_url }}">
 
 <link rel="preload" href="{{ '/fonts/iosevka-aile-semibold.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
-<script src="{{ '/js/main.js' | relative_url }}" defer></script>
+{%- comment -%}
+  ?v=<build time> busts browser caches on every deploy. GitHub Pages serves
+  everything with max-age=600, so without it a visitor can get new HTML with
+  the previous deploy's CSS/JS (that broke the layout once).
+{%- endcomment -%}
+{%- assign v = site.time | date: '%s' %}
+<link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}?v={{ v }}">
+<script src="{{ '/js/main.js' | relative_url }}?v={{ v }}" defer></script>

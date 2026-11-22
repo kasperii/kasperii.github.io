@@ -34,9 +34,14 @@ To hide a project without deleting it, add `published: false`.
 | Styles | `css/style.css` |
 | Behaviour (menu, project panels) | `js/main.js` |
 
-## Preview locally
+## Preview and test locally (before pushing!)
+
+Pushing to `master` publishes immediately, so check it locally first:
 
 ```
 bundle install
-bundle exec jekyll serve   # http://localhost:4000
+bundle exec jekyll serve           # http://localhost:4000 - have a look
+node test/smoke.mjs                # automated checks in headless Chrome
 ```
+
+After the push, `node test/smoke.mjs https://kasperii.github.io/` checks the live site.

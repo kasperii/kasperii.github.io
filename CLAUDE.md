@@ -13,7 +13,15 @@ bundle install            # once; Gemfile pins the github-pages gem
 bundle exec jekyll serve  # http://localhost:4000
 ```
 
-The `github-pages` gem's dependencies need a newer Ruby than the macOS system Ruby (2.6), so use a Homebrew or rbenv Ruby. There are no tests or linters. Check changes by building and clicking through: home page, opening a project (the URL should change to `/work/<name>/`), the browser back button, the menu, and a standalone `/work/<name>/` page.
+The `github-pages` gem's dependencies need a newer Ruby than the macOS system Ruby (2.6), so use a Homebrew or rbenv Ruby.
+
+## Before every push to master (it deploys immediately)
+
+1. Build and serve locally, then run `node test/smoke.mjs http://127.0.0.1:4000/`. It drives headless Chrome through the real interactions (thumbnails, panel, back/forward, menu, project pages, mobile overflow, broken links, JS errors) and must print "All checks passed". Add `SHOTS=<dir>` to get screenshots, and look at them.
+2. Have the user look at the local build when the change is visual.
+3. After pushing, wait for the Pages build, then run `node test/smoke.mjs https://kasperii.github.io/` against the live site.
+
+Deploy-only problems a fresh local browser won't show: GitHub Pages serves everything with `Cache-Control: max-age=600`. The `?v={{ site.time }}` on the CSS and JS in `_includes/head.html` prevents visitors from getting new HTML with the previous deploy's CSS. The first deploy shipped without it, and the layout looked broken (stretched images, clicks doing nothing) for anyone with the old CSS cached. Keep any new CSS or JS files versioned the same way.
 
 ## Architecture
 
