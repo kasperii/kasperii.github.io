@@ -21,39 +21,38 @@
     <link rel="preload" href="fonts/iosevka-aile-semibold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/style.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" defer></script>
-    <script src="js/functions.js" defer></script>
+    <script src="js/main.js" defer></script>
 </head>
 <body>
 
 
 
 <header>
-    <div id="myMenu">
+    <nav id="myMenu" aria-label="Main">
         <div id="menulinks">
             <div class="menuitem">
-                <p><a href="#section-kaspertext" onclick="menuOpen()">Me</a></p>
+                <p><a href="#section-kaspertext">Me</a></p>
             </div><div class="menuitem">
-                <p><a href="#section-phd" onclick="menuOpen()">PhD</a></p>
+                <p><a href="#section-phd">PhD</a></p>
             </div><div class="menuitem">
-                <p><a href="#section-netlight" onclick="menuOpen()">Netlight</a></p>
+                <p><a href="#section-netlight">Netlight</a></p>
             </div>
 
             <div class="menuitem">
-                <p><a href="#section-master" onclick="menuOpen()">Master</a></p>
+                <p><a href="#section-master">Master</a></p>
             </div>
             <div class="menuitem">
-                <p><a href="#section-other" onclick="menuOpen()">Other</a></p>
+                <p><a href="#section-other">Other</a></p>
             </div>
 
             </div>
-    </div>
+    </nav>
 
     <div class="topbar">
     <div class="hamburger">
-        <button class="hamburgerbutton" aria-controls="primary-navigation" aria-expanded="false" onclick="menuOpen()">
+        <button type="button" class="hamburgerbutton" aria-controls="myMenu" aria-expanded="false" aria-label="Open menu">
 
-    <svg  height="24px" width="24px" id="hamburgerlogo" data-name="Layer 1" version="1.1" viewBox="0 0 800 800">
+    <svg height="24px" width="24px" id="hamburgerlogo" aria-hidden="true" version="1.1" viewBox="0 0 800 800">
       <defs>
           <clipPath id="cut-off-top">
               <rect id="cut-off-top-rect" x="0" y="0" width="800" height="800" />
@@ -75,7 +74,7 @@
 
  <div class="logo">
 
-     <svg id="logo" height="24px" width="24px" data-name="Layer 1" version="1.1" viewBox="0 0 800 800">
+     <svg class="logo-svg" height="24px" width="24px" aria-hidden="true" version="1.1" viewBox="0 0 800 800">
          <path class="toplogo logoblack" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
          <path class="bottomlogo logoblack" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
          <path class="logobackground1 logoblack" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
@@ -88,29 +87,6 @@
 
     </div>
 
-
-
-    <!--
-
-<div class="menu">
-    <div>Bio</div>
-    <div>PhD</div>
-    <div>Netlight</div>
-    <div>Masters</div>
-    <div>Freelance</div>
-</div>
-
-
- <nav>
-  <a href="#aboutMe">about me </a>
-  <a href="#work">work </a>
-  <a href="">blogg </a>
-  <a href="#contact">contact </a>
- </nav>
- <a class="icon1" href="http://kasperii.tumblr.com/"><div class="icon1" ><img src="img/logga_1v.svg"></div></a>
-
- //-->
-
  <div class="kaspertext" id="section-kaspertext">
  <h1>
      <span class="urbtext">KASPER KARLGREN</span>
@@ -119,7 +95,7 @@
 </div>
 </header>
 
-<about>
+<section class="about" id="about">
 
     <div class="blurb">
     <div class="mypicture">
@@ -197,12 +173,12 @@
         </div>
     </div>
  </div>
-</about>
+</section>
 
 <hr />
 
 <section class="alt-section section-work dif-col" id="section-phd">
-    <h3 id="work">PhD research</h3>
+    <h3>PhD research</h3>
     <div class="time">
       <p>/*October 2019-October 2024*/</p>
     </div>
@@ -211,68 +187,54 @@
           This research has included work on agency over self-tracking and sleep technologies, as well as other work on social robots in collaboration with Tokyo University and work on virtual reality and smart fridges</p>
       <p>Click on the images to for more information on each project!</p>
     </div>
-    <div class="work-belt work-belt-1">
+    <div class="work-belt">
         <div class="thumb-wrap">
             <div class="thumb-container">
 
-                <div id="proj-d1" href="" class="thumb-unit thumb-unit-1" style="background-image: url('../img/work/Doctors/d1-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Designing new sleep technology</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-d1" class="thumb-unit" href="work/proj-d1.html">
+                    <img src="img/work/Doctors/d1-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Designing new sleep technology</strong></span>
+                </a>
 
-                <div id="proj-d2" href="" class="thumb-unit thumb-unit-1" style="background-image: url('../img/work/Doctors/d2-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Awari</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-d2" class="thumb-unit" href="work/proj-d2.html">
+                    <img src="img/work/Doctors/d2-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Awari</strong></span>
+                </a>
 
-                <div id="proj-d3" href="" class="thumb-unit thumb-unit-1" style="background-image: url('../img/work/Doctors/d3-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Tamatoo</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-d3" class="thumb-unit" href="work/proj-d3.html">
+                    <img src="img/work/Doctors/d3-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Tamatoo</strong></span>
+                </a>
 
-                <div id="proj-d4" href="" class="thumb-unit thumb-unit-1" style="background-image: url('../img/work/Doctors/d4-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Future of alarms</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-d4" class="thumb-unit" href="work/proj-d4.html">
+                    <img src="img/work/Doctors/d4-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Future of alarms</strong></span>
+                </a>
 
                
 
-                <div id="proj-d5" href="" class="thumb-unit thumb-unit-1" style="background-image: url('../img/work/Doctors/d5-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Make Your Fridge Smart</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-d5" class="thumb-unit" href="work/proj-d5.html">
+                    <img src="img/work/Doctors/d5-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Make Your Fridge Smart</strong></span>
+                </a>
 
-                <div id="proj-d6" href="" class="thumb-unit thumb-unit-1" style="background-image: url('../img/work/Doctors/d6-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Kintsugi VR</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
-                <div id="proj-d7" href="" class="thumb-unit thumb-unit-1" style="background-image: url('../img/work/Doctors/d7-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Space Recorder</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-d6" class="thumb-unit" href="work/proj-d6.html">
+                    <img src="img/work/Doctors/d6-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Kintsugi VR</strong></span>
+                </a>
+                <a id="proj-d7" class="thumb-unit" href="work/proj-d7.html">
+                    <img src="img/work/Doctors/d7-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Space Recorder</strong></span>
+                </a>
 
             </div>
         </div>
         <div class="work-wrap">
 
-            <div class="work-container work-container-1">
-                <div class="work-return work-return-1"><img src="img/logga_back.svg" onerror="this.onerror=null; this.src='img/logga.webp'"></div>
+            <div class="work-container" hidden>
+                <button type="button" class="work-return" aria-label="Back to projects"><img src="img/logga_back.svg" alt=""></button>
                 <div class="project-container">
-                    <h4 class="project-title">one work</h4>
+                    <h4 class="project-title"></h4>
                     <div class="project-load"></div>
                 </div>
             </div>
@@ -285,83 +247,65 @@
 <hr />
 
 <section class="alt-section section-work" id="section-netlight">
-    <h3 id="work">Netlight</h3>
+    <h3>Netlight</h3>
     <div class="time">
       <p>/*Mars 2017-June 2019*/</p>
     </div>
     <div class="infoWork">
       <p><strong>Netlight consulting is </strong> an IT and management consult company with over 1200 consults all over Europe. I have been working at Netlight f om the Spring of 2017 as one of the designers at the inhouse design studio. Tasks have included concept art and animations for annual conferences, large format printing, and UX testing of digital services.</p>
     </div>
-    <div class="work-belt work-belt-2">
+    <div class="work-belt">
         <div class="thumb-wrap">
             <div class="thumb-container">
 
-                <div id="proj-18" href="" class="thumb-unit thumb-unit-2" style="background-image: url('../img/work/brand/colors-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Brandbook</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-18" class="thumb-unit" href="work/proj-18.html">
+                    <img src="img/work/brand/colors-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Brandbook</strong></span>
+                </a>
 
-                <div id="proj-1" href="" class="thumb-unit thumb-unit-2" style="background-image: url('../img/work/edgex4/thumbnailEdgex4-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>edge X ····</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-1" class="thumb-unit" href="work/proj-1.html">
+                    <img src="img/work/edgex4/thumbnailEdgex4-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>edge X ····</strong></span>
+                </a>
 
-                <div id="proj-2" href="" class="thumb-unit thumb-unit-2" style="background-image: url('../img/work/EdgeX/thumb-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>edge X</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-2" class="thumb-unit" href="work/proj-2.html">
+                    <img src="img/work/EdgeX/thumb-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>edge X</strong></span>
+                </a>
 
-                <div id="proj-3" href="" class="thumb-unit thumb-unit-2" style="background-image: url('../img/work/summitHamburg/edgehamb-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Edge Hamburg</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-3" class="thumb-unit" href="work/proj-3.html">
+                    <img src="img/work/summitHamburg/edgehamb-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Edge Hamburg</strong></span>
+                </a>
 
-                <div id="proj-4" href="" class="thumb-unit thumb-unit-2" style="background-image: url('../img/work/pride/thumb2-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Pride</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-4" class="thumb-unit" href="work/proj-4.html">
+                    <img src="img/work/pride/thumb2-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Pride</strong></span>
+                </a>
 
    
 
 
-                <div id="proj-7" href="" class="thumb-unit thumb-unit-2" style="background-image: url('../img/work/numbers/thumb-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Numbers</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-7" class="thumb-unit" href="work/proj-7.html">
+                    <img src="img/work/numbers/thumb-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Numbers</strong></span>
+                </a>
 
-                <div id="proj-8" href="" class="thumb-unit thumb-unit-2" style="background-image: url('../img/work/summitmallorca/thumb-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Summit 18</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-8" class="thumb-unit" href="work/proj-8.html">
+                    <img src="img/work/summitmallorca/thumb-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Summit 18</strong></span>
+                </a>
 
 
-                <div id="proj-10" href="" class="thumb-unit thumb-unit-2" style="background-image: url('../img/work/planningPoker/LandscapeCards-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Planning poker</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-10" class="thumb-unit" href="work/proj-10.html">
+                    <img src="img/work/planningPoker/LandscapeCards-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Planning poker</strong></span>
+                </a>
 
-                <div id="proj-11" href="" class="thumb-unit thumb-unit-2" style="background-image: url('../img/work/designDelivery/boids-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Design Delivery</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-11" class="thumb-unit" href="work/proj-11.html">
+                    <img src="img/work/designDelivery/boids-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Design Delivery</strong></span>
+                </a>
 
 
 
@@ -369,10 +313,10 @@
         </div>
         <div class="work-wrap">
 
-            <div class="work-container work-container-2">
-                <div class="work-return work-return-2"><img src="img/logga_back.svg" onerror="this.onerror=null; this.src='img/logga.webp'"></div>
+            <div class="work-container" hidden>
+                <button type="button" class="work-return" aria-label="Back to projects"><img src="img/logga_back.svg" alt=""></button>
                 <div class="project-container">
-                    <h4 class="project-title">one work</h4>
+                    <h4 class="project-title"></h4>
                     <div class="project-load"></div>
                 </div>
             </div>
@@ -385,53 +329,45 @@
 <hr />
 
 <section class="alt-section section-work dif-col" id="section-master">
-    <h3 id="work">Master's projects</h3>
+    <h3>Master's projects</h3>
     <div class="time">
       <p>/*August 2017-June 2019*/</p>
     </div>
     <div class="infoWork">
       <p><strong>During my Master's </strong> in Computer Science at KTH, Royal Institute of Technology I have been worked with project exploring cutting edge interaction design - foremost in my Master's thesis.</p>
     </div>
-    <div class="work-belt work-belt-3">
+    <div class="work-belt">
         <div class="thumb-wrap">
             <div class="thumb-container">
 
-                <div id="proj-m1" href="" class="thumb-unit thumb-unit-3" style="background-image: url('../img/work/Masters/m1-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Clay Pepper [Master's thesis]</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-m1" class="thumb-unit" href="work/proj-m1.html">
+                    <img src="img/work/Masters/m1-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Clay Pepper [Master's thesis]</strong></span>
+                </a>
 
-                <div id="proj-m2" href="" class="thumb-unit thumb-unit-3" style="background-image: url('../img/work/Masters/m2-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Mute Mike II</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-m2" class="thumb-unit" href="work/proj-m2.html">
+                    <img src="img/work/Masters/m2-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Mute Mike II</strong></span>
+                </a>
 
-                <div id="proj-m3" href="" class="thumb-unit thumb-unit-3" style="background-image: url('../img/work/Masters/m3-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Soar & Fall</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-m3" class="thumb-unit" href="work/proj-m3.html">
+                    <img src="img/work/Masters/m3-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Soar & Fall</strong></span>
+                </a>
 
-                <div id="proj-m4" href="" class="thumb-unit thumb-unit-3" style="background-image: url('../img/work/Masters/m4-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>BeBeam</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-m4" class="thumb-unit" href="work/proj-m4.html">
+                    <img src="img/work/Masters/m4-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>BeBeam</strong></span>
+                </a>
 
             </div>
         </div>
         <div class="work-wrap">
 
-            <div class="work-container work-container-3">
-                <div class="work-return work-return-3"><img src="img/logga_back.svg" onerror="this.onerror=null; this.src='img/logga.webp'"></div>
+            <div class="work-container" hidden>
+                <button type="button" class="work-return" aria-label="Back to projects"><img src="img/logga_back.svg" alt=""></button>
                 <div class="project-container">
-                    <h4 class="project-title">one work</h4>
+                    <h4 class="project-title"></h4>
                     <div class="project-load"></div>
                 </div>
             </div>
@@ -442,57 +378,47 @@
 </section>
 <hr />
 <section class="alt-section section-work" id="section-other">
-    <h3 id="work">Personal projects and freelancing</h3>
+    <h3>Personal projects and freelancing</h3>
     <div class="time">
       <p>/*Before-Now*/</p>
     </div>
     <div class="infoWork">
       <p><strong>In parallel, I </strong> have been involved in multiple projects. This includes both bigger and smaller projects that capture my different interests and experiences.</p>
     </div>
-    <div class="work-belt work-belt-4">
+    <div class="work-belt">
         <div class="thumb-wrap">
             <div class="thumb-container">
 
                
 
-                <div id="proj-5" href="" class="thumb-unit thumb-unit-4" style="background-image: url('../img/work/OL/OL-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>OL</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-5" class="thumb-unit" href="work/proj-5.html">
+                    <img src="img/work/OL/OL-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>OL</strong></span>
+                </a>
 
-                <div id="proj-6" href="" class="thumb-unit thumb-unit-4" style="background-image: url('../img/work/CHOOSE/chooselogo-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Choose!</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-6" class="thumb-unit" href="work/proj-6.html">
+                    <img src="img/work/CHOOSE/chooselogo-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Choose!</strong></span>
+                </a>
 
              
 
-                <div id="proj-9" href="" class="thumb-unit thumb-unit-4" style="background-image: url('../img/work/Foto/fotoThumb-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Photography</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-9" class="thumb-unit" href="work/proj-9.html">
+                    <img src="img/work/Foto/fotoThumb-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Photography</strong></span>
+                </a>
 
               
 
-                <div id="proj-12" href="" class="thumb-unit thumb-unit-4" style="background-image: url('../img/work/Mandelbrot/MB-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Mandelbrot</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-12" class="thumb-unit" href="work/proj-12.html">
+                    <img src="img/work/Mandelbrot/MB-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Mandelbrot</strong></span>
+                </a>
 
-                <div id="proj-13" href="" class="thumb-unit thumb-unit-4" style="background-image: url('../img/work/GoL/GOL-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Game of Life</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-13" class="thumb-unit" href="work/proj-13.html">
+                    <img src="img/work/GoL/GOL-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Game of Life</strong></span>
+                </a>
 
                 <!-- <div id="proj-14" href="" class="thumb-unit thumb-unit-4" style="background-image: url('../img/work/model/Modl-thumb.webp')"-->
                 <!--<div class="thumb-overlay"> -->
@@ -501,35 +427,29 @@
                 <!--</div>-->
                 <!--</div>-->
 
-                <div id="proj-15" href="" class="thumb-unit thumb-unit-4" style="background-image: url('../img/work/PortFoto/main-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Portrait photography</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-15" class="thumb-unit" href="work/proj-15.html">
+                    <img src="img/work/PortFoto/main-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Portrait photography</strong></span>
+                </a>
 
-                <div id="proj-16" href="" class="thumb-unit thumb-unit-4" style="background-image: url('../img/work/platformAfrica/logga-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Platform Afrika</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-16" class="thumb-unit" href="work/proj-16.html">
+                    <img src="img/work/platformAfrica/logga-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Platform Afrika</strong></span>
+                </a>
 
-                <div id="proj-17" href="" class="thumb-unit thumb-unit-4" style="background-image: url('../img/work/Svartsokarta/karta-thumb.webp')">
-                    <div class="thumb-overlay">
-                        <strong>Svartsö Map</strong>
-                        <!--<div class="zoomIcon"><img src="img/zoom.svg"></div>-->
-                    </div>
-                </div>
+                <a id="proj-17" class="thumb-unit" href="work/proj-17.html">
+                    <img src="img/work/Svartsokarta/karta-thumb.webp" alt="" loading="lazy" decoding="async">
+                    <span class="thumb-overlay"><strong>Svartsö Map</strong></span>
+                </a>
 
             </div>
         </div>
         <div class="work-wrap">
 
-            <div class="work-container work-container-4">
-                <div class="work-return work-return-4"><img src="img/logga_back.svg" onerror="this.onerror=null; this.src='img/logga.webp'"></div>
+            <div class="work-container" hidden>
+                <button type="button" class="work-return" aria-label="Back to projects"><img src="img/logga_back.svg" alt=""></button>
                 <div class="project-container">
-                    <h4 class="project-title">one work</h4>
+                    <h4 class="project-title"></h4>
                     <div class="project-load"></div>
                 </div>
             </div>
@@ -539,29 +459,13 @@
     </div>
 </section>
 <hr />
-<!--
-     <siluett-area>
-
-     <div class="siluetts">
-
-     <div class="stockholm">
-
-     </div>
-     <div class="tokyo">
-     <img src="img/tokyo.svg">
-     </div>
-
-     </div>
-
-     </siluett-area>
-     //-->
 
 
 
 <footer>
  <div class="lockup">
 
-     <svg id="logo" height="24px" width="24px" style="float: left; margin-top: 8px;" data-name="Layer 1" version="1.1" viewBox="0 0 800 800">
+     <svg class="logo-svg" height="24px" width="24px" style="float: left; margin-top: 8px;" aria-hidden="true" version="1.1" viewBox="0 0 800 800">
           <path class="toplogo" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
           <path class="bottomlogo" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
           <path class="logobackground1" d="M684.03,334.64c0,72.36-32.79,140.19-88.75,186.54,55.96,45.22,88.75,113.62,88.75,185.98v67.83h-107.4v-66.7c0-69.53-53.7-127.19-122.66-132.84v199.54h-106.84s-.57-308.63-.57-308.63v1.13c0-69.53-53.7-127.19-122.66-132.84v440.35h-107.4V26h107.4v200.1c68.96-6.22,122.66-63.88,122.66-132.84V26h107.4v67.83c0,72.36-32.79,140.19-89.31,186.54,56.53,45.22,89.31,113.62,89.31,185.97h0c34.48-3.39,65-19.22,87.05-42.39,22.05-23.74,35.61-55.4,35.61-89.88V26h107.4v308.64Z"/>
