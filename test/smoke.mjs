@@ -64,11 +64,14 @@ async function check(name, fn) {
   catch (e) { results.push([false, name, e.message]); }
 }
 const assert = (cond, msg) => { if (!cond) throw new Error(msg); };
-const panelState = () => run(() => {
-  const open = [...document.querySelectorAll(".work-belt.is-open")];
-  return { path: location.pathname, open: open.map((b) => b.closest("section").id),
-    visible: open.map((b) => { const p = b.querySelector(".work-container"); return !p.hidden && getComputedStyle(p).display !== "none" && p.getBoundingClientRect().left < innerWidth; }) };
-});
+// A marker on window survives in-page view swaps but not a real page load.
+const mark = () => run(() => { window.__noReload = true; });
+const reloaded = async () => !(await run(() => window.__noReload === true));
+const clickLink = (sel) => run((s) => { const a = document.querySelector(s); if (!a) throw new Error("no " + s); a.click(); }, sel);
+const state = () => run(() => ({
+  path: location.pathname, view: document.getElementById("view")?.dataset.view, title: document.title,
+  open: [...document.querySelectorAll(".panel")].map((p) => p.closest("details").id),
+}));
 
 await viewport(1280, 900);
 await goto("", 2500);
@@ -79,30 +82,48 @@ await check("CSS and JS URLs carry a cache-busting ?v=", async () => {
   return urls.join(" ");
 });
 
-await check("fonts load and layout CSS is applied", async () => {
+await check("home: fonts, name in Urbscape, portrait, link row", async () => {
   const r = await run(async () => {
     await document.fonts.ready;
-    const t = document.querySelector(".thumb-unit"), img = t.querySelector("img"), me = document.querySelector(".mypicture img");
+    const me = document.querySelector(".portrait .bw"), name = document.querySelector(".name");
     return { fonts: [...document.fonts].filter((f) => f.status === "loaded").map((f) => f.family),
-      thumbSquare: Math.abs(t.offsetWidth - t.offsetHeight) <= 2, imgFills: img.offsetWidth === t.offsetWidth && img.offsetHeight === t.offsetHeight,
-      portraitRatio: +(me.offsetHeight / me.offsetWidth).toFixed(2), menuHidden: getComputedStyle(document.getElementById("myMenu")).display === "none" };
+      nameFont: getComputedStyle(name).fontFamily, bw: getComputedStyle(me).filter,
+      portraitRatio: +(me.offsetHeight / me.offsetWidth).toFixed(2),
+      links: [...document.querySelectorAll(".links a")].map((a) => a.textContent.trim()) };
   });
-  assert(["Iosevka", "Urbesc", "Druk Wide"].every((f) => r.fonts.includes(f)), "fonts loaded: " + r.fonts);
-  assert(r.thumbSquare && r.imgFills, "thumbnails are not square tiles filled by their image");
+  assert(["Iosevka", "Urbscape", "Instrument Sans"].every((f) => r.fonts.includes(f)), "fonts loaded: " + r.fonts);
+  assert(/Urbscape/.test(r.nameFont), "name font " + r.nameFont);
+  assert(/grayscale/.test(r.bw), "portrait not black and white");
   assert(Math.abs(r.portraitRatio - 1.47) < 0.05, "portrait is distorted, ratio " + r.portraitRatio);
-  assert(r.menuHidden, "menu overlay visible on load");
-  return `fonts ok, thumbnails square, portrait ratio ${r.portraitRatio}`;
+  assert(r.links.join() === "Projects,Timeline,Publications,Speaking,Email", "links: " + r.links);
+  return `portrait ratio ${r.portraitRatio}`;
 });
 await shot("home-desktop");
 
+await check("link row opens each view in place, logo returns home, no reloads", async () => {
+  await mark();
+  const seen = [];
+  for (const [label, path, view] of [["Timeline", "/timeline/", "timeline"], ["Publications", "/publications/", "publications"], ["Speaking", "/speaking/", "speaking"], ["Projects", "/projects/", "projects"]]) {
+    await clickLink(`.links a[href="${path}"]`); await sleep(900);
+    const s = await state();
+    assert(s.path === path && s.view === view, `${label}: ${JSON.stringify(s)}`);
+    if (view === "publications" || view === "speaking") assert(await run(() => document.querySelectorAll(".row").length > 0), `${label} list is empty`);
+    seen.push(label);
+    if (view !== "projects") { await clickLink(".logo"); await sleep(700); const h = await state(); assert(h.path === "/" && h.view === "home", "logo: " + JSON.stringify(h)); }
+  }
+  assert(!(await reloaded()), "a full page load happened");
+  return seen.join(", ");
+});
+await shot("projects");
+
 await check("every project page, thumbnail and image resolves", async () => {
   const r = await run(async () => {
-    const bad = []; let imgs = 0; const links = [...document.querySelectorAll(".thumb-unit")];
+    const bad = []; let imgs = 0; const links = [...document.querySelectorAll(".thumb")];
     for (const a of links) {
       const res = await fetch(a.href);
       if (!res.ok) { bad.push("page " + a.pathname); continue; }
       const doc = new DOMParser().parseFromString(await res.text(), "text/html");
-      if (!doc.querySelector(".project-body")) bad.push("no .project-body in " + a.pathname);
+      if (!doc.querySelector(".panel .project-body")) bad.push("no open .project-body in " + a.pathname);
       const srcs = [a.querySelector("img").getAttribute("src"), ...[...doc.querySelectorAll(".project-body img")].map((i) => i.getAttribute("src"))];
       for (const s of srcs) {
         const u = new URL(s, a.href); if (u.origin !== location.origin) continue; imgs++;
@@ -115,56 +136,71 @@ await check("every project page, thumbnail and image resolves", async () => {
   return `${r.pages} projects, ${r.imgs} images`;
 });
 
-await check("clicking a thumbnail opens its project panel and changes the URL", async () => {
-  const href = await run(() => { const a = document.querySelector("#section-phd .thumb-unit"); scrollTo(0, a.closest("section").offsetTop); a.click(); return new URL(a.href).pathname; });
-  await sleep(1800);
-  const s = await panelState();
-  const filled = await run(() => document.querySelector("#section-phd .project-load").textContent.trim().length > 20);
-  assert(s.path === href, `URL is ${s.path}, expected ${href}`);
-  assert(s.open[0] === "section-phd" && s.visible[0], "panel not visible: " + JSON.stringify(s));
-  assert(filled, "panel has no content");
+await check("clicking a thumbnail opens the project in its section's right column", async () => {
+  const href = await run(() => { const a = document.querySelector("#section-phd .thumb"); a.click(); return new URL(a.href).pathname; });
+  await sleep(1200);
+  const s = await state();
+  const r = await run(() => {
+    const sec = document.getElementById("section-phd"), panel = sec.querySelector(".panel"), intro = sec.querySelector(".sec-intro");
+    return { grid: !!sec.querySelector(".grid"), text: panel?.querySelector(".project-body").textContent.trim().length,
+      rightOfIntro: panel && panel.getBoundingClientRect().left > intro.getBoundingClientRect().right };
+  });
+  assert(s.path === href && s.open.join() === "section-phd", JSON.stringify(s));
+  assert(!r.grid && r.text > 20 && r.rightOfIntro, JSON.stringify(r));
+  assert(!(await reloaded()), "page reloaded");
   return href;
 });
-await shot("project-panel");
+await shot("project-open");
 
-await check("browser Back closes the panel, Forward reopens it", async () => {
-  await run(() => history.back()); await sleep(1200);
-  const a = await panelState();
-  await run(() => history.forward()); await sleep(1500);
-  const b = await panelState();
-  assert(a.path === "/" && a.open.length === 0, "after Back: " + JSON.stringify(a));
-  assert(b.path.startsWith("/work/") && b.visible[0], "after Forward: " + JSON.stringify(b));
+await check("browser Back closes the project, Forward reopens it", async () => {
+  await run(() => history.back()); await sleep(900);
+  const a = await state();
+  await run(() => history.forward()); await sleep(900);
+  const b = await state();
+  assert(a.path === "/projects/" && a.open.length === 0, "after Back: " + JSON.stringify(a));
+  assert(b.path.startsWith("/work/") && b.open.length === 1, "after Forward: " + JSON.stringify(b));
 });
 
-await check("panel back button closes it", async () => {
-  await run(() => document.querySelector(".work-belt.is-open .work-return").click()); await sleep(1200);
-  const s = await panelState();
-  assert(s.path === "/" && s.open.length === 0, JSON.stringify(s));
+await check("Close button closes the project", async () => {
+  await clickLink(".panel-close"); await sleep(900);
+  const s = await state();
+  assert(s.path === "/projects/" && s.open.length === 0, JSON.stringify(s));
 });
 
-await check("menu opens, and a menu link closes it and scrolls to the section", async () => {
-  await run(() => document.querySelector(".hamburgerbutton").click()); await sleep(400);
-  const open = await run(() => getComputedStyle(document.getElementById("myMenu")).display);
-  await run(() => document.querySelector('#menulinks a[href$="#section-master"]').click()); await sleep(1500);
-  const r = await run(() => ({ cls: document.documentElement.className, top: Math.round(document.getElementById("section-master").getBoundingClientRect().top) }));
-  assert(open === "block", "menu did not open");
-  assert(!r.cls.includes("menu-open") && Math.abs(r.top - 50) < 20, JSON.stringify(r));
+await check("sections fold and unfold, and remember it", async () => {
+  await clickLink("#section-netlight > summary"); await sleep(200);
+  const folded = await run(() => !document.getElementById("section-netlight").open);
+  await goto("projects/", 1500);
+  const still = await run(() => !document.getElementById("section-netlight").open);
+  await clickLink("#section-netlight > summary"); await sleep(200);
+  const again = await run(() => document.getElementById("section-netlight").open);
+  assert(folded && still && again, JSON.stringify({ folded, still, again }));
 });
 
-await check("standalone project page renders", async () => {
-  const path = await run(() => new URL(document.querySelector(".thumb-unit").href).pathname);
-  await goto(path);
-  const r = await run(() => ({ title: document.querySelector(".project-title")?.textContent, body: document.querySelector(".project-body")?.textContent.trim().length, cls: document.body.className }));
-  assert(r.title && r.body > 20 && r.cls.includes("project-page"), JSON.stringify(r));
-  return path;
+await check("a shared /work/<name>/ link loads with the project open", async () => {
+  await goto("work/kintsugi-vr/", 1500);
+  const s = await state();
+  assert(s.view === "projects" && s.open.join() === "section-phd" && /Kintsugi/.test(s.title), JSON.stringify(s));
 });
 
-await check("mobile layout: no horizontal overflow", async () => {
-  await viewport(390, 844, true); await goto("", 2000);
-  const r = await run(() => ({ sw: document.documentElement.scrollWidth, w: innerWidth }));
-  assert(r.sw <= r.w + 1, `page is ${r.sw}px wide in a ${r.w}px viewport`);
+await check("old /#section-… links land on the Projects view", async () => {
+  await goto("#section-master", 2000);
+  const r = await run(() => ({ path: location.pathname, hash: location.hash, top: Math.round(document.getElementById("section-master").getBoundingClientRect().top) }));
+  assert(r.path === "/projects/" && r.hash === "#section-master" && Math.abs(r.top) < 60, JSON.stringify(r));
 });
-await shot("home-mobile");
+
+await check("mobile layout: no horizontal overflow (home, projects, open project)", async () => {
+  await viewport(390, 844, true);
+  const out = [];
+  for (const p of ["", "projects/", "work/awari/", "publications/"]) {
+    await goto(p, 1500);
+    const r = await run(() => ({ sw: document.documentElement.scrollWidth, w: innerWidth }));
+    if (r.sw > r.w + 1) out.push(`/${p} is ${r.sw}px wide`);
+    if (p === "") await shot("home-mobile");
+    if (p === "work/awari/") await shot("project-mobile");
+  }
+  assert(out.length === 0, out.join("; "));
+});
 
 await check("no JavaScript errors or broken same-site requests", async () => {
   assert(pageErrors.length === 0, pageErrors.join("\n"));

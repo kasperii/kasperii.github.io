@@ -1,0 +1,39 @@
+# Speaking & media, shown on /speaking/. Newest first within each group.
+# date: "YYYY-MM" or "YYYY" (shown as written). Leave link empty if there is none.
+
+- group: Talks
+  items:
+    - date: "2023-05"
+      outlet: Nobel Prize Museum
+      title: Invited guest speaker
+      link: https://x.com/Stockholm_Uni/status/1654526308838264832
+    - date: ""
+      outlet: CHI & NordiCHI
+      title: Paper presentations at ACM conferences on human-computer interaction
+      link: /publications/
+
+- group: Media
+  items:
+    - date: "2025-04"
+      outlet: Dagens Nyheter
+      title: "Forskare: Att kartlägga sömnen kan ge motsatt effekt"
+      link: https://www.dn.se/insidan/forskare-somnappar-kan-forsamra-din-somn/
+    - date: "2025"
+      outlet: Sveriges Radio P4
+      title: Radio interview
+      link: https://www.instagram.com/p/DH6R1a4JMPP/
+    - date: ""
+      outlet: Stressforskningspodden
+      title: Episode 41, on sleep measurement and sleep technology
+      link: https://www.su.se/enheter/psykologiska-institutionen/om-institutionen/om-oss/stressforskningspodden
+    - date: "2023-12"
+      outlet: Liberal Debatt
+      title: "Därför kan AI inte riktigt återskapa den omöjliga hatten – än"
+      link: https://www.liberaldebatt.se/2023/12/darfor-kan-ai-inte-riktigt-aterskapa-den-omojliga-hatten-an/
+
+- group: Teaching
+  items:
+    - date: ""
+      outlet: Stockholm University
+      title: Lectures in Design Methodology
+      link: ""

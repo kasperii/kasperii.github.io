@@ -1,0 +1,40 @@
+{%- comment -%}
+  The Projects view. Used by /projects/ and, with include.open set to a
+  project page, by every /work/<name>/ page. Each section is a <details> that
+  folds; its right column (.work-area) shows either the thumbnail grid or the
+  open project (.project-body), never both.
+{%- endcomment -%}
+{% include crumb.html title="Projects" %}
+{%- for section in site.data.sections %}
+{%- assign is_open = false %}
+{%- if include.open and include.open.section == section.id %}{% assign is_open = true %}{% endif %}
+<details class="sec reveal" id="section-{{ section.id }}" data-fold="{{ section.id }}" open>
+    <summary><h2 class="sec-title">{{ section.title }}</h2><span class="lead" aria-hidden="true"></span><span class="tag">{{ section.years }}</span><span class="tag tog" aria-hidden="true"></span></summary>
+    <div class="sec-body">
+        <p class="sec-intro">{{ section.intro }}</p>
+        <div class="work-area"{% if is_open %} data-open="{{ include.open.url }}"{% endif %}>
+        {%- if is_open %}
+            <div class="panel">
+                <div class="panel-head">
+                    <h3 class="project-title">{{ include.open.title }}</h3>
+                    <a class="panel-close tag" href="{{ '/projects/' | relative_url }}#section-{{ section.id }}">[×] Close</a>
+                </div>
+                <div class="project-body">
+{{ include.body }}
+                </div>
+            </div>
+        {%- else %}
+            <ul class="grid">
+            {%- assign projects = site.projects | where: "section", section.id | sort: "order" %}
+            {%- for project in projects %}
+                <li><a class="thumb" href="{{ project.url | relative_url }}">
+                    <img src="{{ project.thumbnail | relative_url }}" alt="" loading="lazy" decoding="async" width="640" height="640">
+                    <span class="thumb-title tag">{{ project.title | escape }}</span>
+                </a></li>
+            {%- endfor %}
+            </ul>
+        {%- endif %}
+        </div>
+    </div>
+</details>
+{%- endfor %}

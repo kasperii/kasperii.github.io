@@ -1,0 +1,19 @@
+# Publications OpenAlex is missing, merged into /publications/.
+# Fields as in publications.json: year, title, authors (list), venue, type, doi (or link).
+# Kasper: fill in the exact details, then remove the "#" in front.
+add: []
+#  - year: 2024
+#    title: "TegakARi: ..."
+#    authors: [Kasper Karlgren, ...]
+#    venue: OzCHI 2024
+#    type: conference-paper
+#    doi: ""
+#  - year: 2024
+#    title: "<PhD thesis title>"
+#    authors: [Kasper Karlgren]
+#    venue: Stockholm University (PhD thesis)
+#    type: dissertation
+#    link: ""
+
+# DOIs of wrong matches to hide from the list.
+hide: []

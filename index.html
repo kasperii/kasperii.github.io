@@ -1,68 +1,23 @@
 ---
 layout: default
-hero: true
+view: home
+body_class: home
 ---
-<section class="about" id="about">
-    <div class="blurb">
-        <div class="mypicture">
-            <img src="{{ '/img/me.webp' | relative_url }}" width="300" height="441" alt="Portrait of Kasper Karlgren">
-        </div>
-        <div class="blurbtext">
-            <p><strong>This is my</strong> humble webpage. Please feel free to check out my work
-                below. I hold a PhD in Human-Computer Interaction (HCI) at Stockholm University. I have published several articles at competitive conferences on topics such as concept design, self-tracking technologies, sleep technologies, gaze interaction, virtual reality, and kitchen technologies. My PhD has also included a visit at Copenhagen University and Tokyo University.
-                I did my Master's in Computer Science and a Bachelor's in Media Technology, one semester at Aalto University (puhun Suomea!) and
-                one year as a guest student at Keio University (日本語をうまく書くことができませんが、少し読むことができます!)
-
-                You can find my mail in the footer - please use it for good only!
-                My CV can be found <a href="{{ '/img/CV_Kasper_Karlgren.pdf' | relative_url }}">here!</a>
-            </p>
-        </div>
-    </div>
-
-    <div class="skills">
-        {%- for skill in site.data.skills %}
-        <div class="skill">
-            <div class="skill-label">{{ skill.label }}</div>
-            <div class="skill-icon skill-{{ skill.level }}" role="img" aria-label="{{ skill.level }} out of 10">
-                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-            </div>
-        </div>
-        {%- endfor %}
-    </div>
-</section>
-
-{% for section in site.data.sections %}
-<hr />
-
-<section class="alt-section section-work" id="section-{{ section.id }}">
-    <h3>{{ section.title }}</h3>
-    <div class="time">
-        <p>{{ section.time }}</p>
-    </div>
-    <div class="infoWork">
-        {{ section.intro }}
-    </div>
-    <div class="work-belt">
-        <div class="thumb-wrap">
-            <div class="thumb-container">
-                {%- assign projects = site.projects | where: "section", section.id | sort: "order" %}
-                {%- for project in projects %}
-                <a class="thumb-unit" href="{{ project.url | relative_url }}">
-                    <img src="{{ project.thumbnail | relative_url }}" alt="" loading="lazy" decoding="async">
-                    <span class="thumb-overlay"><strong>{{ project.title | escape }}</strong></span>
-                </a>
-                {%- endfor %}
-            </div>
-        </div>
-        <div class="work-wrap">
-            <div class="work-container" hidden>
-                <button type="button" class="work-return" aria-label="Back to projects"><img src="{{ '/img/logga_back.svg' | relative_url }}" alt=""></button>
-                <div class="project-container">
-                    <h4 class="project-title"></h4>
-                    <div class="project-load"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-{% endfor %}
+<div class="hero">
+    <figure class="portrait reveal">
+        <img class="bw" src="{{ '/img/me.webp' | relative_url }}" width="300" height="441" alt="Portrait of Kasper Karlgren">
+        <img class="col" src="{{ '/img/me.webp' | relative_url }}" width="300" height="441" alt="" aria-hidden="true">
+    </figure>
+    <h1 class="name reveal">Kasper Karlgren</h1>
+    <p class="roles tag reveal">Human-Centred Technology, Research &amp; Design<br>User Research @ Spotify</p>
+    <p class="intro reveal">This is my humble webpage. I work where people meet technology — investigating how we live with it, designing how it could be, and building the prototypes in between. I hold a PhD in Human-Computer Interaction from Stockholm University, where I researched self-tracking, sleep and agency alongside gaze interaction, social robots and virtual reality, with research visits to Copenhagen and Tokyo. Before that I studied Computer Science and Media Technology at KTH and designed concepts, brands and animations at Netlight. Today I do user research at Spotify, and still take on the occasional design project — most recently the brand for YC-backed Scape.</p>
+    <nav class="links tag reveal" aria-label="Sections">
+        <ul>
+            <li><a href="{{ '/projects/' | relative_url }}">Projects</a></li>
+            <li><a href="{{ '/timeline/' | relative_url }}">Timeline</a></li>
+            <li><a href="{{ '/publications/' | relative_url }}">Publications</a></li>
+            <li><a href="{{ '/speaking/' | relative_url }}">Speaking</a></li>
+            <li><a href="mailto:kasper@bedford.st">Email</a></li>
+        </ul>
+    </nav>
+</div>

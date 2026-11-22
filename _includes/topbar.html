@@ -1,36 +1,5 @@
-<nav id="myMenu" aria-label="Main">
-    <div id="menulinks">
-        <div class="menuitem"><p><a href="{{ '/' | relative_url }}#section-kaspertext">Me</a></p></div>
-        {%- for section in site.data.sections %}
-        <div class="menuitem"><p><a href="{{ '/' | relative_url }}#section-{{ section.id }}">{{ section.menu | default: section.title }}</a></p></div>
-        {%- endfor %}
-    </div>
-</nav>
-
-<div class="topbar">
-    <div class="hamburger">
-        <button type="button" class="hamburgerbutton" aria-controls="myMenu" aria-expanded="false" aria-label="Open menu">
-    <svg height="24px" width="24px" id="hamburgerlogo" aria-hidden="true" version="1.1" viewBox="0 0 800 800">
-      <defs>
-          <clipPath id="cut-off-top">
-              <rect id="cut-off-top-rect" x="0" y="0" width="800" height="800" />
-    </clipPath>
-    <clipPath id="cut-off-bottom">
-        <rect id="cut-off-bottom-rect" x="0" y="800" width="800" height="800" />
-    </clipPath>
-      </defs>
-      <rect class="cls-1" id="ham1" x="73.2" y="152.37" width="653.6" height="93.37" clip-path="url(#cut-off-top)"/>
-      <rect class="cls-1" id="ham2" x="73.2" y="353.32" width="653.6" height="93.37" clip-path="url(#cut-off-top)"/>
-      <rect class="cls-1" id="ham3" x="73.2" y="554.26" width="653.6" height="93.37" clip-path="url(#cut-off-top)"/>
-      <path class="cls-2" id="ham4" d="M457.47,647.63c-63.14,0-122.33-28.61-162.78-77.45-39.46,48.83-99.15,77.45-162.29,77.45h-59.19s0-93.72,0-93.72h58.21c60.67,0,110.99-46.86,115.92-107.04H73.2s0-93.23,0-93.23l269.33-.49h-.98c60.68,0,110.99-46.86,115.92-107.04H73.2s0-93.73,0-93.73h653.6s0,93.73,0,93.73h-174.62c5.43,60.18,55.74,107.04,115.92,107.04h58.7s0,93.72,0,93.72h-59.19c-63.14,0-122.34-28.61-162.79-77.94-39.46,49.33-99.15,77.94-162.29,77.94h0c2.96,30.09,16.77,56.73,37,75.96,20.72,19.24,48.34,31.08,78.43,31.08h268.84s0,93.72,0,93.72h-269.33Z" clip-path="url(#cut-off-bottom)"/>
-  </svg>
-        </button>
-    </div>
-    <div class="logo">
-        <a href="{{ '/' | relative_url }}" aria-label="Kasper Karlgren – home">
-            <svg class="logo-svg" height="24px" width="24px" aria-hidden="true" version="1.1" viewBox="0 0 800 800">
-                {% include logo-paths.html extra="logoblack" %}
-            </svg>
-        </a>
-    </div>
-</div>
+<a class="logo" href="{{ '/' | relative_url }}" aria-label="Kasper Karlgren – home">
+    <svg class="logo-svg" aria-hidden="true" viewBox="0 0 800 800">
+        {% include logo-paths.html extra="logoblack" %}
+    </svg>
+</a>

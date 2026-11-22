@@ -1,0 +1,23 @@
+---
+layout: default
+title: Speaking
+view: speaking
+permalink: /speaking/
+---
+{% include crumb.html title="Speaking" %}
+<div class="list-view">
+{%- for group in site.data.speaking %}
+<section class="list-group reveal">
+    <h2 class="sec-title">{{ group.group }}</h2>
+    <ul class="rows">
+    {%- for item in group.items %}
+        <li class="row">
+            <span class="tag row-date">{{ item.date | default: "—" }}</span>
+            <span class="row-outlet">{{ item.outlet }}</span>
+            <span class="row-title">{% if item.link != "" %}<a href="{{ item.link }}"{% if item.link contains '://' %} rel="noopener"{% endif %}>{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</span>
+        </li>
+    {%- endfor %}
+    </ul>
+</section>
+{%- endfor %}
+</div>

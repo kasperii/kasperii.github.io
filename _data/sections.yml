@@ -1,31 +1,28 @@
-# Work sections on the home page, in display order.
+# Work sections on the Projects view, in display order.
 # Each project in _projects/ names its section with `section: <id>`.
 
 - id: phd
   title: "PhD research"
-  menu: PhD
-  time: "/*October 2019-October 2024*/"
+  years: "2019 — 2024"
   intro: >-
-    <p><strong>These projects are </strong> a selection of my work conducted during my PhD at the Department of Computer and Systems Sciences at Stockholm University.
-    This research has included work on agency over self-tracking and sleep technologies, as well as other work on social robots in collaboration with Tokyo University and work on virtual reality and smart fridges</p>
-    <p>Click on the images to for more information on each project!</p>
+    A selection of work from my PhD at the Department of Computer and Systems Sciences, Stockholm University:
+    agency over self-tracking and sleep technologies, social robots with the University of Tokyo, virtual reality and smart fridges.
 
 - id: netlight
   title: "Netlight"
-  time: "/*Mars 2017-June 2019*/"
+  years: "2017 — 2019"
   intro: >-
-    <p><strong>Netlight consulting is </strong> an IT and management consult company with over 1200 consults all over Europe. I have been working at Netlight f om the Spring of 2017 as one of the designers at the inhouse design studio. Tasks have included concept art and animations for annual conferences, large format printing, and UX testing of digital services.</p>
+    Designer at the in-house design studio of Netlight Consulting, an IT and management consultancy with over 1200 consultants across Europe:
+    concept art and animation for annual conferences, large-format print, brand work and UX testing of digital services.
 
 - id: master
   title: "Master's projects"
-  menu: Master
-  time: "/*August 2017-June 2019*/"
+  years: "2017 — 2019"
   intro: >-
-    <p><strong>During my Master's </strong> in Computer Science at KTH, Royal Institute of Technology I have been worked with project exploring cutting edge interaction design - foremost in my Master's thesis.</p>
+    Projects from my Master's in Computer Science at KTH Royal Institute of Technology, exploring cutting-edge interaction design, foremost in my Master's thesis.
 
 - id: other
-  title: "Personal projects and freelancing"
-  menu: Other
-  time: "/*Before-Now*/"
+  title: "Personal & freelance"
+  years: "Before — now"
   intro: >-
-    <p><strong>In parallel, I </strong> have been involved in multiple projects. This includes both bigger and smaller projects that capture my different interests and experiences.</p>
+    Bigger and smaller projects alongside everything else, capturing different interests and experiences.

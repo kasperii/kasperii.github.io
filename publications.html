@@ -1,0 +1,38 @@
+---
+layout: default
+title: Publications
+view: publications
+permalink: /publications/
+---
+{%- comment -%}
+  _data/publications.json is refreshed from OpenAlex by
+  scripts/update_publications.py (weekly, via .github/workflows/publications.yml).
+  _data/publications_manual.yml adds missing entries and hides wrong matches.
+{%- endcomment -%}
+{%- assign manual = site.data.publications_manual %}
+{%- assign all = site.data.publications | concat: manual.add | sort: "year" | reverse %}
+{% include crumb.html title="Publications" %}
+<div class="list-view">
+{%- for kind in (1..2) %}
+<section class="list-group reveal">
+    <h2 class="sec-title">{% if kind == 1 %}Papers &amp; articles{% else %}Student theses{% endif %}</h2>
+    <ul class="rows">
+    {%- for p in all %}
+        {%- if manual.hide contains p.doi %}{% continue %}{% endif %}
+        {%- assign student = false %}
+        {%- if p.type == "dissertation" and p.venue contains "KTH" %}{% assign student = true %}{% endif %}
+        {%- if kind == 1 and student %}{% continue %}{% endif %}
+        {%- if kind == 2 and student == false %}{% continue %}{% endif %}
+        {%- assign href = p.link %}
+        {%- if p.doi and p.doi != "" %}{% capture href %}https://doi.org/{{ p.doi }}{% endcapture %}{% endif %}
+        <li class="row">
+            <span class="tag row-date">{{ p.year }}</span>
+            <span class="row-outlet">{{ p.venue }}</span>
+            <span class="row-title">{% if href and href != "" %}<a href="{{ href }}" rel="noopener">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}
+                <span class="row-authors">{{ p.authors | join: ", " | replace: "Kasper Karlgren", "<b>Kasper Karlgren</b>" }}</span></span>
+        </li>
+    {%- endfor %}
+    </ul>
+</section>
+{%- endfor %}
+</div>

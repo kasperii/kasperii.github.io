@@ -12,7 +12,7 @@ defaults:
   - scope: { path: "" }
     values: { image: /img/og-image.png }
   - scope: { path: "", type: projects }
-    values: { layout: project, body_class: project-page }
+    values: { layout: project, view: projects }
   # keep image/PDF files (old CVs etc.) out of sitemap.xml
   - scope: { path: "img" }
     values: { sitemap: false }
@@ -39,3 +39,4 @@ exclude:
   - Gemfile.lock
   - vendor
   - test
+  - scripts

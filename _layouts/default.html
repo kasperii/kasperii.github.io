@@ -4,18 +4,13 @@
 {% include head.html %}
 </head>
 <body class="{{ page.body_class }}">
-<header>
 {% include topbar.html %}
-{%- if page.hero %}
-<div class="kaspertext" id="section-kaspertext">
-    <h1><span class="urbtext">KASPER KARLGREN</span></h1>
-</div>
-{%- endif %}
-</header>
-
+{%- comment -%}
+  #view is the part js/main.js swaps when navigating between views, so the
+  logo and the page around it stay put and nothing reloads.
+{%- endcomment %}
+<main id="view" data-view="{{ page.view | default: 'page' }}">
 {{ content }}
-
-<hr />
-{% include footer.html %}
+</main>
 </body>
 </html>

@@ -6,7 +6,7 @@ A Jekyll site that GitHub Pages builds automatically on every push to `master`.
 
 ## Adding a project
 
-Create `_projects/<name>.md`. It will be served at `/work/<name>/` and appear in its section on the front page:
+Create `_projects/<name>.md`. It will be served at `/work/<name>/` and appear in its section on `/projects/`:
 
 ```markdown
 ---
@@ -27,12 +27,12 @@ To hide a project without deleting it, add `published: false`.
 
 | What | Where |
 | --- | --- |
-| Work sections (title, dates, intro, menu label) | `_data/sections.yml` |
-| Skill meters | `_data/skills.yml` |
-| Bio text | `index.html` |
-| Menu, header, footer | `_includes/` |
+| Landing text, role lines, links | `index.html` |
+| Project sections (title, years, intro) | `_data/sections.yml` |
+| Speaking & media | `_data/speaking.yml` |
+| Publications | auto: `python3 scripts/update_publications.py`; extra/hidden entries in `_data/publications_manual.yml` |
 | Styles | `css/style.css` |
-| Behaviour (menu, project panels) | `js/main.js` |
+| Behaviour (view swapping, project panels, folds) | `js/main.js` |
 
 ## Preview and test locally (before pushing!)
 

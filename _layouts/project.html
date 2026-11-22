@@ -2,17 +2,8 @@
 layout: default
 ---
 {%- comment -%}
-  Standalone page for one project (/work/<name>/). On the home page the same
-  .project-body is fetched by js/main.js and shown in the sliding panel.
+  /work/<name>/ is the Projects view with this project already open in its
+  section, so a shared link lands in the same place a click would.
 {%- endcomment -%}
-{%- assign section = site.data.sections | where: "id", page.section | first -%}
-<main class="work-container">
-    <a class="work-return" href="{{ '/' | relative_url }}#section-{{ page.section }}" aria-label="Back to {{ section.title }}"><img src="{{ '/img/logga_back.svg' | relative_url }}" alt=""></a>
-    <div class="project-container">
-        <p class="project-section"><a href="{{ '/' | relative_url }}#section-{{ page.section }}">{{ section.title }}</a></p>
-        <h1 class="project-title">{{ page.title }}</h1>
-        <div class="project-load project-body">
-{{ content | replace: '<img src=', '<img loading="lazy" decoding="async" src=' }}
-        </div>
-    </div>
-</main>
+{%- capture body -%}{{ content | replace: '<img src=', '<img loading="lazy" decoding="async" src=' }}{%- endcapture -%}
+{% include projects.html open=page body=body %}

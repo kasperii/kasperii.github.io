@@ -1,28 +1,20 @@
-// Site behaviour: menu toggle, scroll-driven logo, project "work belts".
-// No dependencies. Loaded with `defer`, so the DOM is ready when this runs.
+// Site behaviour. No dependencies; loaded with `defer`.
+//
+// Every page is a real Jekyll page with its content in <main id="view">.
+// Clicking an internal link fetches the target page and swaps #view in place
+// (pushState), so the logo stays put and nothing reloads; Back/Forward and
+// direct links work the same way. Between two Projects views (/projects/ and
+// /work/<name>/) only the affected section's right column is swapped, which
+// is how a project "opens" next to its section.
 
 (() => {
-  const root = document.documentElement;
-
-  // ---- Menu -------------------------------------------------------------
-  // All visual state (overlay, colours, hamburger morph) lives in CSS under
-  // `.menu-open`; JS only flips the class and the ARIA state.
-  const menuButton = document.querySelector(".hamburgerbutton");
-  const menu = document.getElementById("myMenu");
-
-  function setMenu(open) {
-    root.classList.toggle("menu-open", open);
-    menuButton.setAttribute("aria-expanded", String(open));
-    menuButton.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  // Old links to the one-page site (/#section-phd) now live on /projects/.
+  if (location.pathname === "/" && location.hash.startsWith("#section-")) {
+    location.replace("/projects/" + location.hash);
+    return;
   }
-  menuButton.addEventListener("click", () => setMenu(!root.classList.contains("menu-open")));
-  menu.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
 
   // ---- Scroll-driven logo ------------------------------------------------
-  // The header monogram is four copies of the same path; scrolling slides
-  // them past each other. Elements are looked up once inside the header logo
-  // (previously a class-name lookup that broke after opening the menu).
   const logo = document.querySelector(".logo svg");
   if (logo) {
     const [top, bottom, back1, back2] = ["toplogo", "bottomlogo", "logobackground1", "logobackground2"]
@@ -40,29 +32,27 @@
     window.addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(draw); } }, { passive: true });
   }
 
-  // ---- Work belts --------------------------------------------------------
-  // Each section's `.work-belt` holds a thumbnail grid and a project panel
-  // side by side; opening a project slides the belt left (CSS transition on
-  // `.is-open`). Thumbnails link to the standalone project pages
-  // (/work/<name>/); on the home page we fetch that page, show its
-  // `.project-body` in the panel and push its URL, so links are shareable and
-  // the browser's back button closes the panel.
-  const SLIDE_MS = 800;
-  const homeTitle = document.title;
-  if (!document.querySelector(".work-belt")) return; // project pages: nothing more to wire up
-
-  // `instant` skips the slide so the page height settles immediately (needed
-  // before scrolling elsewhere, or the collapsing panel shifts the target).
-  function closeBelt(belt, instant = false) {
-    if (!belt.classList.contains("is-open")) return;
-    belt.classList.remove("is-open");
-    const panel = belt.querySelector(".work-container");
-    if (instant) panel.hidden = true;
-    else setTimeout(() => { if (!belt.classList.contains("is-open")) panel.hidden = true; }, SLIDE_MS);
+  // ---- Per-view setup (runs on load and after every swap) -----------------
+  const FOLD = "fold:";
+  function setupView(view) {
+    // Folded sections are remembered per visitor; an open project's section stays open.
+    view.querySelectorAll("details[data-fold]").forEach((d) => {
+      try {
+        const v = localStorage.getItem(FOLD + d.dataset.fold);
+        if (v !== null && !d.querySelector(".panel")) d.open = v === "1";
+      } catch {}
+      d.addEventListener("toggle", () => { try { localStorage.setItem(FOLD + d.dataset.fold, d.open ? "1" : "0"); } catch {} });
+    });
+    // Portrait: colour wipes in from the point where the pointer enters.
+    const p = view.querySelector(".portrait");
+    if (p) p.addEventListener("pointerenter", (e) => {
+      const r = p.getBoundingClientRect();
+      p.style.setProperty("--x", `${e.clientX - r.left}px`);
+      p.style.setProperty("--y", `${e.clientY - r.top}px`);
+    });
   }
 
-  // innerHTML does not execute <script> tags (CodePen embeds need them), so
-  // re-create each one as a live element.
+  // innerHTML/importNode don't execute <script> (CodePen embeds need it).
   function runScripts(container) {
     container.querySelectorAll("script").forEach((old) => {
       const s = document.createElement("script");
@@ -72,76 +62,103 @@
     });
   }
 
-  const closeAll = (instant = false) =>
-    document.querySelectorAll(".work-belt.is-open").forEach((b) => closeBelt(b, instant));
-  const thumbFor = (path) =>
-    [...document.querySelectorAll(".thumb-unit")].find((a) => new URL(a.href).pathname === path);
+  function scrollToHash(hash) {
+    const el = hash && document.getElementById(decodeURIComponent(hash.slice(1)));
+    if (el) { if (el.tagName === "DETAILS") el.open = true; el.scrollIntoView(); }
+    return !!el;
+  }
 
-  async function openProject(thumb, { push = true } = {}) {
-    const belt = thumb.closest(".work-belt");
-    document.querySelectorAll(".work-belt.is-open").forEach((b) => b !== belt && closeBelt(b));
-
-    const url = new URL(thumb.href);
-    const title = thumb.querySelector("strong").textContent;
-    if (push) history.pushState({ project: url.pathname }, "", url.pathname);
-    document.title = `${title} | ${homeTitle.split(" | ")[0]}`;
-
-    const panel = belt.querySelector(".work-container");
-    const body = panel.querySelector(".project-load");
-    panel.querySelector(".project-title").textContent = title;
-    body.innerHTML = '<div class="loader">Loading...</div>';
-    panel.hidden = false;
-    requestAnimationFrame(() => belt.classList.add("is-open"));
-
-    try {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(res.status);
-      const page = new DOMParser().parseFromString(await res.text(), "text/html");
-      body.innerHTML = page.querySelector(".project-body").innerHTML;
-      runScripts(body);
-    } catch {
-      body.innerHTML = `<p>Couldn't load this project. <a href="${url.pathname}">Open it directly</a>.</p>`;
+  // ---- Navigation ---------------------------------------------------------
+  const pages = new Map(); // pathname -> Promise<Document>
+  const load = (path) => {
+    if (!pages.has(path)) {
+      pages.set(path, fetch(path).then((r) => {
+        if (!r.ok) throw new Error(r.status);
+        return r.text();
+      }).then((t) => new DOMParser().parseFromString(t, "text/html")));
+      pages.get(path).catch(() => pages.delete(path));
     }
-    panel.querySelector(".work-return").focus({ preventScroll: true });
+    return pages.get(path);
+  };
+
+  const isView = (url) => url.origin === location.origin &&
+    (/^\/(projects|timeline|publications|speaking)\/$/.test(url.pathname) || url.pathname === "/" || /^\/work\/[^/]+\/$/.test(url.pathname));
+
+  // Remember where we were, so Back restores the scroll position.
+  const saveScroll = () => history.replaceState({ ...history.state, y: scrollY }, "");
+
+  async function go(url, { push = true, y = null } = {}) {
+    let doc;
+    try { doc = await load(url.pathname); } catch { location.href = url.href; return; }
+    const next = doc.getElementById("view");
+    if (!next) { location.href = url.href; return; }
+
+    const view = document.getElementById("view");
+    const from = location.pathname;
+    if (push) { saveScroll(); history.pushState({ prev: from }, "", url.pathname + url.hash); }
+    document.title = doc.title;
+
+    if (view.dataset.view === "projects" && next.dataset.view === "projects") {
+      // Swap only the sections whose right column changes (a project opens/closes).
+      let opened = null;
+      view.querySelectorAll(".work-area").forEach((area) => {
+        const sec = area.closest("details");
+        const fresh = next.querySelector(`#${sec.id} .work-area`);
+        if (area.dataset.open === fresh.dataset.open) return;
+        const copy = document.importNode(fresh, true);
+        area.replaceWith(copy);
+        runScripts(copy);
+        if (copy.dataset.open) { sec.open = true; opened = sec; }
+      });
+      if (y !== null) scrollTo(0, y);
+      else if (opened) {
+        opened.querySelector(".panel-close").focus({ preventScroll: true });
+        if (opened.getBoundingClientRect().top < 0) opened.scrollIntoView();
+      } else if (!scrollToHash(url.hash)) {
+        const back = from.startsWith("/work/") && view.querySelector(`.thumb[href="${from}"]`);
+        if (back) { back.focus({ preventScroll: true }); if (back.getBoundingClientRect().top < 0) back.scrollIntoView({ block: "center" }); }
+      }
+      return;
+    }
+
+    const copy = document.importNode(next, true);
+    view.replaceWith(copy);
+    document.body.className = doc.body.className;
+    runScripts(copy);
+    setupView(copy);
+    if (y !== null) scrollTo(0, y);
+    else if (!scrollToHash(url.hash)) scrollTo(0, 0);
   }
 
   document.addEventListener("click", (e) => {
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // let "open in new tab" work
-
-    const thumb = e.target.closest(".thumb-unit");
-    if (thumb) {
-      e.preventDefault();
-      openProject(thumb);
-      return;
-    }
-
-    if (e.target.closest(".work-return")) {
-      // Opened via pushState -> go back (popstate closes it); otherwise just close.
-      if (history.state && history.state.project) history.back();
-      else closeAll();
-      return;
-    }
-
-    // Menu links point at "/#section-…"; while a project URL is showing, keep
-    // it a same-page jump instead of a full reload.
-    const link = e.target.closest('a[href*="#section-"]');
-    const target = link && document.getElementById(link.hash.slice(1));
-    if (target && location.pathname !== "/") {
-      e.preventDefault();
-      closeAll(true);
-      history.pushState(null, "", "/" + link.hash);
-      document.title = homeTitle;
-      target.scrollIntoView();
-    }
+    if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    const a = e.target.closest("a[href]");
+    if (!a || a.target || a.hasAttribute("download")) return;
+    const url = new URL(a.href);
+    if (!isView(url)) return;
+    // Same page, just a hash: let the browser jump (but unfold the section).
+    if (url.pathname === location.pathname && url.hash) { scrollToHash(url.hash); return; }
+    e.preventDefault();
+    // Closing a project you opened from /projects/ = going back, so the
+    // history doesn't fill up with open/close pairs.
+    if (a.classList.contains("panel-close") && history.state && history.state.prev === "/projects/") { history.back(); return; }
+    go(url);
   });
 
-  window.addEventListener("popstate", (e) => {
-    const thumb = e.state && e.state.project && thumbFor(e.state.project);
-    if (thumb) {
-      openProject(thumb, { push: false });
-    } else {
-      closeAll();
-      document.title = homeTitle;
-    }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") { const c = document.querySelector(".panel-close"); if (c) c.click(); }
   });
+
+  history.scrollRestoration = "manual";
+  window.addEventListener("popstate", (e) => go(new URL(location.href), { push: false, y: e.state && e.state.y != null ? e.state.y : null }));
+
+  // Warm the cache on hover/focus so views swap instantly.
+  const warm = (e) => { const a = e.target.closest && e.target.closest("a[href]"); if (a) { const u = new URL(a.href); if (isView(u) && u.pathname !== location.pathname) load(u.pathname); } };
+  document.addEventListener("pointerover", warm, { passive: true });
+  document.addEventListener("focusin", warm);
+
+  const first = document.getElementById("view");
+  pages.set(location.pathname, Promise.resolve(document.cloneNode(true)));
+  setupView(first);
+  if (location.hash) scrollToHash(location.hash);
 })();

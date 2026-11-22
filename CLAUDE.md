@@ -25,23 +25,20 @@ Deploy-only problems a fresh local browser won't show: GitHub Pages serves every
 
 ## Architecture
 
-- **Content is data-driven.** `index.html` loops over `_data/sections.yml` (PhD / Netlight / Master / Other, in display order) and, for each section, the `_projects` documents whose `section:` matches, sorted by `order:`. The menu (`_includes/topbar.html`) is generated from the same sections file. The skill meters come from `_data/skills.yml`.
-- **One file per project:** `_projects/<name>.html|.md` becomes `/work/<name>/` through `_layouts/project.html`. The front matter fields are `title`, `section`, `order`, `thumbnail` (a `-thumb.webp` path), an optional `redirect_from` (the old `/work/proj-*.html` URLs) and an optional `published: false` (Tokyo modelling is hidden that way). Existing projects are HTML bodies. New ones can be Markdown.
-- **Two ways a project is shown, same markup:** the standalone page renders the body inside `.project-body`. On the home page, `js/main.js` intercepts thumbnail clicks, fetches the project page, takes its `.project-body`, and slides it into that section's `.work-belt` panel.
-  - It uses `history.pushState`, so the URL is shareable and Back closes the panel (a `popstate` handler).
-  - `innerHTML` doesn't execute scripts, so `runScripts()` re-creates `<script>` tags. The CodePen embeds in mandelbrot and game-of-life depend on this.
-  - Keep `.project-body` as the content wrapper in `_layouts/project.html`, or the panel breaks.
-- **Paths:** project bodies are also injected into `/`, so asset paths inside them must be root-absolute (`/img/...`). Relative paths break on one of the two views.
-- **Styling:** a single hand-maintained `css/style.css`. There's no Sass any more. Visual state lives in classes:
-  - `.menu-open` on `<html>` drives the menu overlay, the hamburger morph and the logo colour.
-  - `.work-belt.is-open` slides a belt.
-  - The `[hidden]` attribute hides a panel.
-  - `body.project-page` (set through `_config.yml` defaults) styles standalone project pages.
-- **The logo** is four copies of one SVG path (`_includes/logo-paths.html`). `main.js` slides the header copy's paths on scroll. The footer uses the same include without the `logoblack` class.
+- **Views, no reloads.** Every page is a real Jekyll page whose content sits in `<main id="view" data-view="…">` (`_layouts/default.html`). The views are home `/`, `/projects/`, `/timeline/`, `/publications/`, `/speaking/` and `/work/<name>/`. `js/main.js` intercepts internal links to them, fetches the target page, swaps `#view` and calls `pushState`. Back and Forward use the same path (`popstate` → `go()`, which restores the scroll position). The fixed KK logo (`_includes/topbar.html`) links home. Its scroll animation slides the four copies of the path in `_includes/logo-paths.html`.
+- **Projects are data-driven.** `_includes/projects.html` loops over `_data/sections.yml` and the `_projects` documents with a matching `section:`, sorted by `order:`. Each section is a `<details>` that folds (remembered in `localStorage`): the intro on the left third, `.work-area` on the right two-thirds.
+- **Opening a project.** `/work/<name>/` (`_layouts/project.html`) renders the *same* Projects view with that project's `.panel .project-body` in place of its section's grid. Between two Projects views `main.js` swaps only the `.work-area`s that differ, so a click "opens" the project next to its section. A shared link lands in the same state.
+  - `importNode` doesn't execute scripts, so `runScripts()` re-creates `<script>` tags. The CodePen embeds in mandelbrot and game-of-life depend on this.
+  - Project front matter fields: `title`, `section`, `order`, `thumbnail` (a `-thumb.webp` path), an optional `redirect_from` (the old `/work/proj-*.html` URLs) and an optional `published: false` (Tokyo modelling is hidden that way). `view: projects` comes from `_config.yml` defaults: front matter in a layout isn't visible as `page.*`.
+  - Old `/#section-x` links are redirected to `/projects/#section-x` by `main.js`.
+- **Paths:** project bodies are shown under `/work/<name>/`, so asset paths inside them must be root-absolute (`/img/...`).
+- **Publications:** `scripts/update_publications.py` (standard library) writes `_data/publications.json` from OpenAlex author `A5059244389`. `_data/publications_manual.yml` adds missing entries and hides wrong DOIs. KTH student theses are listed separately.
+- **Speaking:** `_data/speaking.yml`. **Timeline:** a placeholder, still to be built.
+- **Styling:** a single hand-maintained `css/style.css` with tokens on `:root`. Off-white background, black ink, no accent colour; hover is a bold black outline. Fonts: Urbscape (Kasper's own typeface, used for the name), Instrument Sans (text) and Iosevka (mono `.tag` labels).
 
 ## Assets
 
-- **Fonts:** `/fonts/*.woff2` are Latin subsets. Iosevka Aile SemiBold was extracted from a 19 MB `.ttc`. The originals are in `_originals/`.
+- **Fonts:** `/fonts/*.woff2` are Latin subsets. Instrument Sans is OFL, from Google Fonts. Iosevka Aile SemiBold was extracted from a 19 MB `.ttc`. The originals are in `_originals/`.
 - **Images:** WebP, max 1600px wide, converted to sRGB. Thumbnails are separate 640px `*-thumb.webp` files. When adding images, convert the same way (many source PNGs are Display P3 and lose colour if the profile is just dropped).
 - **`_originals/`** is git-ignored and holds local full-resolution masters, `.ai` design files and the old fonts. It's never committed or deployed, and `.gitignore` also blocks `*.ai`, `*.zip` and `*.heic`.
 - **CV:** the current CV is `img/CV_Kasper_Karlgren.pdf`, linked from the bio. The other PDFs in `img/` are older CVs. They're kept out of the sitemap.
