@@ -137,15 +137,15 @@ await check("every project page, thumbnail and image resolves", async () => {
 });
 
 await check("clicking a thumbnail opens the project in its section's right column", async () => {
-  const href = await run(() => { const a = document.querySelector("#section-phd .thumb"); a.click(); return new URL(a.href).pathname; });
+  const href = await run(() => { const a = document.querySelector("#section-sleep .thumb"); a.click(); return new URL(a.href).pathname; });
   await sleep(1200);
   const s = await state();
   const r = await run(() => {
-    const sec = document.getElementById("section-phd"), panel = sec.querySelector(".panel"), intro = sec.querySelector(".sec-intro");
+    const sec = document.getElementById("section-sleep"), panel = sec.querySelector(".panel"), intro = sec.querySelector(".sec-intro");
     return { grid: !!sec.querySelector(".grid"), text: panel?.querySelector(".project-body").textContent.trim().length,
       rightOfIntro: panel && panel.getBoundingClientRect().left > intro.getBoundingClientRect().right };
   });
-  assert(s.path === href && s.open.join() === "section-phd", JSON.stringify(s));
+  assert(s.path === href && s.open.join() === "section-sleep", JSON.stringify(s));
   assert(!r.grid && r.text > 20 && r.rightOfIntro, JSON.stringify(r));
   assert(!(await reloaded()), "page reloaded");
   return href;
@@ -180,13 +180,13 @@ await check("sections fold and unfold, and remember it", async () => {
 await check("a shared /work/<name>/ link loads with the project open", async () => {
   await goto("work/kintsugi-vr/", 1500);
   const s = await state();
-  assert(s.view === "projects" && s.open.join() === "section-phd" && /Kintsugi/.test(s.title), JSON.stringify(s));
+  assert(s.view === "projects" && s.open.join() === "section-xr" && /Kintsugi/.test(s.title), JSON.stringify(s));
 });
 
 await check("old /#section-… links land on the Projects view", async () => {
-  await goto("#section-master", 2000);
-  const r = await run(() => ({ path: location.pathname, hash: location.hash, top: Math.round(document.getElementById("section-master").getBoundingClientRect().top) }));
-  assert(r.path === "/projects/" && r.hash === "#section-master" && Math.abs(r.top) < 60, JSON.stringify(r));
+  await goto("#section-master", 2000); // retired id, maps to #section-xr
+  const r = await run(() => ({ path: location.pathname, hash: location.hash, top: Math.round(document.getElementById("section-xr").getBoundingClientRect().top) }));
+  assert(r.path === "/projects/" && r.hash === "#section-xr" && Math.abs(r.top - 64) < 30, JSON.stringify(r));
 });
 
 await check("landing page fits one screen without scrolling", async () => {

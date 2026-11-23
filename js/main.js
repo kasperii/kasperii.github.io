@@ -9,10 +9,13 @@
 
 (() => {
   // Old links to the one-page site (/#section-phd) now live on /projects/.
+  // Sections were later regrouped by theme; map the retired ids.
+  const RENAMED = { "#section-phd": "#section-sleep", "#section-master": "#section-xr", "#section-other": "#section-personal" };
   if (location.pathname === "/" && location.hash.startsWith("#section-")) {
-    location.replace("/projects/" + location.hash);
+    location.replace("/projects/" + (RENAMED[location.hash] || location.hash));
     return;
   }
+  if (location.pathname === "/projects/" && RENAMED[location.hash]) history.replaceState(history.state, "", RENAMED[location.hash]);
 
   // ---- Scroll-driven logo ------------------------------------------------
   const logo = document.querySelector(".logo svg");

@@ -1,12 +1,36 @@
-# Work sections on the Projects view, in display order.
+# Project sections on the Projects view, in display order.
 # Each project in _projects/ names its section with `section: <id>`.
+# `years` is optional.
 
-- id: phd
-  title: "PhD research"
-  years: "2019 — 2024"
+- id: freelance
+  title: "Freelance"
+  years: "2025 — now"
   intro: >-
-    A selection of work from my PhD at the Department of Computer and Systems Sciences, Stockholm University:
-    agency over self-tracking and sleep technologies, social robots with the University of Tokyo, virtual reality and smart fridges.
+    Design and brand work for startups. More brand book material is on its way.
+
+- id: sleep
+  title: "Sleep technologies"
+  years: "2019 — 2026"
+  intro: >-
+    The core of my PhD at Stockholm University: how people track, plan and wake from sleep,
+    explored through design work, a sleep-planning system and a study of alarms in everyday life.
+
+- id: robots
+  title: "Robot design & interaction"
+  intro: >-
+    Robots as conversation partners, from augmented reality on a static robot in my Master's thesis
+    to a mobile, gaze-based robot built with the University of Tokyo.
+
+- id: xr
+  title: "Extended reality"
+  intro: >-
+    Virtual and augmented reality, from games built at KTH to research on speculative futures and designing with broken objects.
+
+- id: everyday
+  title: "Everyday technology"
+  intro: >-
+    Research on technology in ordinary places: configurable fridges for food-sharing communities,
+    and an app for studying phone use where it happens.
 
 - id: netlight
   title: "Netlight"
@@ -15,14 +39,13 @@
     Designer at the in-house design studio of Netlight Consulting, an IT and management consultancy with over 1200 consultants across Europe:
     concept art and animation for annual conferences, large-format print, brand work and UX testing of digital services.
 
-- id: master
-  title: "Master's projects"
-  years: "2017 — 2019"
+- id: photography
+  title: "Photography"
   intro: >-
-    Projects from my Master's in Computer Science at KTH Royal Institute of Technology, exploring cutting-edge interaction design, foremost in my Master's thesis.
+    Photographs from travels and everyday life, and portraits for actors, bands and posters.
 
-- id: other
-  title: "Personal & freelance"
+- id: personal
+  title: "Personal"
   years: "Before — now"
   intro: >-
-    Bigger and smaller projects alongside everything else, capturing different interests and experiences.
+    Bigger and smaller projects alongside everything else: typefaces, games, generative code, maps and student media.
