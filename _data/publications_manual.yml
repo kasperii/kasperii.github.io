@@ -14,5 +14,9 @@ add:
     type: dissertation
     link: ""
 
+# Venue names to show instead of OpenAlex's, by DOI.
+venue:
+  "10.1145/3555630": "CSCW 2022 — Proceedings of the ACM on Human-Computer Interaction, Vol. 6, CSCW2"
+
 # DOIs of wrong matches to hide from the list.
 hide: []

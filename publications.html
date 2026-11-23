@@ -25,11 +25,12 @@ permalink: /publications/
         {%- if kind == 2 and student == false %}{% continue %}{% endif %}
         {%- assign href = p.link %}
         {%- if p.doi and p.doi != "" %}{% capture href %}https://doi.org/{{ p.doi }}{% endcapture %}{% endif %}
-        <li class="row">
+        {%- assign venue = manual.venue[p.doi] | default: p.venue %}
+        <li class="row row--pub">
             <span class="tag row-date">{{ p.year }}</span>
-            <span class="row-outlet">{{ p.venue }}</span>
             <span class="row-title">{% if href and href != "" %}<a href="{{ href }}" rel="noopener">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}
                 <span class="row-authors">{{ p.authors | join: ", " | replace: "Kasper Karlgren", "<b>Kasper Karlgren</b>" }}</span></span>
+            <span class="row-outlet">{{ venue }}</span>
         </li>
     {%- endfor %}
     </ul>
