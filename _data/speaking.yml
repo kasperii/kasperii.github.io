@@ -33,6 +33,18 @@
 
 - group: Teaching
   items:
+    - date: "2025"
+      outlet: DSV, Stockholm University
+      title: "Project in Software Engineering (IB154N): full-stack web projects, from design scope to implementation"
+      link: https://www.su.se/english/education/course-catalogue/ib/ib154n
+    - date: "2020–2025"
+      outlet: DSV, Stockholm University
+      title: Introductory course in human-computer interaction (MDI)
+      link: ""
+    - date: "2021–2023"
+      outlet: DSV, Stockholm University
+      title: "AIBU: seminars, teaching and project supervision in AI-Based Experience Design"
+      link: ""
     - date: ""
       outlet: Stockholm University
       title: Lectures in Design Methodology
