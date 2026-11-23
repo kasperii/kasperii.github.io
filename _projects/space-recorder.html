@@ -6,20 +6,33 @@ thumbnail: /img/work/Doctors/d7-thumb.webp
 redirect_from: /work/proj-d7.html
 ---
 <p>
-    Keywords: Android Development
-
+    Keywords: Android development, Bluetooth beacons, Research instrument, Privacy by design
 </p>
-
 
 <p>
-    This is system that records phone activity by location – through bluetooth beacons. The system was developed to be able to run studies on phone usage at specific locatons, without requiring active actions from the user while respecting user privacy. The videos and app usage collected was after specific user approval synced with servers at Stockholm University.
+    Space Recorder is a fully working Android app I built in 2020 to study how people use their phones in specific places, such as in bed before going to sleep. It records the phone's screen only while the phone is inside a location the participant has set up, marked by small Bluetooth beacons. Everywhere else, nothing is recorded. This captures the phone use that matters for a study, without asking participants to remember to press record, and without collecting the rest of their day.
 </p>
 
-<img loading="lazy" decoding="async" src="/img/work/Doctors/space.webp"  width="80%" style="mix-blend-mode: multiply;">
+<img src="/img/work/Doctors/space.webp" width="80%" style="mix-blend-mode: multiply;" alt="A phone near a Bluetooth beacon">
 
+<p><b>How it works</b></p>
+<ul>
+    <li><b>Locations made of beacons.</b> A location, such as a bedroom, a kitchen or a car, is one or more Bluetooth beacons. The participant picks the beacons from a list of nearby devices.</li>
+    <li><b>Knowing when you are there.</b> The app keeps scanning in the background and smooths each beacon's signal strength into a running average. When the signal passes a threshold set for that beacon, the phone counts as inside the location.</li>
+    <li><b>Recording only what's relevant.</b> Screen recording starts when the screen is on inside a location, and stops when the phone leaves or the screen turns off.</li>
+    <li><b>Data back to the study.</b> Each recording is saved with the location and a log of beacon proximity over time. After the participant has approved it, the app uploads the videos and logs to Stockholm University's servers.</li>
+</ul>
 
 <p>
-    The app was developed in Android Studios to be used with any bluetooth beacon. These following images showcase the main frames of the application.
+    I designed the interface around this setup flow. The wireframes below show the start screen, the list of locations with an on/off switch for recording, adding a beacon to a location, recorded videos sorted by place and date, and settings for video quality, audio and app-usage data.
 </p>
 
-<img loading="lazy" decoding="async" src="/img/work/Doctors/spacelayout.webp"  width="80%" style="mix-blend-mode: multiply;">
+<img src="/img/work/Doctors/spacelayout.webp" width="80%" style="mix-blend-mode: multiply;" alt="Wireframes of the app's screens: start, locations, adding a beacon, videos and settings">
+
+<p>
+    <b>Built with:</b> Java in Android Studio, the AltBeacon library for beacon scanning, and a foreground service so tracking keeps running in the background. I updated the app for Android 10's screen-capture permissions. It builds on the open-source Invivo recorder by Razan Jaber, which is based on the ScreenRecorder app by Vijai Chander. My work added the beacon tracking, locations and thresholds, proximity logging, the new interface and the upload changes: around 3,000 lines of code.
+</p>
+
+<p>
+    Code: <a href="https://github.com/kasperii/Invivo">github.com/kasperii/Invivo</a>
+</p>
