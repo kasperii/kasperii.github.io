@@ -19,17 +19,32 @@
   if (logo) {
     const [top, bottom, back1, back2] = ["toplogo", "bottomlogo", "logobackground1", "logobackground2"]
       .map((c) => logo.querySelector("." + c));
-    let queued = false;
-    const draw = () => {
-      queued = false;
-      const s = Math.floor((window.scrollY * 15) / 2 % 700);
+    const drawAt = (s) => {
       const half = 1 - Math.abs(2 * (s / 700 - 0.5));
       top.style.transform = `translate(0px,-${s}px)`;
       bottom.style.transform = `translate(0px,${700 - s}px)`;
       back1.style.transform = `translate(0px,${-700 - 200 * half}px)`;
       back2.style.transform = `translate(0px,${700 + 200 * half}px)`;
     };
+    let queued = false, spinning = false;
+    const draw = () => { queued = false; if (!spinning) drawAt(Math.floor((window.scrollY * 15) / 2 % 700)); };
     window.addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(draw); } }, { passive: true });
+
+    // Clicking the logo plays one full cycle of the scroll animation, then
+    // hands back to the scroll position (navigation home happens alongside).
+    logo.closest("a").addEventListener("click", () => {
+      if (spinning || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      spinning = true;
+      const t0 = performance.now(), DUR = 900;
+      const step = (now) => {
+        const p = Math.min(1, (now - t0) / DUR);
+        const e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; // ease in-out
+        drawAt(Math.floor(e * 699));
+        if (p < 1) requestAnimationFrame(step);
+        else { spinning = false; draw(); }
+      };
+      requestAnimationFrame(step);
+    });
   }
 
   // ---- Per-view setup (runs on load and after every swap) -----------------
