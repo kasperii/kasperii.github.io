@@ -189,6 +189,19 @@ await check("old /#section-… links land on the Projects view", async () => {
   assert(r.path === "/projects/" && r.hash === "#section-master" && Math.abs(r.top) < 60, JSON.stringify(r));
 });
 
+await check("landing page fits one screen without scrolling", async () => {
+  const bad = [];
+  for (const [w, h, m] of [[1440, 900], [1280, 720], [390, 844, true], [375, 667, true]]) {
+    await viewport(w, h, m); await goto("", 1200);
+    const r = await run(async () => { await document.fonts.ready; return { sh: document.documentElement.scrollHeight, ih: innerHeight }; });
+    if (r.sh > r.ih + 1) bad.push(`${w}×${h}: page is ${r.sh}px tall`);
+    if (w === 1280) await shot("home-1280x720");
+    if (w === 375) await shot("home-375x667");
+  }
+  await viewport(1280, 900);
+  assert(bad.length === 0, bad.join("; "));
+});
+
 await check("mobile layout: no horizontal overflow (home, projects, open project)", async () => {
   await viewport(390, 844, true);
   const out = [];
