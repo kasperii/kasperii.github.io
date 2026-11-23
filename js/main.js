@@ -35,10 +35,10 @@
     logo.closest("a").addEventListener("click", () => {
       if (spinning || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       spinning = true;
-      const t0 = performance.now(), DUR = 900;
+      const t0 = performance.now(), DUR = 500;
       const step = (now) => {
         const p = Math.min(1, (now - t0) / DUR);
-        const e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; // ease in-out
+        const e = 1 - Math.pow(1 - p, 3); // ease out: moves at once, settles softly
         drawAt(Math.floor(e * 699));
         if (p < 1) requestAnimationFrame(step);
         else { spinning = false; draw(); }
