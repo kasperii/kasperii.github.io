@@ -4,8 +4,100 @@ section: personal
 order: 6
 thumbnail: /img/work/GoL/GOL-thumb.webp
 redirect_from: /work/proj-13.html
+year: "2016"
 ---
-<p> Game of Life</p>
-<p>The rules are not intuative and neither are the buttons, but click around and se what happens.</p>
-<p data-height="624" data-theme-id="light" data-slug-hash="OWvqKd" data-default-tab="result" data-user="kasperii" data-pen-title="Game Of Life" class="codepen">See the Pen <a href="https://codepen.io/kasperii/pen/OWvqKd/">Game Of Life</a> by Kaser Karlgren (<a href="https://codepen.io/kasperii">@kasperii</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<p>Conway's Game of Life on a 50 × 50 board that wraps around at the edges. The rules are not intuitive and neither are the buttons, but click around and see what happens: click cells to bring them to life, the blue button plays and pauses, the pink one resets. Cells that have lived leave a trail that slowly fades. Every block you bring to life counts as cleared, and the lifespan grows for as long as the board keeps moving: the more that moves, the faster it grows.</p>
+
+<div class="toy gol">
+  <div class="gol-buttons">
+    <button type="button" class="gol-play" aria-label="Play" aria-pressed="false"><svg class="i-play" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9.5-5.5z"/></svg><svg class="i-pause" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 1.5h3.2v11H2.5zM8.3 1.5h3.2v11H8.3z"/></svg></button>
+    <button type="button" class="gol-reset" aria-label="Reset"></button>
+  </div>
+  <p class="tag gol-stats" aria-live="polite"><span class="gol-cleared">0</span>/2500 cleared · <span class="gol-clicks">0</span> clicks · lifespan <span class="gol-life">0</span></p>
+  <canvas class="toy-canvas" width="500" height="500" style="background:#261645;touch-action:none" aria-label="Game of Life board"></canvas>
+  <p class="tag toy-meta"><a href="https://codepen.io/kasperii/pen/OWvqKd" rel="noopener">Original on CodePen ↗</a></p>
+</div>
+
+<script>
+(() => {
+  const root = document.currentScript.previousElementSibling;
+  const canvas = root.querySelector("canvas"), c = canvas.getContext("2d");
+  const play = root.querySelector(".gol-play"), reset = root.querySelector(".gol-reset");
+  const N = 50, CELL = 10, FADE = 10000; // 8px cells with 1px margins; trails fade over 10s
+  const BG = [0x26, 0x16, 0x45], ALIVE = [0xff, 0x1b, 0xca], FRESH = "#0000ff";
+  let alive = new Uint8Array(N * N), died = new Float64Array(N * N); // died: when a cell last stopped living (0 = never lived)
+  let playing = false, timer = 0, raf = 0, clicks = 0, life = 0;
+  const clearedOut = root.querySelector(".gol-cleared"), clicksOut = root.querySelector(".gol-clicks"), lifeOut = root.querySelector(".gol-life");
+  const click = () => { clicksOut.textContent = ++clicks; };
+
+  const mix = (a, b, t) => `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * t)).join()})`;
+  function draw() {
+    raf = 0;
+    if (!canvas.isConnected) return stop();
+    const now = performance.now();
+    let fading = false, cleared = 0;
+    c.fillStyle = "#261645"; c.fillRect(0, 0, 500, 500);
+    for (let k = 0; k < N * N; k++) {
+      const x = (k % N) * CELL, y = Math.floor(k / N) * CELL;
+      if (alive[k] || died[k]) cleared++; // a block is cleared once it has been alive
+      if (alive[k]) { c.fillStyle = "#ff1bca"; c.fillRect(x + .6, y + .6, 8.8, 8.8); continue; }
+      if (!died[k]) { c.fillStyle = FRESH; c.fillRect(x + 1, y + 1, 8, 8); continue; }
+      const t = Math.min(1, (now - died[k]) / FADE);
+      if (t < 1) fading = true;
+      c.fillStyle = mix(ALIVE, BG, t); c.fillRect(x + 1, y + 1, 8, 8);
+    }
+    clearedOut.textContent = cleared;
+    if (fading || playing) raf = requestAnimationFrame(draw);
+  }
+  const redraw = () => { if (!raf) raf = requestAnimationFrame(draw); };
+
+  function tick() {
+    const next = new Uint8Array(N * N), now = performance.now();
+    let changed = 0;
+    for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+      let n = 0;
+      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++)
+        if (dx || dy) n += alive[((y + dy + N) % N) * N + (x + dx + N) % N];
+      const k = y * N + x;
+      next[k] = alive[k] ? (n === 2 || n === 3 ? 1 : 0) : (n === 3 ? 1 : 0);
+      if (alive[k] && !next[k]) died[k] = now;
+      if (alive[k] !== next[k]) changed++;
+    }
+    alive = next;
+    // Lifespan: every generation scores the number of blocks that were born or
+    // died in it, so a long-running board with lots of movement scores highest
+    // and a board that has died out or frozen still stops scoring.
+    life += changed; lifeOut.textContent = life;
+    redraw();
+  }
+  function stop() { playing = false; clearInterval(timer); play.setAttribute("aria-pressed", "false"); play.setAttribute("aria-label", "Play"); }
+  play.addEventListener("click", () => {
+    if (playing) return stop();
+    playing = true; timer = setInterval(tick, 200);
+    play.setAttribute("aria-pressed", "true"); play.setAttribute("aria-label", "Pause");
+    redraw();
+  });
+  reset.addEventListener("click", () => { stop(); alive.fill(0); died.fill(0); clicks = 0; clicksOut.textContent = 0; life = 0; lifeOut.textContent = 0; redraw(); });
+
+  // Click toggles a cell; dragging paints living cells.
+  let painting = false;
+  const cellAt = (e) => {
+    const b = canvas.getBoundingClientRect();
+    const x = Math.floor((e.clientX - b.left) / b.width * N), y = Math.floor((e.clientY - b.top) / b.height * N);
+    return x >= 0 && y >= 0 && x < N && y < N ? y * N + x : -1;
+  };
+  canvas.addEventListener("pointerdown", (e) => {
+    const k = cellAt(e); if (k < 0) return;
+    painting = !alive[k];
+    if (alive[k]) { alive[k] = 0; died[k] = performance.now(); } else alive[k] = 1;
+    click();
+    canvas.setPointerCapture(e.pointerId); redraw();
+  });
+  canvas.addEventListener("pointermove", (e) => {
+    if (!painting || !e.buttons) return;
+    const k = cellAt(e); if (k >= 0 && !alive[k]) { alive[k] = 1; click(); redraw(); }
+  });
+  canvas.addEventListener("pointerup", () => { painting = false; });
+  redraw();
+})();
+</script>

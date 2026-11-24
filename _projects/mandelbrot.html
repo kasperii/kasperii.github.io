@@ -5,5 +5,39 @@ order: 5
 thumbnail: /img/work/Mandelbrot/MB-thumb.webp
 redirect_from: /work/proj-12.html
 ---
-<p data-height="779" data-theme-id="0" data-slug-hash="XNVggr" data-default-tab="result" data-user="kasperii" data-embed-version="2" data-pen-title="mandelbrot" class="codepen">See the Pen <a href="http://codepen.io/kasperii/pen/XNVggr/">mandelbrot</a> by Kaser Karlgren (<a href="http://codepen.io/kasperii">@kasperii</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+<p>The Mandelbrot set drawn with circles: each point is coloured by how fast it escapes, and every second the grid of circles doubles in resolution until the shape comes through.</p>
+
+<div class="toy">
+  <canvas class="toy-canvas" width="700" height="700" style="background:#000" aria-label="Mandelbrot set drawn with circles, getting finer every second"></canvas>
+  <p class="tag toy-meta"><a href="https://codepen.io/kasperii/pen/XNVggr" rel="noopener">Original on CodePen ↗</a></p>
+</div>
+
+<script>
+(() => {
+  const canvas = document.currentScript.previousElementSibling.querySelector("canvas");
+  const c = canvas.getContext("2d"), w = canvas.width, h = canvas.height, MAX = 50;
+  const COLORS = ["#000000", "#000066", "#6600ff", "#bf00ff", "#ff00aa", "#ff3377", "#ff4d4d", "#ffbf80", "#ffffcc", "#ffffcc"];
+  const escape = (re, im) => {
+    let x = 0, y = 0, n = 0;
+    while (n < MAX && x * x + y * y <= 4) { const t = x * x - y * y + re; y = 2 * x * y + im; x = t; n++; }
+    return n;
+  };
+  function draw(amount) {
+    c.fillStyle = "#000"; c.fillRect(0, 0, w, h);
+    const r = w / (2 * amount);
+    for (let i = 0; i < amount; i++) for (let j = 0; j < amount; j++) {
+      const x = w * (i + .5) / amount, y = h * (j + .5) / amount;
+      c.fillStyle = COLORS[Math.min(9, Math.floor(escape(x * 4 / w - 2, y * 4 / h - 2) / MAX * 10))];
+      c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fill();
+    }
+  }
+  // 1, 2, 4 … 256 circles across, one step a second; rest on the finest, then start over.
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { draw(256); return; }
+  let num = 1, rest = 0;
+  const timer = setInterval(() => {
+    if (!canvas.isConnected) return clearInterval(timer);
+    if (num <= 256) { draw(num); num *= 2; }
+    else if (++rest > 4) { num = 1; rest = 0; }
+  }, 1000);
+})();
+</script>

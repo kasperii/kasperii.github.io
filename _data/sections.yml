@@ -1,16 +1,14 @@
 # Project sections on the Projects view, in display order.
 # Each project in _projects/ names its section with `section: <id>`.
-# `years` is optional.
+
 
 - id: freelance
   title: "Freelance"
-  years: "2025 — now"
   intro: >-
     Design and brand work for startups. More brand book material is on its way.
 
 - id: sleep
   title: "Sleep technologies"
-  years: "2019 — 2026"
   intro: >-
     The core of my PhD at Stockholm University: how people track, plan and wake from sleep,
     explored through design work, a sleep-planning system and a study of alarms in everyday life.
@@ -34,7 +32,6 @@
 
 - id: netlight
   title: "Netlight"
-  years: "2017 — 2019"
   intro: >-
     Designer at the in-house design studio of Netlight Consulting, an IT and management consultancy with over 1200 consultants across Europe:
     concept art and animation for annual conferences, large-format print, brand work and UX testing of digital services.
@@ -46,6 +43,5 @@
 
 - id: personal
   title: "Personal"
-  years: "Before — now"
   intro: >-
     Bigger and smaller projects alongside everything else: typefaces, games, generative code, maps and student media.

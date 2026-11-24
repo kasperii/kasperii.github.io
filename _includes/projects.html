@@ -9,14 +9,14 @@
 {%- assign is_open = false %}
 {%- if include.open and include.open.section == section.id %}{% assign is_open = true %}{% endif %}
 <details class="sec reveal" id="section-{{ section.id }}" data-fold="{{ section.id }}" open>
-    <summary><h2 class="sec-title">{{ section.title }}</h2><span class="lead" aria-hidden="true"></span>{% if section.years %}<span class="tag">{{ section.years }}</span>{% endif %}<span class="tag tog" aria-hidden="true"></span></summary>
+    <summary><h2 class="sec-title">{{ section.title }}</h2><span class="lead" aria-hidden="true"></span><span class="tag tog" aria-hidden="true"></span></summary>
     <div class="sec-body">
         <p class="sec-intro">{{ section.intro }}</p>
         <div class="work-area"{% if is_open %} data-open="{{ include.open.url }}"{% endif %}>
         {%- if is_open %}
             <div class="panel">
                 <div class="panel-head">
-                    <h3 class="project-title">{{ include.open.title }}</h3>
+                    <h3 class="project-title">{{ include.open.title }}</h3>{% if include.open.year %}<span class="project-year tag">{{ include.open.year }}</span>{% endif %}
                     <a class="panel-close tag" href="{{ '/projects/' | relative_url }}#section-{{ section.id }}">[×] Close</a>
                 </div>
                 <div class="project-body">

@@ -68,6 +68,17 @@
   // Portrait: a grainy blob of the colour photo follows the pointer over the
   // black-and-white one. Each frame keeps a colour pixel with a probability
   // that falls off from the pointer, so the edge dithers like film grain.
+  //
+  // The rainbow of light across the face also spills out past the frame,
+  // above the hair and below the bottom edge, fading out with a little
+  // chromatic aberration. BEAM is its colour profile across the beam (violet
+  // → red, every 2px of the 300×441 photo from 30px left of the axis), measured
+  // from img/me.webp as each pixel's ratio to the unlit skin beside it:
+  // RGB + strength.
+  const BEAM = "f0e4ff00 e4d7ff06 d5c6ff31 c3b6ff65 b2a8ff9c a39bffd1 9692fffd 8993ffff 7f9effff 79b1ffff 75c7ffff 79e1ffff 86feffeb 9bfffdaa b5ffd976 d1ffb772 e7ff9ea5 fbff87cc ffff7ad9 ffff76e4 ffea7ae3 ffd884d3 ffcc96af ffc7a984 ffcdbd55 ffdbd121 ffece800 fff8f200"
+    .split(" ").map((h) => [0, 2, 4, 6].map((i) => parseInt(h.slice(i, i + 2), 16)));
+  const PHOTO = { w: 300, h: 441, top: [173, 40], bottom: [165, 441], t0: -30, step: 2, reach: 150 };
+
   function grainBlob(fig) {
     const img = fig.querySelector("img");
     if (!img || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -75,43 +86,97 @@
     canvas.setAttribute("aria-hidden", "true");
     fig.append(canvas);
     const ctx = canvas.getContext("2d");
-    let src = null, out = null, x = 0, y = 0, r = 0, target = 0, raf = 0;
-    const R = () => canvas.width * 0.55; // full blob radius, in canvas pixels
+    let col = null, out = null, x = 0, y = 0, r = 0, target = 0, raf = 0, inside = false;
+    const R = () => col.iw * 0.55; // full blob radius, in canvas pixels
+
+    // Beam colour at a point given in photo pixels, or null. `t` runs across
+    // the beam, `s` along it from the top of the hair (negative above).
+    const [ax0, ay0] = PHOTO.top, [ax1, ay1] = PHOTO.bottom;
+    const len = Math.hypot(ax1 - ax0, ay1 - ay0), dx = (ax1 - ax0) / len, dy = (ay1 - ay0) / len;
+    const sBottom = (PHOTO.h - ay0) / dy; // where the beam leaves the bottom edge
+    const profile = (t) => {
+      const f = (t - PHOTO.t0) / PHOTO.step, i = Math.floor(f), u = f - i;
+      const a = BEAM[Math.max(0, Math.min(BEAM.length - 1, i))], b = BEAM[Math.max(0, Math.min(BEAM.length - 1, i + 1))];
+      return a.map((v, c) => v + (b[c] - v) * u);
+    };
+    function beamAt(px, py) {
+      const qx = px - ax0, qy = py - ay0, s = qx * dx + qy * dy, t = qx * dy - qy * dx;
+      const beyond = s < 0 ? -s : s > sBottom ? s - sBottom : 0;
+      if (!beyond || beyond > PHOTO.reach) return null;
+      const fade = 1 - beyond / PHOTO.reach;
+      const ab = 1 + beyond * 0.05, spread = 1 + beyond * 0.004; // aberration, slight widening
+      const red = profile(t / spread + ab), mid = profile(t / spread), blue = profile(t / spread - ab);
+      return [red[0], mid[1], blue[2], (mid[3] / 255) * fade * fade];
+    }
+
     function prepare() {
       const dpr = Math.min(devicePixelRatio || 1, 2);
-      canvas.width = Math.round(fig.clientWidth * dpr);
-      canvas.height = Math.round(img.clientHeight * dpr);
+      const iw = Math.round(fig.clientWidth * dpr), ih = Math.round(img.clientHeight * dpr);
+      const k = iw / PHOTO.w; // canvas px per photo px
+      const bx = Math.round(iw * 0.15), by = Math.round(PHOTO.reach * k); // bleed around the photo
+      const W = iw + 2 * bx, H = ih + 2 * by;
+      canvas.width = W; canvas.height = H;
+      Object.assign(canvas.style, { left: -bx / dpr + "px", top: -by / dpr + "px", width: W / dpr + "px", height: H / dpr + "px" });
       const off = document.createElement("canvas");
-      off.width = canvas.width; off.height = canvas.height;
+      off.width = iw; off.height = ih;
       const o = off.getContext("2d");
-      o.drawImage(img, 0, 0, off.width, off.height);
-      src = o.getImageData(0, 0, off.width, off.height);
-      out = ctx.createImageData(off.width, off.height);
+      o.drawImage(img, 0, 0, iw, ih);
+      const src = o.getImageData(0, 0, iw, ih).data;
+      // col: what each canvas pixel shows when revealed; alpha = how likely.
+      const c = new Uint8ClampedArray(W * H * 4);
+      for (let j = 0; j < H; j++) for (let i = 0; i < W; i++) {
+        const n = (j * W + i) * 4, pi = i - bx, pj = j - by;
+        const inPhoto = pi >= 0 && pj >= 0 && pi < iw && pj < ih;
+        const beam = beamAt(pi / k, pj / k);
+        if (inPhoto) {
+          const m = (pj * iw + pi) * 4, a = beam ? beam[3] : 0;
+          for (let ch = 0; ch < 3; ch++) { // screen the beam over the photo
+            const p = src[m + ch], b = beam ? beam[ch] : 0;
+            c[n + ch] = p + (255 - p) * (b / 255) * a;
+          }
+          c[n + 3] = 255;
+        } else if (beam) {
+          c[n] = beam[0]; c[n + 1] = beam[1]; c[n + 2] = beam[2]; c[n + 3] = beam[3] * 255;
+        }
+      }
+      col = { data: c, W, H, iw, bx, by };
+      out = ctx.createImageData(W, H);
     }
     function frame() {
       r += (target - r) * 0.18;
-      const s = src.data, d = out.data, w = canvas.width, h = canvas.height;
+      const s = col.data, d = out.data, w = col.W, h = col.H;
       for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {
-        const k = (j * w + i) * 4, dist = Math.hypot(i - x, j - y) / (r || 1);
-        const keep = dist < 1 && Math.random() < (1 - dist) * 1.9 - 0.15;
+        const k = (j * w + i) * 4, a = s[k + 3];
+        if (!a) { d[k + 3] = 0; continue; }
+        const dist = Math.hypot(i - x, j - y) / (r || 1);
+        const keep = dist < 1 && Math.random() * 255 < ((1 - dist) * 1.9 - 0.15) * a;
         d[k] = s[k]; d[k + 1] = s[k + 1]; d[k + 2] = s[k + 2]; d[k + 3] = keep ? 255 : 0;
       }
       ctx.putImageData(out, 0, 0);
       if (target > 0 || r > 0.5) raf = requestAnimationFrame(frame);
       else { ctx.clearRect(0, 0, w, h); raf = 0; }
     }
+    // Listen on the window: the hover area includes the bleed around the photo.
     function move(e) {
-      if (!src) { try { prepare(); } catch { return; } }
+      if (e.pointerType === "touch" && e.type !== "pointerdown" && !inside) return;
+      if (!col) { try { prepare(); } catch { return; } }
       const b = canvas.getBoundingClientRect();
+      const over = e.clientX >= b.left && e.clientX < b.right && e.clientY >= b.top && e.clientY < b.bottom;
+      if (!over) { if (inside) { inside = false; target = 0; } return; }
+      inside = true;
       x = (e.clientX - b.left) * canvas.width / b.width;
       y = (e.clientY - b.top) * canvas.height / b.height;
       target = R();
       if (!raf) raf = requestAnimationFrame(frame);
     }
-    fig.addEventListener("pointerenter", move);
-    fig.addEventListener("pointermove", move);
-    fig.addEventListener("pointerleave", () => { target = 0; });
-    addEventListener("resize", () => { src = null; }, { passive: true });
+    const ac = new AbortController();
+    addEventListener("pointermove", move, { passive: true, signal: ac.signal });
+    addEventListener("pointerdown", move, { passive: true, signal: ac.signal });
+    document.documentElement.addEventListener("pointerleave", () => { inside = false; target = 0; }, { signal: ac.signal });
+    addEventListener("resize", () => { col = null; }, { passive: true, signal: ac.signal });
+    // Stop listening once the home view is swapped out.
+    new MutationObserver((_, mo) => { if (!fig.isConnected) { ac.abort(); mo.disconnect(); } })
+      .observe(document.body, { childList: true, subtree: true });
   }
 
   // innerHTML/importNode don't execute <script> (CodePen embeds need it).
